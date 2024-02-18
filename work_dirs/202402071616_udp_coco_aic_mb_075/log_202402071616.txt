@@ -1,0 +1,596 @@
+2024-02-07 16:16:30,147 INFO PoseEstimator: [34m[1mtrain: [0mcfg_file=work_dirs/202402041807/udp_mobilenetv2_b128-210e_aic-coco-192x192.py, pretrained_weight=None, resume_ckpt=work_dirs/202402041807, sync_bn=False, save_dir=work_dirs/202402071616, device=, local_rank=-1, quant=False, quant_info=None, checkpoint=work_dirs/202402041807/last.pth
+2024-02-07 16:16:30,226 INFO PoseEstimator: PoseEstimator 🚀  Python-3.10.9 torch-1.13.1 CUDA:0 (NVIDIA GeForce RTX 4080, 16076MiB)
+
+2024-02-07 16:16:31,055 INFO PoseEstimator: Load checkpoint from work_dirs/202402041807/last.pth
+2024-02-07 16:18:09,892 INFO PoseEstimator: Successfully resume optimizer and schedulers from checkpoint
+2024-02-07 16:18:10,198 INFO PoseEstimator: Model input image sizes(w,h): (192, 192)
+Total num of training: 827791
+Total num of validation 104125
+Using 2 dataloader workers on training
+All training results saved to ==> work_dirs/202402071616
+Starting training for 193 epochs...
+2024-02-07 17:49:48,909 INFO PoseEstimator: (Train)Epoch-[17/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0013101035304624998 (epoch_avg)loss_kpt: 0.0013101035304624998 (epoch_avg)acc_pose: 0.7068229678107396 
+2024-02-07 17:54:33,258 INFO PoseEstimator: (Val)coco/AP: 0.51759, coco/AP .5: 0.81647, coco/AP .75: 0.56653, coco/AP (M): 0.49607, coco/AP (L): 0.56640, coco/AR: 0.58866, coco/AR .5: 0.86870, coco/AR .75: 0.64358, coco/AR (M): 0.54622, coco/AR (L): 0.64801
+2024-02-07 17:54:33,288 INFO PoseEstimator: (Val)Current best mAP: 0.5175879285383512 on epoch 17
+2024-02-07 19:41:51,048 INFO PoseEstimator: (Train)Epoch-[18/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.001304168259024774 (epoch_avg)loss_kpt: 0.001304168259024774 (epoch_avg)acc_pose: 0.7085895942798176 
+2024-02-07 19:46:34,907 INFO PoseEstimator: (Val)coco/AP: 0.51796, coco/AP .5: 0.81718, coco/AP .75: 0.57663, coco/AP (M): 0.49794, coco/AP (L): 0.56514, coco/AR: 0.58977, coco/AR .5: 0.87075, coco/AR .75: 0.65066, coco/AR (M): 0.54889, coco/AR (L): 0.64723
+2024-02-07 19:46:34,908 INFO PoseEstimator: (Val)Current best mAP: 0.5179604658703221 on epoch 18
+2024-02-07 20:50:54,731 INFO PoseEstimator: (Train)Epoch-[19/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0013002625395644564 (epoch_avg)loss_kpt: 0.0013002625395644564 (epoch_avg)acc_pose: 0.709732133482082 
+2024-02-07 20:55:36,627 INFO PoseEstimator: (Val)coco/AP: 0.51953, coco/AP .5: 0.81512, coco/AP .75: 0.56967, coco/AP (M): 0.49694, coco/AP (L): 0.56986, coco/AR: 0.59099, coco/AR .5: 0.86744, coco/AR .75: 0.64641, coco/AR (M): 0.54925, coco/AR (L): 0.64965
+2024-02-07 20:55:36,628 INFO PoseEstimator: (Val)Current best mAP: 0.5195347051081192 on epoch 19
+2024-02-07 21:49:54,440 INFO PoseEstimator: (Train)Epoch-[20/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0012947235043813806 (epoch_avg)loss_kpt: 0.0012947235043813806 (epoch_avg)acc_pose: 0.7113936067784841 
+2024-02-07 21:54:39,977 INFO PoseEstimator: (Val)coco/AP: 0.52057, coco/AP .5: 0.81346, coco/AP .75: 0.57263, coco/AP (M): 0.49858, coco/AP (L): 0.56789, coco/AR: 0.58969, coco/AR .5: 0.86555, coco/AR .75: 0.64641, coco/AR (M): 0.54753, coco/AR (L): 0.64849
+2024-02-07 21:54:39,977 INFO PoseEstimator: (Val)Current best mAP: 0.5205749947428581 on epoch 20
+2024-02-07 22:48:50,046 INFO PoseEstimator: (Train)Epoch-[21/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0012887400569081525 (epoch_avg)loss_kpt: 0.0012887400569081525 (epoch_avg)acc_pose: 0.7129787474786796 
+2024-02-07 22:53:29,770 INFO PoseEstimator: (Val)coco/AP: 0.52305, coco/AP .5: 0.81709, coco/AP .75: 0.57918, coco/AP (M): 0.50224, coco/AP (L): 0.57301, coco/AR: 0.59581, coco/AR .5: 0.86996, coco/AR .75: 0.65601, coco/AR (M): 0.55447, coco/AR (L): 0.65411
+2024-02-07 22:53:29,771 INFO PoseEstimator: (Val)Current best mAP: 0.5230502672240394 on epoch 21
+2024-02-07 23:47:32,374 INFO PoseEstimator: (Train)Epoch-[22/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.001285395275450511 (epoch_avg)loss_kpt: 0.001285395275450511 (epoch_avg)acc_pose: 0.7139324883118846 
+2024-02-07 23:52:16,716 INFO PoseEstimator: (Val)coco/AP: 0.52745, coco/AP .5: 0.82244, coco/AP .75: 0.57913, coco/AP (M): 0.50610, coco/AP (L): 0.57592, coco/AR: 0.59773, coco/AR .5: 0.87232, coco/AR .75: 0.65696, coco/AR (M): 0.55676, coco/AR (L): 0.65567
+2024-02-07 23:52:16,716 INFO PoseEstimator: (Val)Current best mAP: 0.5274471332008045 on epoch 22
+2024-02-08 00:46:16,810 INFO PoseEstimator: (Train)Epoch-[23/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.001279982334127324 (epoch_avg)loss_kpt: 0.001279982334127324 (epoch_avg)acc_pose: 0.7156604158142107 
+2024-02-08 00:50:59,184 INFO PoseEstimator: (Val)coco/AP: 0.52731, coco/AP .5: 0.82003, coco/AP .75: 0.57754, coco/AP (M): 0.50589, coco/AP (L): 0.57745, coco/AR: 0.59814, coco/AR .5: 0.87311, coco/AR .75: 0.65475, coco/AR (M): 0.55682, coco/AR (L): 0.65645
+2024-02-08 00:50:59,185 INFO PoseEstimator: (Val)Current best mAP: 0.5274471332008045 on epoch 22
+2024-02-08 01:45:00,651 INFO PoseEstimator: (Train)Epoch-[24/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0012753351286345312 (epoch_avg)loss_kpt: 0.0012753351286345312 (epoch_avg)acc_pose: 0.7167075132861588 
+2024-02-08 01:49:44,741 INFO PoseEstimator: (Val)coco/AP: 0.52982, coco/AP .5: 0.82149, coco/AP .75: 0.58948, coco/AP (M): 0.50821, coco/AP (L): 0.57919, coco/AR: 0.60019, coco/AR .5: 0.87122, coco/AR .75: 0.66373, coco/AR (M): 0.55739, coco/AR (L): 0.66020
+2024-02-08 01:49:44,742 INFO PoseEstimator: (Val)Current best mAP: 0.529824955114246 on epoch 24
+2024-02-08 02:43:46,090 INFO PoseEstimator: (Train)Epoch-[25/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.001273299903398496 (epoch_avg)loss_kpt: 0.001273299903398496 (epoch_avg)acc_pose: 0.7176842491980391 
+2024-02-08 02:48:27,388 INFO PoseEstimator: (Val)coco/AP: 0.52940, coco/AP .5: 0.82100, coco/AP .75: 0.58767, coco/AP (M): 0.50734, coco/AP (L): 0.57947, coco/AR: 0.59946, coco/AR .5: 0.87248, coco/AR .75: 0.65948, coco/AR (M): 0.55733, coco/AR (L): 0.65864
+2024-02-08 02:48:27,388 INFO PoseEstimator: (Val)Current best mAP: 0.529824955114246 on epoch 24
+2024-02-08 03:42:32,672 INFO PoseEstimator: (Train)Epoch-[26/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0012678232869446674 (epoch_avg)loss_kpt: 0.0012678232869446674 (epoch_avg)acc_pose: 0.7191558253425865 
+2024-02-08 03:47:13,048 INFO PoseEstimator: (Val)coco/AP: 0.53100, coco/AP .5: 0.82373, coco/AP .75: 0.58706, coco/AP (M): 0.50921, coco/AP (L): 0.58020, coco/AR: 0.60154, coco/AR .5: 0.87437, coco/AR .75: 0.66074, coco/AR (M): 0.56020, coco/AR (L): 0.65998
+2024-02-08 03:47:13,048 INFO PoseEstimator: (Val)Current best mAP: 0.5309965152852594 on epoch 26
+2024-02-08 04:40:29,285 INFO PoseEstimator: (Train)Epoch-[27/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0012661095253523828 (epoch_avg)loss_kpt: 0.0012661095253523828 (epoch_avg)acc_pose: 0.7193996763398287 
+2024-02-08 04:45:04,023 INFO PoseEstimator: (Val)coco/AP: 0.53256, coco/AP .5: 0.82192, coco/AP .75: 0.59385, coco/AP (M): 0.50976, coco/AP (L): 0.58205, coco/AR: 0.60326, coco/AR .5: 0.87390, coco/AR .75: 0.66782, coco/AR (M): 0.56086, coco/AR (L): 0.66284
+2024-02-08 04:45:04,023 INFO PoseEstimator: (Val)Current best mAP: 0.532555659477109 on epoch 27
+2024-02-08 05:37:26,780 INFO PoseEstimator: (Train)Epoch-[28/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0012625542102009974 (epoch_avg)loss_kpt: 0.0012625542102009974 (epoch_avg)acc_pose: 0.7206959486379492 
+2024-02-08 05:42:00,674 INFO PoseEstimator: (Val)coco/AP: 0.53073, coco/AP .5: 0.81962, coco/AP .75: 0.58948, coco/AP (M): 0.50709, coco/AP (L): 0.58240, coco/AR: 0.59973, coco/AR .5: 0.87122, coco/AR .75: 0.66184, coco/AR (M): 0.55739, coco/AR (L): 0.65946
+2024-02-08 05:42:00,674 INFO PoseEstimator: (Val)Current best mAP: 0.532555659477109 on epoch 27
+2024-02-08 06:34:27,339 INFO PoseEstimator: (Train)Epoch-[29/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.00125929278413024 (epoch_avg)loss_kpt: 0.00125929278413024 (epoch_avg)acc_pose: 0.7213646297302427 
+2024-02-08 06:39:01,877 INFO PoseEstimator: (Val)coco/AP: 0.53682, coco/AP .5: 0.82442, coco/AP .75: 0.59986, coco/AP (M): 0.51565, coco/AP (L): 0.58602, coco/AR: 0.60671, coco/AR .5: 0.87594, coco/AR .75: 0.67176, coco/AR (M): 0.56567, coco/AR (L): 0.66436
+2024-02-08 06:39:01,877 INFO PoseEstimator: (Val)Current best mAP: 0.5368214026806127 on epoch 29
+2024-02-08 07:31:20,542 INFO PoseEstimator: (Train)Epoch-[30/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0012559772995299865 (epoch_avg)loss_kpt: 0.0012559772995299865 (epoch_avg)acc_pose: 0.7223040195005214 
+2024-02-08 07:35:55,756 INFO PoseEstimator: (Val)coco/AP: 0.53736, coco/AP .5: 0.82328, coco/AP .75: 0.59619, coco/AP (M): 0.51536, coco/AP (L): 0.58657, coco/AR: 0.60795, coco/AR .5: 0.87516, coco/AR .75: 0.66908, coco/AR (M): 0.56599, coco/AR (L): 0.66719
+2024-02-08 07:35:55,756 INFO PoseEstimator: (Val)Current best mAP: 0.5373622502862496 on epoch 30
+2024-02-08 08:28:13,209 INFO PoseEstimator: (Train)Epoch-[31/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0012525567715456554 (epoch_avg)loss_kpt: 0.0012525567715456554 (epoch_avg)acc_pose: 0.7232542630469931 
+2024-02-08 08:32:47,444 INFO PoseEstimator: (Val)coco/AP: 0.53751, coco/AP .5: 0.82419, coco/AP .75: 0.59983, coco/AP (M): 0.51555, coco/AP (L): 0.58695, coco/AR: 0.60756, coco/AR .5: 0.87626, coco/AR .75: 0.67113, coco/AR (M): 0.56643, coco/AR (L): 0.66514
+2024-02-08 08:32:47,445 INFO PoseEstimator: (Val)Current best mAP: 0.5375068434875929 on epoch 31
+2024-02-08 09:25:08,221 INFO PoseEstimator: (Train)Epoch-[32/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.001250309219707725 (epoch_avg)loss_kpt: 0.001250309219707725 (epoch_avg)acc_pose: 0.724032022208311 
+2024-02-08 09:29:43,036 INFO PoseEstimator: (Val)coco/AP: 0.53699, coco/AP .5: 0.82374, coco/AP .75: 0.59732, coco/AP (M): 0.51235, coco/AP (L): 0.58927, coco/AR: 0.60601, coco/AR .5: 0.87374, coco/AR .75: 0.66640, coco/AR (M): 0.56274, coco/AR (L): 0.66689
+2024-02-08 09:29:43,037 INFO PoseEstimator: (Val)Current best mAP: 0.5375068434875929 on epoch 31
+2024-02-08 10:22:16,081 INFO PoseEstimator: (Train)Epoch-[33/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0012469824347045334 (epoch_avg)loss_kpt: 0.0012469824347045334 (epoch_avg)acc_pose: 0.724927186337079 
+2024-02-08 10:26:50,827 INFO PoseEstimator: (Val)coco/AP: 0.53716, coco/AP .5: 0.82322, coco/AP .75: 0.60133, coco/AP (M): 0.51539, coco/AP (L): 0.58701, coco/AR: 0.60697, coco/AR .5: 0.87594, coco/AR .75: 0.67428, coco/AR (M): 0.56567, coco/AR (L): 0.66525
+2024-02-08 10:26:50,827 INFO PoseEstimator: (Val)Current best mAP: 0.5375068434875929 on epoch 31
+2024-02-08 11:20:54,482 INFO PoseEstimator: (Train)Epoch-[34/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0012448845584724791 (epoch_avg)loss_kpt: 0.0012448845584724791 (epoch_avg)acc_pose: 0.7255047942565183 
+2024-02-08 11:25:30,481 INFO PoseEstimator: (Val)coco/AP: 0.53971, coco/AP .5: 0.82736, coco/AP .75: 0.59797, coco/AP (M): 0.51730, coco/AP (L): 0.59049, coco/AR: 0.61056, coco/AR .5: 0.87799, coco/AR .75: 0.67097, coco/AR (M): 0.56870, coco/AR (L): 0.66990
+2024-02-08 11:25:30,481 INFO PoseEstimator: (Val)Current best mAP: 0.5397090441345938 on epoch 34
+2024-02-08 12:18:11,802 INFO PoseEstimator: (Train)Epoch-[35/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0012461860931040126 (epoch_avg)loss_kpt: 0.0012461860931040126 (epoch_avg)acc_pose: 0.7252502940390282 
+2024-02-08 12:22:48,380 INFO PoseEstimator: (Val)coco/AP: 0.53899, coco/AP .5: 0.82699, coco/AP .75: 0.60042, coco/AP (M): 0.51552, coco/AP (L): 0.58948, coco/AR: 0.60902, coco/AR .5: 0.87673, coco/AR .75: 0.67270, coco/AR (M): 0.56547, coco/AR (L): 0.67027
+2024-02-08 12:22:48,381 INFO PoseEstimator: (Val)Current best mAP: 0.5397090441345938 on epoch 34
+2024-02-08 13:15:30,559 INFO PoseEstimator: (Train)Epoch-[36/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0012428741430571715 (epoch_avg)loss_kpt: 0.0012428741430571715 (epoch_avg)acc_pose: 0.7258719388973356 
+2024-02-08 13:20:06,296 INFO PoseEstimator: (Val)coco/AP: 0.53964, coco/AP .5: 0.82818, coco/AP .75: 0.59738, coco/AP (M): 0.51734, coco/AP (L): 0.59056, coco/AR: 0.61022, coco/AR .5: 0.87909, coco/AR .75: 0.67160, coco/AR (M): 0.56875, coco/AR (L): 0.66878
+2024-02-08 13:20:06,297 INFO PoseEstimator: (Val)Current best mAP: 0.5397090441345938 on epoch 34
+2024-02-08 14:12:39,595 INFO PoseEstimator: (Train)Epoch-[37/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.001240721726950022 (epoch_avg)loss_kpt: 0.001240721726950022 (epoch_avg)acc_pose: 0.7268483247717514 
+2024-02-08 14:17:16,199 INFO PoseEstimator: (Val)coco/AP: 0.54315, coco/AP .5: 0.82724, coco/AP .75: 0.60295, coco/AP (M): 0.52104, coco/AP (L): 0.59348, coco/AR: 0.61252, coco/AR .5: 0.87925, coco/AR .75: 0.67428, coco/AR (M): 0.57053, coco/AR (L): 0.67179
+2024-02-08 14:17:16,199 INFO PoseEstimator: (Val)Current best mAP: 0.5431510189976962 on epoch 37
+2024-02-08 15:10:04,007 INFO PoseEstimator: (Train)Epoch-[38/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0012392701351840204 (epoch_avg)loss_kpt: 0.0012392701351840204 (epoch_avg)acc_pose: 0.7269339407022456 
+2024-02-08 15:14:41,403 INFO PoseEstimator: (Val)coco/AP: 0.54362, coco/AP .5: 0.82809, coco/AP .75: 0.60556, coco/AP (M): 0.51931, coco/AP (L): 0.59618, coco/AR: 0.61478, coco/AR .5: 0.87862, coco/AR .75: 0.67837, coco/AR (M): 0.57116, coco/AR (L): 0.67622
+2024-02-08 15:14:41,403 INFO PoseEstimator: (Val)Current best mAP: 0.5436228139617055 on epoch 38
+2024-02-08 16:07:26,182 INFO PoseEstimator: (Train)Epoch-[39/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.001236734686660841 (epoch_avg)loss_kpt: 0.001236734686660841 (epoch_avg)acc_pose: 0.7272565698372233 
+2024-02-08 16:12:03,878 INFO PoseEstimator: (Val)coco/AP: 0.54393, coco/AP .5: 0.82820, coco/AP .75: 0.60099, coco/AP (M): 0.52039, coco/AP (L): 0.59587, coco/AR: 0.61278, coco/AR .5: 0.87941, coco/AR .75: 0.67239, coco/AR (M): 0.56908, coco/AR (L): 0.67440
+2024-02-08 16:12:03,878 INFO PoseEstimator: (Val)Current best mAP: 0.5439318967299903 on epoch 39
+2024-02-08 17:04:53,938 INFO PoseEstimator: (Train)Epoch-[40/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0012345777300087337 (epoch_avg)loss_kpt: 0.0012345777300087337 (epoch_avg)acc_pose: 0.7282953744276827 
+2024-02-08 17:09:28,528 INFO PoseEstimator: (Val)coco/AP: 0.54540, coco/AP .5: 0.82725, coco/AP .75: 0.60945, coco/AP (M): 0.52134, coco/AP (L): 0.59918, coco/AR: 0.61507, coco/AR .5: 0.87894, coco/AR .75: 0.68120, coco/AR (M): 0.57121, coco/AR (L): 0.67685
+2024-02-08 17:09:28,529 INFO PoseEstimator: (Val)Current best mAP: 0.5453953508462381 on epoch 40
+2024-02-08 18:02:07,533 INFO PoseEstimator: (Train)Epoch-[41/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0012328583539148803 (epoch_avg)loss_kpt: 0.0012328583539148803 (epoch_avg)acc_pose: 0.7288222286182102 
+2024-02-08 18:06:44,020 INFO PoseEstimator: (Val)coco/AP: 0.54738, coco/AP .5: 0.82913, coco/AP .75: 0.60524, coco/AP (M): 0.52557, coco/AP (L): 0.59713, coco/AR: 0.61708, coco/AR .5: 0.87941, coco/AR .75: 0.67947, coco/AR (M): 0.57550, coco/AR (L): 0.67611
+2024-02-08 18:06:44,021 INFO PoseEstimator: (Val)Current best mAP: 0.5473846323623633 on epoch 41
+2024-02-08 18:59:19,759 INFO PoseEstimator: (Train)Epoch-[42/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0012302697039083181 (epoch_avg)loss_kpt: 0.0012302697039083181 (epoch_avg)acc_pose: 0.7295675706997763 
+2024-02-08 19:03:54,838 INFO PoseEstimator: (Val)coco/AP: 0.54337, coco/AP .5: 0.82755, coco/AP .75: 0.60587, coco/AP (M): 0.52120, coco/AP (L): 0.59496, coco/AR: 0.61407, coco/AR .5: 0.87831, coco/AR .75: 0.67931, coco/AR (M): 0.57146, coco/AR (L): 0.67440
+2024-02-08 19:03:54,838 INFO PoseEstimator: (Val)Current best mAP: 0.5473846323623633 on epoch 41
+2024-02-08 19:56:32,070 INFO PoseEstimator: (Train)Epoch-[43/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0012276532937564898 (epoch_avg)loss_kpt: 0.0012276532937564898 (epoch_avg)acc_pose: 0.730005450687784 
+2024-02-08 20:01:08,309 INFO PoseEstimator: (Val)coco/AP: 0.54343, coco/AP .5: 0.82659, coco/AP .75: 0.60367, coco/AP (M): 0.52142, coco/AP (L): 0.59356, coco/AR: 0.61362, coco/AR .5: 0.87815, coco/AR .75: 0.67601, coco/AR (M): 0.57233, coco/AR (L): 0.67205
+2024-02-08 20:01:08,309 INFO PoseEstimator: (Val)Current best mAP: 0.5473846323623633 on epoch 41
+2024-02-08 20:53:38,543 INFO PoseEstimator: (Train)Epoch-[44/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0012264258953930119 (epoch_avg)loss_kpt: 0.0012264258953930119 (epoch_avg)acc_pose: 0.7306305462021444 
+2024-02-08 20:58:14,557 INFO PoseEstimator: (Val)coco/AP: 0.54893, coco/AP .5: 0.83336, coco/AP .75: 0.61408, coco/AP (M): 0.52723, coco/AP (L): 0.59879, coco/AR: 0.61966, coco/AR .5: 0.88224, coco/AR .75: 0.68624, coco/AR (M): 0.57755, coco/AR (L): 0.67897
+2024-02-08 20:58:14,558 INFO PoseEstimator: (Val)Current best mAP: 0.5489347660520935 on epoch 44
+2024-02-08 21:50:34,436 INFO PoseEstimator: (Train)Epoch-[45/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0012245644091906263 (epoch_avg)loss_kpt: 0.0012245644091906263 (epoch_avg)acc_pose: 0.7312342022843 
+2024-02-08 21:55:08,566 INFO PoseEstimator: (Val)coco/AP: 0.54655, coco/AP .5: 0.82937, coco/AP .75: 0.60905, coco/AP (M): 0.52365, coco/AP (L): 0.59895, coco/AR: 0.61770, coco/AR .5: 0.88130, coco/AR .75: 0.68120, coco/AR (M): 0.57370, coco/AR (L): 0.68023
+2024-02-08 21:55:08,566 INFO PoseEstimator: (Val)Current best mAP: 0.5489347660520935 on epoch 44
+2024-02-08 22:47:26,375 INFO PoseEstimator: (Train)Epoch-[46/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0012233877163262046 (epoch_avg)loss_kpt: 0.0012233877163262046 (epoch_avg)acc_pose: 0.7314910733382896 
+2024-02-08 22:52:01,269 INFO PoseEstimator: (Val)coco/AP: 0.54910, coco/AP .5: 0.83303, coco/AP .75: 0.61328, coco/AP (M): 0.52738, coco/AP (L): 0.59809, coco/AR: 0.61899, coco/AR .5: 0.88240, coco/AR .75: 0.68388, coco/AR (M): 0.57719, coco/AR (L): 0.67848
+2024-02-08 22:52:01,269 INFO PoseEstimator: (Val)Current best mAP: 0.5491004338355413 on epoch 46
+2024-02-08 23:44:20,368 INFO PoseEstimator: (Train)Epoch-[47/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.001221153576712134 (epoch_avg)loss_kpt: 0.001221153576712134 (epoch_avg)acc_pose: 0.7321864804260747 
+2024-02-08 23:48:53,541 INFO PoseEstimator: (Val)coco/AP: 0.54800, coco/AP .5: 0.82683, coco/AP .75: 0.61193, coco/AP (M): 0.52385, coco/AP (L): 0.60032, coco/AR: 0.61732, coco/AR .5: 0.87563, coco/AR .75: 0.68120, coco/AR (M): 0.57457, coco/AR (L): 0.67763
+2024-02-08 23:48:53,541 INFO PoseEstimator: (Val)Current best mAP: 0.5491004338355413 on epoch 46
+2024-02-09 00:41:13,489 INFO PoseEstimator: (Train)Epoch-[48/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0012197861892475025 (epoch_avg)loss_kpt: 0.0012197861892475025 (epoch_avg)acc_pose: 0.7325651042601387 
+2024-02-09 00:45:49,033 INFO PoseEstimator: (Val)coco/AP: 0.54831, coco/AP .5: 0.83090, coco/AP .75: 0.61384, coco/AP (M): 0.52545, coco/AP (L): 0.59954, coco/AR: 0.61864, coco/AR .5: 0.88208, coco/AR .75: 0.68608, coco/AR (M): 0.57659, coco/AR (L): 0.67841
+2024-02-09 00:45:49,033 INFO PoseEstimator: (Val)Current best mAP: 0.5491004338355413 on epoch 46
+2024-02-09 01:38:10,340 INFO PoseEstimator: (Train)Epoch-[49/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0012184754223414221 (epoch_avg)loss_kpt: 0.0012184754223414221 (epoch_avg)acc_pose: 0.7327983524908709 
+2024-02-09 01:42:45,755 INFO PoseEstimator: (Val)coco/AP: 0.55097, coco/AP .5: 0.83327, coco/AP .75: 0.61369, coco/AP (M): 0.53091, coco/AP (L): 0.59868, coco/AR: 0.62242, coco/AR .5: 0.88397, coco/AR .75: 0.68624, coco/AR (M): 0.58205, coco/AR (L): 0.67938
+2024-02-09 01:42:45,755 INFO PoseEstimator: (Val)Current best mAP: 0.5509738343735366 on epoch 49
+2024-02-09 02:34:59,504 INFO PoseEstimator: (Train)Epoch-[50/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0012166338797756585 (epoch_avg)loss_kpt: 0.0012166338797756585 (epoch_avg)acc_pose: 0.7334294229242619 
+2024-02-09 02:39:32,521 INFO PoseEstimator: (Val)coco/AP: 0.55197, coco/AP .5: 0.83274, coco/AP .75: 0.61384, coco/AP (M): 0.52681, coco/AP (L): 0.60563, coco/AR: 0.62151, coco/AR .5: 0.88303, coco/AR .75: 0.68482, coco/AR (M): 0.57757, coco/AR (L): 0.68380
+2024-02-09 02:39:32,521 INFO PoseEstimator: (Val)Current best mAP: 0.5519670548010142 on epoch 50
+2024-02-09 03:31:46,329 INFO PoseEstimator: (Train)Epoch-[51/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0012135055338542591 (epoch_avg)loss_kpt: 0.0012135055338542591 (epoch_avg)acc_pose: 0.734373485040175 
+2024-02-09 03:36:20,871 INFO PoseEstimator: (Val)coco/AP: 0.55296, coco/AP .5: 0.83330, coco/AP .75: 0.61618, coco/AP (M): 0.52911, coco/AP (L): 0.60486, coco/AR: 0.62199, coco/AR .5: 0.88256, coco/AR .75: 0.68419, coco/AR (M): 0.57946, coco/AR (L): 0.68205
+2024-02-09 03:36:20,872 INFO PoseEstimator: (Val)Current best mAP: 0.5529582811265235 on epoch 51
+2024-02-09 04:28:34,173 INFO PoseEstimator: (Train)Epoch-[52/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0012130888112245495 (epoch_avg)loss_kpt: 0.0012130888112245495 (epoch_avg)acc_pose: 0.7343092061334302 
+2024-02-09 04:33:09,369 INFO PoseEstimator: (Val)coco/AP: 0.55428, coco/AP .5: 0.83407, coco/AP .75: 0.61727, coco/AP (M): 0.52932, coco/AP (L): 0.60898, coco/AR: 0.62355, coco/AR .5: 0.88382, coco/AR .75: 0.68813, coco/AR (M): 0.58025, coco/AR (L): 0.68525
+2024-02-09 04:33:09,370 INFO PoseEstimator: (Val)Current best mAP: 0.5542839818837962 on epoch 52
+2024-02-09 05:25:20,654 INFO PoseEstimator: (Train)Epoch-[53/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0012109583913105803 (epoch_avg)loss_kpt: 0.0012109583913105803 (epoch_avg)acc_pose: 0.7348978219622873 
+2024-02-09 05:29:54,547 INFO PoseEstimator: (Val)coco/AP: 0.54990, coco/AP .5: 0.83071, coco/AP .75: 0.61392, coco/AP (M): 0.52485, coco/AP (L): 0.60377, coco/AR: 0.62017, coco/AR .5: 0.88098, coco/AR .75: 0.68593, coco/AR (M): 0.57501, coco/AR (L): 0.68380
+2024-02-09 05:29:54,547 INFO PoseEstimator: (Val)Current best mAP: 0.5542839818837962 on epoch 52
+2024-02-09 06:22:11,455 INFO PoseEstimator: (Train)Epoch-[54/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0012102458276127424 (epoch_avg)loss_kpt: 0.0012102458276127424 (epoch_avg)acc_pose: 0.7355546224189894 
+2024-02-09 06:26:43,323 INFO PoseEstimator: (Val)coco/AP: 0.55236, coco/AP .5: 0.83347, coco/AP .75: 0.61908, coco/AP (M): 0.52659, coco/AP (L): 0.60685, coco/AR: 0.62228, coco/AR .5: 0.88193, coco/AR .75: 0.69049, coco/AR (M): 0.57894, coco/AR (L): 0.68357
+2024-02-09 06:26:43,324 INFO PoseEstimator: (Val)Current best mAP: 0.5542839818837962 on epoch 52
+2024-02-09 07:18:56,868 INFO PoseEstimator: (Train)Epoch-[55/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0012085511228636142 (epoch_avg)loss_kpt: 0.0012085511228636142 (epoch_avg)acc_pose: 0.7356285382769033 
+2024-02-09 07:23:30,808 INFO PoseEstimator: (Val)coco/AP: 0.55303, coco/AP .5: 0.83129, coco/AP .75: 0.61551, coco/AP (M): 0.52973, coco/AP (L): 0.60544, coco/AR: 0.62333, coco/AR .5: 0.88350, coco/AR .75: 0.68923, coco/AR (M): 0.58033, coco/AR (L): 0.68406
+2024-02-09 07:23:30,809 INFO PoseEstimator: (Val)Current best mAP: 0.5542839818837962 on epoch 52
+2024-02-09 08:15:45,468 INFO PoseEstimator: (Train)Epoch-[56/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0012079864292386638 (epoch_avg)loss_kpt: 0.0012079864292386638 (epoch_avg)acc_pose: 0.73589489416102 
+2024-02-09 08:20:19,750 INFO PoseEstimator: (Val)coco/AP: 0.55292, coco/AP .5: 0.83368, coco/AP .75: 0.61371, coco/AP (M): 0.52797, coco/AP (L): 0.60693, coco/AR: 0.62443, coco/AR .5: 0.88508, coco/AR .75: 0.68955, coco/AR (M): 0.58118, coco/AR (L): 0.68547
+2024-02-09 08:20:19,750 INFO PoseEstimator: (Val)Current best mAP: 0.5542839818837962 on epoch 52
+2024-02-09 09:12:29,551 INFO PoseEstimator: (Train)Epoch-[57/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0012067729171167986 (epoch_avg)loss_kpt: 0.0012067729171167986 (epoch_avg)acc_pose: 0.7361266384190204 
+2024-02-09 09:17:03,023 INFO PoseEstimator: (Val)coco/AP: 0.55667, coco/AP .5: 0.83423, coco/AP .75: 0.62472, coco/AP (M): 0.53196, coco/AP (L): 0.61013, coco/AR: 0.62565, coco/AR .5: 0.88350, coco/AR .75: 0.69395, coco/AR (M): 0.58123, coco/AR (L): 0.68818
+2024-02-09 09:17:03,023 INFO PoseEstimator: (Val)Current best mAP: 0.5566657795206932 on epoch 57
+2024-02-09 10:09:12,197 INFO PoseEstimator: (Train)Epoch-[58/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0012048561546317213 (epoch_avg)loss_kpt: 0.0012048561546317213 (epoch_avg)acc_pose: 0.7369319886814042 
+2024-02-09 10:13:45,233 INFO PoseEstimator: (Val)coco/AP: 0.55618, coco/AP .5: 0.83414, coco/AP .75: 0.62155, coco/AP (M): 0.53201, coco/AP (L): 0.60890, coco/AR: 0.62569, coco/AR .5: 0.88397, coco/AR .75: 0.69033, coco/AR (M): 0.58266, coco/AR (L): 0.68658
+2024-02-09 10:13:45,233 INFO PoseEstimator: (Val)Current best mAP: 0.5566657795206932 on epoch 57
+2024-02-09 11:05:54,015 INFO PoseEstimator: (Train)Epoch-[59/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0012043223940377877 (epoch_avg)loss_kpt: 0.0012043223940377877 (epoch_avg)acc_pose: 0.7369057837857799 
+2024-02-09 11:10:28,887 INFO PoseEstimator: (Val)coco/AP: 0.55554, coco/AP .5: 0.83449, coco/AP .75: 0.62042, coco/AP (M): 0.53115, coco/AP (L): 0.60755, coco/AR: 0.62450, coco/AR .5: 0.88114, coco/AR .75: 0.69002, coco/AR (M): 0.58113, coco/AR (L): 0.68588
+2024-02-09 11:10:28,888 INFO PoseEstimator: (Val)Current best mAP: 0.5566657795206932 on epoch 57
+2024-02-09 12:02:38,398 INFO PoseEstimator: (Train)Epoch-[60/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.001201613288315596 (epoch_avg)loss_kpt: 0.001201613288315596 (epoch_avg)acc_pose: 0.7377051219285814 
+2024-02-09 12:07:10,357 INFO PoseEstimator: (Val)coco/AP: 0.55706, coco/AP .5: 0.83524, coco/AP .75: 0.61812, coco/AP (M): 0.53490, coco/AP (L): 0.60884, coco/AR: 0.62690, coco/AR .5: 0.88508, coco/AR .75: 0.69081, coco/AR (M): 0.58402, coco/AR (L): 0.68785
+2024-02-09 12:07:10,357 INFO PoseEstimator: (Val)Current best mAP: 0.5570641594240855 on epoch 60
+2024-02-09 12:59:13,261 INFO PoseEstimator: (Train)Epoch-[61/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0012010773969391305 (epoch_avg)loss_kpt: 0.0012010773969391305 (epoch_avg)acc_pose: 0.7378790698569011 
+2024-02-09 13:03:46,820 INFO PoseEstimator: (Val)coco/AP: 0.55727, coco/AP .5: 0.83434, coco/AP .75: 0.62166, coco/AP (M): 0.53197, coco/AP (L): 0.61047, coco/AR: 0.62731, coco/AR .5: 0.88492, coco/AR .75: 0.69159, coco/AR (M): 0.58282, coco/AR (L): 0.68997
+2024-02-09 13:03:46,821 INFO PoseEstimator: (Val)Current best mAP: 0.5572673880560021 on epoch 61
+2024-02-09 13:55:53,706 INFO PoseEstimator: (Train)Epoch-[62/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.001199806747488887 (epoch_avg)loss_kpt: 0.001199806747488887 (epoch_avg)acc_pose: 0.7379124254826093 
+2024-02-09 14:00:27,744 INFO PoseEstimator: (Val)coco/AP: 0.55785, coco/AP .5: 0.83645, coco/AP .75: 0.61744, coco/AP (M): 0.53305, coco/AP (L): 0.61182, coco/AR: 0.62668, coco/AR .5: 0.88649, coco/AR .75: 0.68750, coco/AR (M): 0.58353, coco/AR (L): 0.68766
+2024-02-09 14:00:27,744 INFO PoseEstimator: (Val)Current best mAP: 0.5578501974474936 on epoch 62
+2024-02-09 14:52:37,475 INFO PoseEstimator: (Train)Epoch-[63/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0011977257609425756 (epoch_avg)loss_kpt: 0.0011977257609425756 (epoch_avg)acc_pose: 0.7388518415874015 
+2024-02-09 14:57:11,679 INFO PoseEstimator: (Val)coco/AP: 0.55615, coco/AP .5: 0.83749, coco/AP .75: 0.62152, coco/AP (M): 0.53280, coco/AP (L): 0.60871, coco/AR: 0.62694, coco/AR .5: 0.88885, coco/AR .75: 0.69175, coco/AR (M): 0.58424, coco/AR (L): 0.68744
+2024-02-09 14:57:11,679 INFO PoseEstimator: (Val)Current best mAP: 0.5578501974474936 on epoch 62
+2024-02-09 15:49:13,346 INFO PoseEstimator: (Train)Epoch-[64/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0011980472839115545 (epoch_avg)loss_kpt: 0.0011980472839115545 (epoch_avg)acc_pose: 0.7387468342790037 
+2024-02-09 15:53:48,462 INFO PoseEstimator: (Val)coco/AP: 0.56023, coco/AP .5: 0.83935, coco/AP .75: 0.62518, coco/AP (M): 0.53398, coco/AP (L): 0.61476, coco/AR: 0.62933, coco/AR .5: 0.88854, coco/AR .75: 0.69537, coco/AR (M): 0.58413, coco/AR (L): 0.69301
+2024-02-09 15:53:48,463 INFO PoseEstimator: (Val)Current best mAP: 0.5602269444344231 on epoch 64
+2024-02-09 16:45:52,968 INFO PoseEstimator: (Train)Epoch-[65/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0011950825185474076 (epoch_avg)loss_kpt: 0.0011950825185474076 (epoch_avg)acc_pose: 0.7395913532152307 
+2024-02-09 16:50:24,718 INFO PoseEstimator: (Val)coco/AP: 0.55949, coco/AP .5: 0.83541, coco/AP .75: 0.62473, coco/AP (M): 0.53561, coco/AP (L): 0.61310, coco/AR: 0.62931, coco/AR .5: 0.88681, coco/AR .75: 0.69506, coco/AR (M): 0.58612, coco/AR (L): 0.69067
+2024-02-09 16:50:24,719 INFO PoseEstimator: (Val)Current best mAP: 0.5602269444344231 on epoch 64
+2024-02-09 17:42:28,155 INFO PoseEstimator: (Train)Epoch-[66/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.001194729707869246 (epoch_avg)loss_kpt: 0.001194729707869246 (epoch_avg)acc_pose: 0.7394437649972729 
+2024-02-09 17:47:02,466 INFO PoseEstimator: (Val)coco/AP: 0.55706, coco/AP .5: 0.83532, coco/AP .75: 0.62460, coco/AP (M): 0.53334, coco/AP (L): 0.61046, coco/AR: 0.62788, coco/AR .5: 0.88397, coco/AR .75: 0.69742, coco/AR (M): 0.58372, coco/AR (L): 0.69015
+2024-02-09 17:47:02,466 INFO PoseEstimator: (Val)Current best mAP: 0.5602269444344231 on epoch 64
+2024-02-09 18:39:12,138 INFO PoseEstimator: (Train)Epoch-[67/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.001194154593303908 (epoch_avg)loss_kpt: 0.001194154593303908 (epoch_avg)acc_pose: 0.7396496238997313 
+2024-02-09 18:43:45,850 INFO PoseEstimator: (Val)coco/AP: 0.55733, coco/AP .5: 0.83608, coco/AP .75: 0.62426, coco/AP (M): 0.53303, coco/AP (L): 0.61122, coco/AR: 0.62845, coco/AR .5: 0.88476, coco/AR .75: 0.69663, coco/AR (M): 0.58405, coco/AR (L): 0.69130
+2024-02-09 18:43:45,850 INFO PoseEstimator: (Val)Current best mAP: 0.5602269444344231 on epoch 64
+2024-02-09 19:35:52,562 INFO PoseEstimator: (Train)Epoch-[68/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0011925482735779685 (epoch_avg)loss_kpt: 0.0011925482735779685 (epoch_avg)acc_pose: 0.7401477338944512 
+2024-02-09 19:40:24,625 INFO PoseEstimator: (Val)coco/AP: 0.55904, coco/AP .5: 0.83659, coco/AP .75: 0.62582, coco/AP (M): 0.53407, coco/AP (L): 0.61352, coco/AR: 0.62898, coco/AR .5: 0.88728, coco/AR .75: 0.69537, coco/AR (M): 0.58514, coco/AR (L): 0.69082
+2024-02-09 19:40:24,625 INFO PoseEstimator: (Val)Current best mAP: 0.5602269444344231 on epoch 64
+2024-02-09 20:32:27,573 INFO PoseEstimator: (Train)Epoch-[69/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0011903840130794562 (epoch_avg)loss_kpt: 0.0011903840130794562 (epoch_avg)acc_pose: 0.7407336288737617 
+2024-02-09 20:37:00,928 INFO PoseEstimator: (Val)coco/AP: 0.56135, coco/AP .5: 0.83705, coco/AP .75: 0.62597, coco/AP (M): 0.53762, coco/AP (L): 0.61334, coco/AR: 0.63067, coco/AR .5: 0.88665, coco/AR .75: 0.69553, coco/AR (M): 0.58697, coco/AR (L): 0.69238
+2024-02-09 20:37:00,928 INFO PoseEstimator: (Val)Current best mAP: 0.5613468293809861 on epoch 69
+2024-02-09 21:29:03,105 INFO PoseEstimator: (Train)Epoch-[70/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0011902908658970438 (epoch_avg)loss_kpt: 0.0011902908658970438 (epoch_avg)acc_pose: 0.7410307848773835 
+2024-02-09 21:33:37,377 INFO PoseEstimator: (Val)coco/AP: 0.55980, coco/AP .5: 0.83706, coco/AP .75: 0.62957, coco/AP (M): 0.53630, coco/AP (L): 0.61243, coco/AR: 0.62977, coco/AR .5: 0.88571, coco/AR .75: 0.69978, coco/AR (M): 0.58607, coco/AR (L): 0.69153
+2024-02-09 21:33:37,377 INFO PoseEstimator: (Val)Current best mAP: 0.5613468293809861 on epoch 69
+2024-02-09 22:25:45,621 INFO PoseEstimator: (Train)Epoch-[71/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0011894723712228736 (epoch_avg)loss_kpt: 0.0011894723712228736 (epoch_avg)acc_pose: 0.7410129822063678 
+2024-02-09 22:30:18,420 INFO PoseEstimator: (Val)coco/AP: 0.55638, coco/AP .5: 0.83246, coco/AP .75: 0.62431, coco/AP (M): 0.53274, coco/AP (L): 0.60911, coco/AR: 0.62605, coco/AR .5: 0.88208, coco/AR .75: 0.69207, coco/AR (M): 0.58216, coco/AR (L): 0.68818
+2024-02-09 22:30:18,421 INFO PoseEstimator: (Val)Current best mAP: 0.5613468293809861 on epoch 69
+2024-02-09 23:22:21,043 INFO PoseEstimator: (Train)Epoch-[72/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0011894399749939493 (epoch_avg)loss_kpt: 0.0011894399749939493 (epoch_avg)acc_pose: 0.7411749295626091 
+2024-02-09 23:26:54,454 INFO PoseEstimator: (Val)coco/AP: 0.55501, coco/AP .5: 0.83586, coco/AP .75: 0.61734, coco/AP (M): 0.52850, coco/AP (L): 0.61020, coco/AR: 0.62554, coco/AR .5: 0.88571, coco/AR .75: 0.68750, coco/AR (M): 0.57990, coco/AR (L): 0.68997
+2024-02-09 23:26:54,455 INFO PoseEstimator: (Val)Current best mAP: 0.5613468293809861 on epoch 69
+2024-02-10 00:19:00,955 INFO PoseEstimator: (Train)Epoch-[73/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.001188165886548261 (epoch_avg)loss_kpt: 0.001188165886548261 (epoch_avg)acc_pose: 0.7415574862278396 
+2024-02-10 00:23:34,098 INFO PoseEstimator: (Val)coco/AP: 0.56078, coco/AP .5: 0.83664, coco/AP .75: 0.62721, coco/AP (M): 0.53560, coco/AP (L): 0.61524, coco/AR: 0.62911, coco/AR .5: 0.88744, coco/AR .75: 0.69537, coco/AR (M): 0.58618, coco/AR (L): 0.68967
+2024-02-10 00:23:34,098 INFO PoseEstimator: (Val)Current best mAP: 0.5613468293809861 on epoch 69
+2024-02-10 01:15:33,549 INFO PoseEstimator: (Train)Epoch-[74/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0011874368484027858 (epoch_avg)loss_kpt: 0.0011874368484027858 (epoch_avg)acc_pose: 0.7417173303939694 
+2024-02-10 01:20:07,286 INFO PoseEstimator: (Val)coco/AP: 0.56221, coco/AP .5: 0.83674, coco/AP .75: 0.62746, coco/AP (M): 0.53753, coco/AP (L): 0.61698, coco/AR: 0.63065, coco/AR .5: 0.88712, coco/AR .75: 0.69521, coco/AR (M): 0.58763, coco/AR (L): 0.69160
+2024-02-10 01:20:07,287 INFO PoseEstimator: (Val)Current best mAP: 0.5622135421544036 on epoch 74
+2024-02-10 02:12:10,763 INFO PoseEstimator: (Train)Epoch-[75/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0011866692785644612 (epoch_avg)loss_kpt: 0.0011866692785644612 (epoch_avg)acc_pose: 0.7416962537854461 
+2024-02-10 02:16:42,810 INFO PoseEstimator: (Val)coco/AP: 0.56093, coco/AP .5: 0.83706, coco/AP .75: 0.62667, coco/AP (M): 0.53544, coco/AP (L): 0.61604, coco/AR: 0.63037, coco/AR .5: 0.88618, coco/AR .75: 0.69726, coco/AR (M): 0.58593, coco/AR (L): 0.69324
+2024-02-10 02:16:42,810 INFO PoseEstimator: (Val)Current best mAP: 0.5622135421544036 on epoch 74
+2024-02-10 03:08:46,706 INFO PoseEstimator: (Train)Epoch-[76/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0011849080964341156 (epoch_avg)loss_kpt: 0.0011849080964341156 (epoch_avg)acc_pose: 0.7426827516026295 
+2024-02-10 03:13:20,777 INFO PoseEstimator: (Val)coco/AP: 0.56131, coco/AP .5: 0.83622, coco/AP .75: 0.62631, coco/AP (M): 0.53660, coco/AP (L): 0.61552, coco/AR: 0.63172, coco/AR .5: 0.88759, coco/AR .75: 0.69647, coco/AR (M): 0.58856, coco/AR (L): 0.69257
+2024-02-10 03:13:20,778 INFO PoseEstimator: (Val)Current best mAP: 0.5622135421544036 on epoch 74
+2024-02-10 04:05:21,545 INFO PoseEstimator: (Train)Epoch-[77/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0011850519991567251 (epoch_avg)loss_kpt: 0.0011850519991567251 (epoch_avg)acc_pose: 0.7424542866046332 
+2024-02-10 04:09:54,679 INFO PoseEstimator: (Val)coco/AP: 0.56324, coco/AP .5: 0.83914, coco/AP .75: 0.62753, coco/AP (M): 0.53714, coco/AP (L): 0.61957, coco/AR: 0.63171, coco/AR .5: 0.88838, coco/AR .75: 0.69915, coco/AR (M): 0.58694, coco/AR (L): 0.69495
+2024-02-10 04:09:54,680 INFO PoseEstimator: (Val)Current best mAP: 0.5632437730874242 on epoch 77
+2024-02-10 05:01:56,335 INFO PoseEstimator: (Train)Epoch-[78/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0011833109025053013 (epoch_avg)loss_kpt: 0.0011833109025053013 (epoch_avg)acc_pose: 0.7427127330971174 
+2024-02-10 05:06:29,953 INFO PoseEstimator: (Val)coco/AP: 0.56388, coco/AP .5: 0.84250, coco/AP .75: 0.62948, coco/AP (M): 0.53663, coco/AP (L): 0.62012, coco/AR: 0.63432, coco/AR .5: 0.89106, coco/AR .75: 0.69946, coco/AR (M): 0.58782, coco/AR (L): 0.69978
+2024-02-10 05:06:29,953 INFO PoseEstimator: (Val)Current best mAP: 0.5638845199865984 on epoch 78
+2024-02-10 05:58:35,561 INFO PoseEstimator: (Train)Epoch-[79/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0011837404345835776 (epoch_avg)loss_kpt: 0.0011837404345835776 (epoch_avg)acc_pose: 0.7423998719006467 
+2024-02-10 06:03:07,901 INFO PoseEstimator: (Val)coco/AP: 0.56286, coco/AP .5: 0.83866, coco/AP .75: 0.62691, coco/AP (M): 0.53884, coco/AP (L): 0.61596, coco/AR: 0.63251, coco/AR .5: 0.88854, coco/AR .75: 0.69663, coco/AR (M): 0.58943, coco/AR (L): 0.69365
+2024-02-10 06:03:07,901 INFO PoseEstimator: (Val)Current best mAP: 0.5638845199865984 on epoch 78
+2024-02-10 06:55:09,212 INFO PoseEstimator: (Train)Epoch-[80/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0011810853083314332 (epoch_avg)loss_kpt: 0.0011810853083314332 (epoch_avg)acc_pose: 0.7437254061358257 
+2024-02-10 06:59:42,183 INFO PoseEstimator: (Val)coco/AP: 0.56238, coco/AP .5: 0.83644, coco/AP .75: 0.63285, coco/AP (M): 0.53615, coco/AP (L): 0.61896, coco/AR: 0.63322, coco/AR .5: 0.88712, coco/AR .75: 0.70387, coco/AR (M): 0.58738, coco/AR (L): 0.69825
+2024-02-10 06:59:42,184 INFO PoseEstimator: (Val)Current best mAP: 0.5638845199865984 on epoch 78
+2024-02-10 07:51:43,876 INFO PoseEstimator: (Train)Epoch-[81/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0011816014532265863 (epoch_avg)loss_kpt: 0.0011816014532265863 (epoch_avg)acc_pose: 0.7432006387492557 
+2024-02-10 07:56:16,704 INFO PoseEstimator: (Val)coco/AP: 0.56238, coco/AP .5: 0.83584, coco/AP .75: 0.62692, coco/AP (M): 0.53754, coco/AP (L): 0.61774, coco/AR: 0.63322, coco/AR .5: 0.88492, coco/AR .75: 0.69726, coco/AR (M): 0.58880, coco/AR (L): 0.69606
+2024-02-10 07:56:16,705 INFO PoseEstimator: (Val)Current best mAP: 0.5638845199865984 on epoch 78
+2024-02-10 08:48:23,391 INFO PoseEstimator: (Train)Epoch-[82/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.001181174967247847 (epoch_avg)loss_kpt: 0.001181174967247847 (epoch_avg)acc_pose: 0.7434570205220764 
+2024-02-10 08:52:55,792 INFO PoseEstimator: (Val)coco/AP: 0.56556, coco/AP .5: 0.83790, coco/AP .75: 0.63218, coco/AP (M): 0.53931, coco/AP (L): 0.62120, coco/AR: 0.63548, coco/AR .5: 0.88634, coco/AR .75: 0.70277, coco/AR (M): 0.59060, coco/AR (L): 0.69892
+2024-02-10 08:52:55,792 INFO PoseEstimator: (Val)Current best mAP: 0.5655566682161854 on epoch 82
+2024-02-10 09:44:59,685 INFO PoseEstimator: (Train)Epoch-[83/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0011785882782080178 (epoch_avg)loss_kpt: 0.0011785882782080178 (epoch_avg)acc_pose: 0.7438918176727871 
+2024-02-10 09:49:32,469 INFO PoseEstimator: (Val)coco/AP: 0.56433, coco/AP .5: 0.83912, coco/AP .75: 0.62804, coco/AP (M): 0.53950, coco/AP (L): 0.61819, coco/AR: 0.63345, coco/AR .5: 0.88807, coco/AR .75: 0.69805, coco/AR (M): 0.59049, coco/AR (L): 0.69435
+2024-02-10 09:49:32,470 INFO PoseEstimator: (Val)Current best mAP: 0.5655566682161854 on epoch 82
+2024-02-10 10:41:38,702 INFO PoseEstimator: (Train)Epoch-[84/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0011779454747082743 (epoch_avg)loss_kpt: 0.0011779454747082743 (epoch_avg)acc_pose: 0.7443506146624335 
+2024-02-10 10:46:12,307 INFO PoseEstimator: (Val)coco/AP: 0.56494, coco/AP .5: 0.83818, coco/AP .75: 0.63081, coco/AP (M): 0.53922, coco/AP (L): 0.61936, coco/AR: 0.63322, coco/AR .5: 0.88696, coco/AR .75: 0.69821, coco/AR (M): 0.58880, coco/AR (L): 0.69569
+2024-02-10 10:46:12,307 INFO PoseEstimator: (Val)Current best mAP: 0.5655566682161854 on epoch 82
+2024-02-10 11:38:12,423 INFO PoseEstimator: (Train)Epoch-[85/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0011779920247330555 (epoch_avg)loss_kpt: 0.0011779920247330555 (epoch_avg)acc_pose: 0.744366041841466 
+2024-02-10 11:42:46,488 INFO PoseEstimator: (Val)coco/AP: 0.56460, coco/AP .5: 0.83805, coco/AP .75: 0.62838, coco/AP (M): 0.53880, coco/AP (L): 0.62084, coco/AR: 0.63437, coco/AR .5: 0.88980, coco/AR .75: 0.69994, coco/AR (M): 0.58866, coco/AR (L): 0.69881
+2024-02-10 11:42:46,489 INFO PoseEstimator: (Val)Current best mAP: 0.5655566682161854 on epoch 82
+2024-02-10 12:34:45,946 INFO PoseEstimator: (Train)Epoch-[86/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0011764613388167162 (epoch_avg)loss_kpt: 0.0011764613388167162 (epoch_avg)acc_pose: 0.7445917348187994 
+2024-02-10 12:39:18,523 INFO PoseEstimator: (Val)coco/AP: 0.56342, coco/AP .5: 0.83624, coco/AP .75: 0.62769, coco/AP (M): 0.53798, coco/AP (L): 0.61863, coco/AR: 0.63342, coco/AR .5: 0.88476, coco/AR .75: 0.69899, coco/AR (M): 0.58834, coco/AR (L): 0.69703
+2024-02-10 12:39:18,524 INFO PoseEstimator: (Val)Current best mAP: 0.5655566682161854 on epoch 82
+2024-02-10 13:31:18,533 INFO PoseEstimator: (Train)Epoch-[87/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.001176801022283765 (epoch_avg)loss_kpt: 0.001176801022283765 (epoch_avg)acc_pose: 0.7446561862355705 
+2024-02-10 13:35:51,275 INFO PoseEstimator: (Val)coco/AP: 0.56507, coco/AP .5: 0.83810, coco/AP .75: 0.63210, coco/AP (M): 0.53954, coco/AP (L): 0.62048, coco/AR: 0.63569, coco/AR .5: 0.88933, coco/AR .75: 0.70072, coco/AR (M): 0.59200, coco/AR (L): 0.69736
+2024-02-10 13:35:51,275 INFO PoseEstimator: (Val)Current best mAP: 0.5655566682161854 on epoch 82
+2024-02-10 14:27:53,681 INFO PoseEstimator: (Train)Epoch-[88/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0011748413471356029 (epoch_avg)loss_kpt: 0.0011748413471356029 (epoch_avg)acc_pose: 0.7453304453767053 
+2024-02-10 14:32:26,556 INFO PoseEstimator: (Val)coco/AP: 0.56475, coco/AP .5: 0.83932, coco/AP .75: 0.63025, coco/AP (M): 0.53740, coco/AP (L): 0.62203, coco/AR: 0.63552, coco/AR .5: 0.88948, coco/AR .75: 0.70261, coco/AR (M): 0.58932, coco/AR (L): 0.70033
+2024-02-10 14:32:26,556 INFO PoseEstimator: (Val)Current best mAP: 0.5655566682161854 on epoch 82
+2024-02-10 15:24:33,567 INFO PoseEstimator: (Train)Epoch-[89/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0011744739131994658 (epoch_avg)loss_kpt: 0.0011744739131994658 (epoch_avg)acc_pose: 0.7454105876265884 
+2024-02-10 15:29:06,038 INFO PoseEstimator: (Val)coco/AP: 0.56476, coco/AP .5: 0.83861, coco/AP .75: 0.63588, coco/AP (M): 0.53947, coco/AP (L): 0.62040, coco/AR: 0.63515, coco/AR .5: 0.88996, coco/AR .75: 0.70183, coco/AR (M): 0.59071, coco/AR (L): 0.69807
+2024-02-10 15:29:06,038 INFO PoseEstimator: (Val)Current best mAP: 0.5655566682161854 on epoch 82
+2024-02-10 16:21:05,991 INFO PoseEstimator: (Train)Epoch-[90/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0011737381502545813 (epoch_avg)loss_kpt: 0.0011737381502545813 (epoch_avg)acc_pose: 0.7454837549409701 
+2024-02-10 16:25:42,648 INFO PoseEstimator: (Val)coco/AP: 0.56484, coco/AP .5: 0.84050, coco/AP .75: 0.62809, coco/AP (M): 0.53945, coco/AP (L): 0.62018, coco/AR: 0.63515, coco/AR .5: 0.88948, coco/AR .75: 0.69836, coco/AR (M): 0.59006, coco/AR (L): 0.69889
+2024-02-10 16:25:42,649 INFO PoseEstimator: (Val)Current best mAP: 0.5655566682161854 on epoch 82
+2024-02-10 17:17:46,565 INFO PoseEstimator: (Train)Epoch-[91/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.001174064124068357 (epoch_avg)loss_kpt: 0.001174064124068357 (epoch_avg)acc_pose: 0.7456424015053587 
+2024-02-10 17:22:20,523 INFO PoseEstimator: (Val)coco/AP: 0.56749, coco/AP .5: 0.84288, coco/AP .75: 0.63666, coco/AP (M): 0.54246, coco/AP (L): 0.62192, coco/AR: 0.63770, coco/AR .5: 0.89169, coco/AR .75: 0.70576, coco/AR (M): 0.59394, coco/AR (L): 0.69948
+2024-02-10 17:22:20,524 INFO PoseEstimator: (Val)Current best mAP: 0.5674866039129556 on epoch 91
+2024-02-10 18:14:26,875 INFO PoseEstimator: (Train)Epoch-[92/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0011726890519472275 (epoch_avg)loss_kpt: 0.0011726890519472275 (epoch_avg)acc_pose: 0.745711110472808 
+2024-02-10 18:19:00,223 INFO PoseEstimator: (Val)coco/AP: 0.56506, coco/AP .5: 0.84155, coco/AP .75: 0.63122, coco/AP (M): 0.53893, coco/AP (L): 0.62075, coco/AR: 0.63509, coco/AR .5: 0.89169, coco/AR .75: 0.70009, coco/AR (M): 0.59025, coco/AR (L): 0.69863
+2024-02-10 18:19:00,223 INFO PoseEstimator: (Val)Current best mAP: 0.5674866039129556 on epoch 91
+2024-02-10 19:11:07,164 INFO PoseEstimator: (Train)Epoch-[93/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0011711807785014623 (epoch_avg)loss_kpt: 0.0011711807785014623 (epoch_avg)acc_pose: 0.7460539209045545 
+2024-02-10 19:15:39,304 INFO PoseEstimator: (Val)coco/AP: 0.56683, coco/AP .5: 0.84052, coco/AP .75: 0.63114, coco/AP (M): 0.54206, coco/AP (L): 0.62075, coco/AR: 0.63547, coco/AR .5: 0.89011, coco/AR .75: 0.69994, coco/AR (M): 0.59287, coco/AR (L): 0.69584
+2024-02-10 19:15:39,304 INFO PoseEstimator: (Val)Current best mAP: 0.5674866039129556 on epoch 91
+2024-02-10 20:07:41,734 INFO PoseEstimator: (Train)Epoch-[94/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0011714218674293907 (epoch_avg)loss_kpt: 0.0011714218674293907 (epoch_avg)acc_pose: 0.7459707942487322 
+2024-02-10 20:12:14,794 INFO PoseEstimator: (Val)coco/AP: 0.56919, coco/AP .5: 0.83981, coco/AP .75: 0.63747, coco/AP (M): 0.54236, coco/AP (L): 0.62613, coco/AR: 0.63846, coco/AR .5: 0.88996, coco/AR .75: 0.70623, coco/AR (M): 0.59252, coco/AR (L): 0.70331
+2024-02-10 20:12:14,794 INFO PoseEstimator: (Val)Current best mAP: 0.5691884405906583 on epoch 94
+2024-02-10 21:04:24,448 INFO PoseEstimator: (Train)Epoch-[95/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0011704522433761584 (epoch_avg)loss_kpt: 0.0011704522433761584 (epoch_avg)acc_pose: 0.7465331891752134 
+2024-02-10 21:08:57,446 INFO PoseEstimator: (Val)coco/AP: 0.56372, coco/AP .5: 0.83650, coco/AP .75: 0.63101, coco/AP (M): 0.53719, coco/AP (L): 0.61986, coco/AR: 0.63408, coco/AR .5: 0.88539, coco/AR .75: 0.70041, coco/AR (M): 0.58894, coco/AR (L): 0.69818
+2024-02-10 21:08:57,446 INFO PoseEstimator: (Val)Current best mAP: 0.5691884405906583 on epoch 94
+2024-02-10 22:00:55,990 INFO PoseEstimator: (Train)Epoch-[96/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.001169607039936401 (epoch_avg)loss_kpt: 0.001169607039936401 (epoch_avg)acc_pose: 0.7465906589477858 
+2024-02-10 22:05:29,240 INFO PoseEstimator: (Val)coco/AP: 0.56884, coco/AP .5: 0.84141, coco/AP .75: 0.63739, coco/AP (M): 0.54250, coco/AP (L): 0.62502, coco/AR: 0.63796, coco/AR .5: 0.89011, coco/AR .75: 0.70529, coco/AR (M): 0.59282, coco/AR (L): 0.70178
+2024-02-10 22:05:29,240 INFO PoseEstimator: (Val)Current best mAP: 0.5691884405906583 on epoch 94
+2024-02-10 22:57:34,057 INFO PoseEstimator: (Train)Epoch-[97/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0011695115617258172 (epoch_avg)loss_kpt: 0.0011695115617258172 (epoch_avg)acc_pose: 0.7466196400094978 
+2024-02-10 23:02:07,668 INFO PoseEstimator: (Val)coco/AP: 0.56660, coco/AP .5: 0.83891, coco/AP .75: 0.63715, coco/AP (M): 0.54129, coco/AP (L): 0.62090, coco/AR: 0.63465, coco/AR .5: 0.88634, coco/AR .75: 0.70387, coco/AR (M): 0.59115, coco/AR (L): 0.69610
+2024-02-10 23:02:07,668 INFO PoseEstimator: (Val)Current best mAP: 0.5691884405906583 on epoch 94
+2024-02-10 23:54:09,199 INFO PoseEstimator: (Train)Epoch-[98/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0011683280516295615 (epoch_avg)loss_kpt: 0.0011683280516295615 (epoch_avg)acc_pose: 0.747102422296454 
+2024-02-10 23:58:40,487 INFO PoseEstimator: (Val)coco/AP: 0.56678, coco/AP .5: 0.84194, coco/AP .75: 0.63539, coco/AP (M): 0.54125, coco/AP (L): 0.62094, coco/AR: 0.63681, coco/AR .5: 0.89059, coco/AR .75: 0.70545, coco/AR (M): 0.59260, coco/AR (L): 0.69922
+2024-02-10 23:58:40,487 INFO PoseEstimator: (Val)Current best mAP: 0.5691884405906583 on epoch 94
+2024-02-11 00:50:51,816 INFO PoseEstimator: (Train)Epoch-[99/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0011683239354734587 (epoch_avg)loss_kpt: 0.0011683239354734587 (epoch_avg)acc_pose: 0.7467305860980018 
+2024-02-11 00:55:24,326 INFO PoseEstimator: (Val)coco/AP: 0.56900, coco/AP .5: 0.84278, coco/AP .75: 0.63807, coco/AP (M): 0.54089, coco/AP (L): 0.62674, coco/AR: 0.63725, coco/AR .5: 0.89122, coco/AR .75: 0.70450, coco/AR (M): 0.59164, coco/AR (L): 0.70186
+2024-02-11 00:55:24,326 INFO PoseEstimator: (Val)Current best mAP: 0.5691884405906583 on epoch 94
+2024-02-11 01:47:30,945 INFO PoseEstimator: (Train)Epoch-[100/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0011663454109359143 (epoch_avg)loss_kpt: 0.0011663454109359143 (epoch_avg)acc_pose: 0.7475615159260857 
+2024-02-11 01:52:04,131 INFO PoseEstimator: (Val)coco/AP: 0.56866, coco/AP .5: 0.84026, coco/AP .75: 0.63463, coco/AP (M): 0.54360, coco/AP (L): 0.62327, coco/AR: 0.63706, coco/AR .5: 0.88870, coco/AR .75: 0.70120, coco/AR (M): 0.59388, coco/AR (L): 0.69825
+2024-02-11 01:52:04,131 INFO PoseEstimator: (Val)Current best mAP: 0.5691884405906583 on epoch 94
+2024-02-11 02:44:12,086 INFO PoseEstimator: (Train)Epoch-[101/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0011666024309505774 (epoch_avg)loss_kpt: 0.0011666024309505774 (epoch_avg)acc_pose: 0.7474863382925981 
+2024-02-11 02:48:45,767 INFO PoseEstimator: (Val)coco/AP: 0.56576, coco/AP .5: 0.83748, coco/AP .75: 0.63657, coco/AP (M): 0.54177, coco/AP (L): 0.61932, coco/AR: 0.63553, coco/AR .5: 0.88870, coco/AR .75: 0.70340, coco/AR (M): 0.59364, coco/AR (L): 0.69495
+2024-02-11 02:48:45,767 INFO PoseEstimator: (Val)Current best mAP: 0.5691884405906583 on epoch 94
+2024-02-11 03:40:44,052 INFO PoseEstimator: (Train)Epoch-[102/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0011665878392548477 (epoch_avg)loss_kpt: 0.0011665878392548477 (epoch_avg)acc_pose: 0.7473872934543843 
+2024-02-11 03:45:17,569 INFO PoseEstimator: (Val)coco/AP: 0.56689, coco/AP .5: 0.83706, coco/AP .75: 0.63390, coco/AP (M): 0.54030, coco/AP (L): 0.62381, coco/AR: 0.63638, coco/AR .5: 0.88807, coco/AR .75: 0.70324, coco/AR (M): 0.59145, coco/AR (L): 0.69970
+2024-02-11 03:45:17,570 INFO PoseEstimator: (Val)Current best mAP: 0.5691884405906583 on epoch 94
+2024-02-11 04:37:17,139 INFO PoseEstimator: (Train)Epoch-[103/209] - mem: 9.47GB|(epoch_end)lr: 5.0000e-04|(epoch_avg)loss: 0.0011645078729441193 (epoch_avg)loss_kpt: 0.0011645078729441193 (epoch_avg)acc_pose: 0.7477969037810642 
+2024-02-11 04:41:49,050 INFO PoseEstimator: (Val)coco/AP: 0.56914, coco/AP .5: 0.84347, coco/AP .75: 0.63685, coco/AP (M): 0.54133, coco/AP (L): 0.62628, coco/AR: 0.63777, coco/AR .5: 0.89200, coco/AR .75: 0.70340, coco/AR (M): 0.59183, coco/AR (L): 0.70242
+2024-02-11 04:41:49,051 INFO PoseEstimator: (Val)Current best mAP: 0.5691884405906583 on epoch 94
+2024-02-11 05:33:43,940 INFO PoseEstimator: (Train)Epoch-[104/209] - mem: 9.47GB|(epoch_end)lr: 4.9993e-04|(epoch_avg)loss: 0.0011642641537640197 (epoch_avg)loss_kpt: 0.0011642641537640197 (epoch_avg)acc_pose: 0.7483710267829476 
+2024-02-11 05:38:16,471 INFO PoseEstimator: (Val)coco/AP: 0.57053, coco/AP .5: 0.84226, coco/AP .75: 0.63505, coco/AP (M): 0.54463, coco/AP (L): 0.62566, coco/AR: 0.63975, coco/AR .5: 0.89011, coco/AR .75: 0.70372, coco/AR (M): 0.59459, coco/AR (L): 0.70320
+2024-02-11 05:38:16,471 INFO PoseEstimator: (Val)Current best mAP: 0.5705261422302426 on epoch 104
+2024-02-11 06:30:18,447 INFO PoseEstimator: (Train)Epoch-[105/209] - mem: 9.47GB|(epoch_end)lr: 4.9973e-04|(epoch_avg)loss: 0.0011634283171180059 (epoch_avg)loss_kpt: 0.0011634283171180059 (epoch_avg)acc_pose: 0.7483825922132469 
+2024-02-11 06:34:50,769 INFO PoseEstimator: (Val)coco/AP: 0.57097, coco/AP .5: 0.84052, coco/AP .75: 0.63789, coco/AP (M): 0.54612, coco/AP (L): 0.62493, coco/AR: 0.63942, coco/AR .5: 0.88948, coco/AR .75: 0.70435, coco/AR (M): 0.59648, coco/AR (L): 0.70007
+2024-02-11 06:34:50,769 INFO PoseEstimator: (Val)Current best mAP: 0.570972832852986 on epoch 105
+2024-02-11 07:26:52,038 INFO PoseEstimator: (Train)Epoch-[106/209] - mem: 9.47GB|(epoch_end)lr: 4.9940e-04|(epoch_avg)loss: 0.0011626561120735303 (epoch_avg)loss_kpt: 0.0011626561120735303 (epoch_avg)acc_pose: 0.7485566806007545 
+2024-02-11 07:31:26,007 INFO PoseEstimator: (Val)coco/AP: 0.56907, coco/AP .5: 0.84269, coco/AP .75: 0.63604, coco/AP (M): 0.54329, coco/AP (L): 0.62432, coco/AR: 0.63884, coco/AR .5: 0.89200, coco/AR .75: 0.70482, coco/AR (M): 0.59394, coco/AR (L): 0.70223
+2024-02-11 07:31:26,008 INFO PoseEstimator: (Val)Current best mAP: 0.570972832852986 on epoch 105
+2024-02-11 08:23:22,657 INFO PoseEstimator: (Train)Epoch-[107/209] - mem: 9.47GB|(epoch_end)lr: 4.9893e-04|(epoch_avg)loss: 0.0011625934855466428 (epoch_avg)loss_kpt: 0.0011625934855466428 (epoch_avg)acc_pose: 0.7484400954284006 
+2024-02-11 08:27:56,082 INFO PoseEstimator: (Val)coco/AP: 0.56883, coco/AP .5: 0.84240, coco/AP .75: 0.63789, coco/AP (M): 0.54295, coco/AP (L): 0.62515, coco/AR: 0.63961, coco/AR .5: 0.89373, coco/AR .75: 0.70828, coco/AR (M): 0.59538, coco/AR (L): 0.70227
+2024-02-11 08:27:56,082 INFO PoseEstimator: (Val)Current best mAP: 0.570972832852986 on epoch 105
+2024-02-11 09:20:00,407 INFO PoseEstimator: (Train)Epoch-[108/209] - mem: 9.47GB|(epoch_end)lr: 4.9832e-04|(epoch_avg)loss: 0.0011625470858917378 (epoch_avg)loss_kpt: 0.0011625470858917378 (epoch_avg)acc_pose: 0.7485161285072662 
+2024-02-11 09:24:34,573 INFO PoseEstimator: (Val)coco/AP: 0.56969, coco/AP .5: 0.84309, coco/AP .75: 0.63769, coco/AP (M): 0.54485, coco/AP (L): 0.62540, coco/AR: 0.63999, coco/AR .5: 0.89389, coco/AR .75: 0.70828, coco/AR (M): 0.59675, coco/AR (L): 0.70111
+2024-02-11 09:24:34,573 INFO PoseEstimator: (Val)Current best mAP: 0.570972832852986 on epoch 105
+2024-02-11 10:16:36,779 INFO PoseEstimator: (Train)Epoch-[109/209] - mem: 9.47GB|(epoch_end)lr: 4.9759e-04|(epoch_avg)loss: 0.0011616811967760925 (epoch_avg)loss_kpt: 0.0011616811967760925 (epoch_avg)acc_pose: 0.7486106715797695 
+2024-02-11 10:21:09,853 INFO PoseEstimator: (Val)coco/AP: 0.56909, coco/AP .5: 0.84329, coco/AP .75: 0.63840, coco/AP (M): 0.54216, coco/AP (L): 0.62593, coco/AR: 0.63978, coco/AR .5: 0.89263, coco/AR .75: 0.70797, coco/AR (M): 0.59424, coco/AR (L): 0.70383
+2024-02-11 10:21:09,853 INFO PoseEstimator: (Val)Current best mAP: 0.570972832852986 on epoch 105
+2024-02-11 11:13:07,433 INFO PoseEstimator: (Train)Epoch-[110/209] - mem: 9.47GB|(epoch_end)lr: 4.9672e-04|(epoch_avg)loss: 0.0011590807994471082 (epoch_avg)loss_kpt: 0.0011590807994471082 (epoch_avg)acc_pose: 0.7493699143703029 
+2024-02-11 11:17:39,069 INFO PoseEstimator: (Val)coco/AP: 0.57317, coco/AP .5: 0.84313, coco/AP .75: 0.64496, coco/AP (M): 0.54675, coco/AP (L): 0.62773, coco/AR: 0.64158, coco/AR .5: 0.89185, coco/AR .75: 0.71143, coco/AR (M): 0.59719, coco/AR (L): 0.70424
+2024-02-11 11:17:39,070 INFO PoseEstimator: (Val)Current best mAP: 0.5731663027045032 on epoch 110
+2024-02-11 12:09:45,272 INFO PoseEstimator: (Train)Epoch-[111/209] - mem: 9.47GB|(epoch_end)lr: 4.9572e-04|(epoch_avg)loss: 0.0011598120475256122 (epoch_avg)loss_kpt: 0.0011598120475256122 (epoch_avg)acc_pose: 0.7491567462179068 
+2024-02-11 12:14:18,517 INFO PoseEstimator: (Val)coco/AP: 0.56995, coco/AP .5: 0.84115, coco/AP .75: 0.63687, coco/AP (M): 0.54288, coco/AP (L): 0.62640, coco/AR: 0.63862, coco/AR .5: 0.89137, coco/AR .75: 0.70403, coco/AR (M): 0.59350, coco/AR (L): 0.70234
+2024-02-11 12:14:18,517 INFO PoseEstimator: (Val)Current best mAP: 0.5731663027045032 on epoch 110
+2024-02-11 13:06:15,432 INFO PoseEstimator: (Train)Epoch-[112/209] - mem: 9.47GB|(epoch_end)lr: 4.9459e-04|(epoch_avg)loss: 0.0011593937065443557 (epoch_avg)loss_kpt: 0.0011593937065443557 (epoch_avg)acc_pose: 0.7495907247366423 
+2024-02-11 13:10:49,263 INFO PoseEstimator: (Val)coco/AP: 0.56973, coco/AP .5: 0.84014, coco/AP .75: 0.63920, coco/AP (M): 0.54270, coco/AP (L): 0.62771, coco/AR: 0.63849, coco/AR .5: 0.88933, coco/AR .75: 0.70734, coco/AR (M): 0.59208, coco/AR (L): 0.70383
+2024-02-11 13:10:49,263 INFO PoseEstimator: (Val)Current best mAP: 0.5731663027045032 on epoch 110
+2024-02-11 14:02:59,612 INFO PoseEstimator: (Train)Epoch-[113/209] - mem: 9.47GB|(epoch_end)lr: 4.9334e-04|(epoch_avg)loss: 0.0011569046690898543 (epoch_avg)loss_kpt: 0.0011569046690898543 (epoch_avg)acc_pose: 0.7503175424667317 
+2024-02-11 14:07:33,361 INFO PoseEstimator: (Val)coco/AP: 0.57081, coco/AP .5: 0.84128, coco/AP .75: 0.63670, coco/AP (M): 0.54400, coco/AP (L): 0.62605, coco/AR: 0.63904, coco/AR .5: 0.88933, coco/AR .75: 0.70592, coco/AR (M): 0.59429, coco/AR (L): 0.70242
+2024-02-11 14:07:33,361 INFO PoseEstimator: (Val)Current best mAP: 0.5731663027045032 on epoch 110
+2024-02-11 14:59:36,683 INFO PoseEstimator: (Train)Epoch-[114/209] - mem: 9.47GB|(epoch_end)lr: 4.9195e-04|(epoch_avg)loss: 0.001157997920377963 (epoch_avg)loss_kpt: 0.001157997920377963 (epoch_avg)acc_pose: 0.7498955338942839 
+2024-02-11 15:04:09,128 INFO PoseEstimator: (Val)coco/AP: 0.57185, coco/AP .5: 0.84324, coco/AP .75: 0.63881, coco/AP (M): 0.54479, coco/AP (L): 0.62947, coco/AR: 0.64066, coco/AR .5: 0.89090, coco/AR .75: 0.70812, coco/AR (M): 0.59536, coco/AR (L): 0.70465
+2024-02-11 15:04:09,128 INFO PoseEstimator: (Val)Current best mAP: 0.5731663027045032 on epoch 110
+2024-02-11 15:56:09,426 INFO PoseEstimator: (Train)Epoch-[115/209] - mem: 9.47GB|(epoch_end)lr: 4.9044e-04|(epoch_avg)loss: 0.0011566948527298266 (epoch_avg)loss_kpt: 0.0011566948527298266 (epoch_avg)acc_pose: 0.7502710749500392 
+2024-02-11 16:00:42,812 INFO PoseEstimator: (Val)coco/AP: 0.57127, coco/AP .5: 0.84184, coco/AP .75: 0.64244, coco/AP (M): 0.54430, coco/AP (L): 0.62825, coco/AR: 0.63956, coco/AR .5: 0.89027, coco/AR .75: 0.71001, coco/AR (M): 0.59459, coco/AR (L): 0.70312
+2024-02-11 16:00:42,813 INFO PoseEstimator: (Val)Current best mAP: 0.5731663027045032 on epoch 110
+2024-02-11 16:52:41,046 INFO PoseEstimator: (Train)Epoch-[116/209] - mem: 9.47GB|(epoch_end)lr: 4.8880e-04|(epoch_avg)loss: 0.0011568781120027119 (epoch_avg)loss_kpt: 0.0011568781120027119 (epoch_avg)acc_pose: 0.7502036943175172 
+2024-02-11 16:57:14,719 INFO PoseEstimator: (Val)coco/AP: 0.57175, coco/AP .5: 0.84056, coco/AP .75: 0.64471, coco/AP (M): 0.54533, coco/AP (L): 0.62787, coco/AR: 0.64194, coco/AR .5: 0.89011, coco/AR .75: 0.71395, coco/AR (M): 0.59612, coco/AR (L): 0.70669
+2024-02-11 16:57:14,719 INFO PoseEstimator: (Val)Current best mAP: 0.5731663027045032 on epoch 110
+2024-02-11 17:49:14,285 INFO PoseEstimator: (Train)Epoch-[117/209] - mem: 9.47GB|(epoch_end)lr: 4.8703e-04|(epoch_avg)loss: 0.0011553286164653293 (epoch_avg)loss_kpt: 0.0011553286164653293 (epoch_avg)acc_pose: 0.7506796342303654 
+2024-02-11 17:53:45,868 INFO PoseEstimator: (Val)coco/AP: 0.57221, coco/AP .5: 0.84295, coco/AP .75: 0.63629, coco/AP (M): 0.54470, coco/AP (L): 0.62974, coco/AR: 0.64158, coco/AR .5: 0.89137, coco/AR .75: 0.70466, coco/AR (M): 0.59590, coco/AR (L): 0.70621
+2024-02-11 17:53:45,868 INFO PoseEstimator: (Val)Current best mAP: 0.5731663027045032 on epoch 110
+2024-02-11 18:45:36,521 INFO PoseEstimator: (Train)Epoch-[118/209] - mem: 9.47GB|(epoch_end)lr: 4.8515e-04|(epoch_avg)loss: 0.0011545069923898212 (epoch_avg)loss_kpt: 0.0011545069923898212 (epoch_avg)acc_pose: 0.7508138542285554 
+2024-02-11 18:50:10,214 INFO PoseEstimator: (Val)coco/AP: 0.57420, coco/AP .5: 0.84302, coco/AP .75: 0.64046, coco/AP (M): 0.54803, coco/AP (L): 0.63055, coco/AR: 0.64233, coco/AR .5: 0.89216, coco/AR .75: 0.70828, coco/AR (M): 0.59675, coco/AR (L): 0.70717
+2024-02-11 18:50:10,214 INFO PoseEstimator: (Val)Current best mAP: 0.574200594800142 on epoch 118
+2024-02-11 19:42:04,083 INFO PoseEstimator: (Train)Epoch-[119/209] - mem: 9.47GB|(epoch_end)lr: 4.8314e-04|(epoch_avg)loss: 0.0011544261873147822 (epoch_avg)loss_kpt: 0.0011544261873147822 (epoch_avg)acc_pose: 0.7508559276941289 
+2024-02-11 19:46:37,029 INFO PoseEstimator: (Val)coco/AP: 0.57358, coco/AP .5: 0.84480, coco/AP .75: 0.64409, coco/AP (M): 0.54803, coco/AP (L): 0.62997, coco/AR: 0.64369, coco/AR .5: 0.89484, coco/AR .75: 0.71111, coco/AR (M): 0.60008, coco/AR (L): 0.70528
+2024-02-11 19:46:37,029 INFO PoseEstimator: (Val)Current best mAP: 0.574200594800142 on epoch 118
+2024-02-11 20:38:35,837 INFO PoseEstimator: (Train)Epoch-[120/209] - mem: 9.47GB|(epoch_end)lr: 4.8101e-04|(epoch_avg)loss: 0.0011541110308203259 (epoch_avg)loss_kpt: 0.0011541110308203259 (epoch_avg)acc_pose: 0.7506819366809039 
+2024-02-11 20:43:08,649 INFO PoseEstimator: (Val)coco/AP: 0.57174, coco/AP .5: 0.84201, coco/AP .75: 0.63867, coco/AP (M): 0.54546, coco/AP (L): 0.62994, coco/AR: 0.64251, coco/AR .5: 0.89326, coco/AR .75: 0.70986, coco/AR (M): 0.59639, coco/AR (L): 0.70773
+2024-02-11 20:43:08,649 INFO PoseEstimator: (Val)Current best mAP: 0.574200594800142 on epoch 118
+2024-02-11 21:35:10,440 INFO PoseEstimator: (Train)Epoch-[121/209] - mem: 9.47GB|(epoch_end)lr: 4.7877e-04|(epoch_avg)loss: 0.001151885734120302 (epoch_avg)loss_kpt: 0.001151885734120302 (epoch_avg)acc_pose: 0.7514782493703003 
+2024-02-11 21:39:41,332 INFO PoseEstimator: (Val)coco/AP: 0.57490, coco/AP .5: 0.84490, coco/AP .75: 0.64417, coco/AP (M): 0.54800, coco/AP (L): 0.63118, coco/AR: 0.64214, coco/AR .5: 0.89137, coco/AR .75: 0.71111, coco/AR (M): 0.59664, coco/AR (L): 0.70650
+2024-02-11 21:39:41,332 INFO PoseEstimator: (Val)Current best mAP: 0.5749010912561722 on epoch 121
+2024-02-11 22:31:47,426 INFO PoseEstimator: (Train)Epoch-[122/209] - mem: 9.47GB|(epoch_end)lr: 4.7641e-04|(epoch_avg)loss: 0.0011524284200782194 (epoch_avg)loss_kpt: 0.0011524284200782194 (epoch_avg)acc_pose: 0.7513686858666087 
+2024-02-11 22:36:19,956 INFO PoseEstimator: (Val)coco/AP: 0.57619, coco/AP .5: 0.84789, coco/AP .75: 0.64299, coco/AP (M): 0.54874, coco/AP (L): 0.63387, coco/AR: 0.64351, coco/AR .5: 0.89547, coco/AR .75: 0.70970, coco/AR (M): 0.59801, coco/AR (L): 0.70773
+2024-02-11 22:36:19,956 INFO PoseEstimator: (Val)Current best mAP: 0.5761887922265856 on epoch 122
+2024-02-11 23:28:25,644 INFO PoseEstimator: (Train)Epoch-[123/209] - mem: 9.47GB|(epoch_end)lr: 4.7394e-04|(epoch_avg)loss: 0.0011503607072272572 (epoch_avg)loss_kpt: 0.0011503607072272572 (epoch_avg)acc_pose: 0.751779397579374 
+2024-02-11 23:32:58,181 INFO PoseEstimator: (Val)coco/AP: 0.57625, coco/AP .5: 0.84718, coco/AP .75: 0.64579, coco/AP (M): 0.54939, coco/AP (L): 0.63335, coco/AR: 0.64469, coco/AR .5: 0.89515, coco/AR .75: 0.71395, coco/AR (M): 0.59934, coco/AR (L): 0.70884
+2024-02-11 23:32:58,181 INFO PoseEstimator: (Val)Current best mAP: 0.5762512019043543 on epoch 123
+2024-02-12 00:24:50,424 INFO PoseEstimator: (Train)Epoch-[124/209] - mem: 9.47GB|(epoch_end)lr: 4.7135e-04|(epoch_avg)loss: 0.0011494996231472018 (epoch_avg)loss_kpt: 0.0011494996231472018 (epoch_avg)acc_pose: 0.7522705497730579 
+2024-02-12 00:29:22,996 INFO PoseEstimator: (Val)coco/AP: 0.57557, coco/AP .5: 0.84623, coco/AP .75: 0.64041, coco/AP (M): 0.54922, coco/AP (L): 0.63158, coco/AR: 0.64528, coco/AR .5: 0.89625, coco/AR .75: 0.71017, coco/AR (M): 0.60030, coco/AR (L): 0.70873
+2024-02-12 00:29:22,996 INFO PoseEstimator: (Val)Current best mAP: 0.5762512019043543 on epoch 123
+2024-02-12 01:21:16,263 INFO PoseEstimator: (Train)Epoch-[125/209] - mem: 9.47GB|(epoch_end)lr: 4.6866e-04|(epoch_avg)loss: 0.0011503352282749221 (epoch_avg)loss_kpt: 0.0011503352282749221 (epoch_avg)acc_pose: 0.7521236317794768 
+2024-02-12 01:25:50,441 INFO PoseEstimator: (Val)coco/AP: 0.57416, coco/AP .5: 0.84279, coco/AP .75: 0.64255, coco/AP (M): 0.54781, coco/AP (L): 0.62948, coco/AR: 0.64277, coco/AR .5: 0.89090, coco/AR .75: 0.70907, coco/AR (M): 0.59803, coco/AR (L): 0.70587
+2024-02-12 01:25:50,441 INFO PoseEstimator: (Val)Current best mAP: 0.5762512019043543 on epoch 123
+2024-02-12 02:17:51,704 INFO PoseEstimator: (Train)Epoch-[126/209] - mem: 9.47GB|(epoch_end)lr: 4.6586e-04|(epoch_avg)loss: 0.0011483940684699236 (epoch_avg)loss_kpt: 0.0011483940684699236 (epoch_avg)acc_pose: 0.7523285620864639 
+2024-02-12 02:22:24,496 INFO PoseEstimator: (Val)coco/AP: 0.57442, coco/AP .5: 0.84314, coco/AP .75: 0.64279, coco/AP (M): 0.54725, coco/AP (L): 0.63220, coco/AR: 0.64328, coco/AR .5: 0.89200, coco/AR .75: 0.71017, coco/AR (M): 0.59787, coco/AR (L): 0.70758
+2024-02-12 02:22:24,496 INFO PoseEstimator: (Val)Current best mAP: 0.5762512019043543 on epoch 123
+2024-02-12 03:14:24,909 INFO PoseEstimator: (Train)Epoch-[127/209] - mem: 9.47GB|(epoch_end)lr: 4.6296e-04|(epoch_avg)loss: 0.0011492851079824386 (epoch_avg)loss_kpt: 0.0011492851079824386 (epoch_avg)acc_pose: 0.7523351483590928 
+2024-02-12 03:18:57,748 INFO PoseEstimator: (Val)coco/AP: 0.57310, coco/AP .5: 0.84522, coco/AP .75: 0.63971, coco/AP (M): 0.54624, coco/AP (L): 0.62990, coco/AR: 0.64123, coco/AR .5: 0.89389, coco/AR .75: 0.70545, coco/AR (M): 0.59609, coco/AR (L): 0.70476
+2024-02-12 03:18:57,748 INFO PoseEstimator: (Val)Current best mAP: 0.5762512019043543 on epoch 123
+2024-02-12 04:10:55,343 INFO PoseEstimator: (Train)Epoch-[128/209] - mem: 9.47GB|(epoch_end)lr: 4.5996e-04|(epoch_avg)loss: 0.0011475428720849276 (epoch_avg)loss_kpt: 0.0011475428720849276 (epoch_avg)acc_pose: 0.7528609228198998 
+2024-02-12 04:15:28,035 INFO PoseEstimator: (Val)coco/AP: 0.57208, coco/AP .5: 0.84457, coco/AP .75: 0.63796, coco/AP (M): 0.54436, coco/AP (L): 0.63072, coco/AR: 0.64207, coco/AR .5: 0.89122, coco/AR .75: 0.70875, coco/AR (M): 0.59557, coco/AR (L): 0.70769
+2024-02-12 04:15:28,036 INFO PoseEstimator: (Val)Current best mAP: 0.5762512019043543 on epoch 123
+2024-02-12 05:07:29,984 INFO PoseEstimator: (Train)Epoch-[129/209] - mem: 9.47GB|(epoch_end)lr: 4.5686e-04|(epoch_avg)loss: 0.001146440068666182 (epoch_avg)loss_kpt: 0.001146440068666182 (epoch_avg)acc_pose: 0.752922867696317 
+2024-02-12 05:12:02,822 INFO PoseEstimator: (Val)coco/AP: 0.57447, coco/AP .5: 0.84594, coco/AP .75: 0.64443, coco/AP (M): 0.54719, coco/AP (L): 0.63189, coco/AR: 0.64422, coco/AR .5: 0.89389, coco/AR .75: 0.71379, coco/AR (M): 0.59844, coco/AR (L): 0.70858
+2024-02-12 05:12:02,822 INFO PoseEstimator: (Val)Current best mAP: 0.5762512019043543 on epoch 123
+2024-02-12 06:04:09,948 INFO PoseEstimator: (Train)Epoch-[130/209] - mem: 9.47GB|(epoch_end)lr: 4.5366e-04|(epoch_avg)loss: 0.0011460009555581674 (epoch_avg)loss_kpt: 0.0011460009555581674 (epoch_avg)acc_pose: 0.7531518864242394 
+2024-02-12 06:08:43,084 INFO PoseEstimator: (Val)coco/AP: 0.57414, coco/AP .5: 0.83959, coco/AP .75: 0.64757, coco/AP (M): 0.54564, coco/AP (L): 0.63414, coco/AR: 0.64284, coco/AR .5: 0.88948, coco/AR .75: 0.71474, coco/AR (M): 0.59659, coco/AR (L): 0.70832
+2024-02-12 06:08:43,084 INFO PoseEstimator: (Val)Current best mAP: 0.5762512019043543 on epoch 123
+2024-02-12 07:00:36,478 INFO PoseEstimator: (Train)Epoch-[131/209] - mem: 9.47GB|(epoch_end)lr: 4.5037e-04|(epoch_avg)loss: 0.0011447390594309945 (epoch_avg)loss_kpt: 0.0011447390594309945 (epoch_avg)acc_pose: 0.753571979976977 
+2024-02-12 07:05:08,373 INFO PoseEstimator: (Val)coco/AP: 0.57628, coco/AP .5: 0.84617, coco/AP .75: 0.64494, coco/AP (M): 0.54926, coco/AP (L): 0.63361, coco/AR: 0.64462, coco/AR .5: 0.89373, coco/AR .75: 0.71316, coco/AR (M): 0.59984, coco/AR (L): 0.70799
+2024-02-12 07:05:08,373 INFO PoseEstimator: (Val)Current best mAP: 0.5762791127055483 on epoch 131
+2024-02-12 07:57:03,691 INFO PoseEstimator: (Train)Epoch-[132/209] - mem: 9.47GB|(epoch_end)lr: 4.4699e-04|(epoch_avg)loss: 0.001144501034927984 (epoch_avg)loss_kpt: 0.001144501034927984 (epoch_avg)acc_pose: 0.753591125639484 
+2024-02-12 08:01:37,732 INFO PoseEstimator: (Val)coco/AP: 0.57544, coco/AP .5: 0.84551, coco/AP .75: 0.64304, coco/AP (M): 0.54857, coco/AP (L): 0.63267, coco/AR: 0.64627, coco/AR .5: 0.89499, coco/AR .75: 0.71285, coco/AR (M): 0.60033, coco/AR (L): 0.71089
+2024-02-12 08:01:37,732 INFO PoseEstimator: (Val)Current best mAP: 0.5762791127055483 on epoch 131
+2024-02-12 08:53:37,053 INFO PoseEstimator: (Train)Epoch-[133/209] - mem: 9.47GB|(epoch_end)lr: 4.4352e-04|(epoch_avg)loss: 0.0011435570532091373 (epoch_avg)loss_kpt: 0.0011435570532091373 (epoch_avg)acc_pose: 0.7538238672828225 
+2024-02-12 08:58:10,995 INFO PoseEstimator: (Val)coco/AP: 0.57431, coco/AP .5: 0.84452, coco/AP .75: 0.64396, coco/AP (M): 0.54898, coco/AP (L): 0.62965, coco/AR: 0.64290, coco/AR .5: 0.89200, coco/AR .75: 0.71017, coco/AR (M): 0.59801, coco/AR (L): 0.70654
+2024-02-12 08:58:10,995 INFO PoseEstimator: (Val)Current best mAP: 0.5762791127055483 on epoch 131
+2024-02-12 09:50:09,851 INFO PoseEstimator: (Train)Epoch-[134/209] - mem: 9.47GB|(epoch_end)lr: 4.3997e-04|(epoch_avg)loss: 0.0011436592087931746 (epoch_avg)loss_kpt: 0.0011436592087931746 (epoch_avg)acc_pose: 0.7536059849754206 
+2024-02-12 09:54:43,634 INFO PoseEstimator: (Val)coco/AP: 0.57541, coco/AP .5: 0.84344, coco/AP .75: 0.64462, coco/AP (M): 0.54793, coco/AP (L): 0.63283, coco/AR: 0.64493, coco/AR .5: 0.89358, coco/AR .75: 0.71237, coco/AR (M): 0.59992, coco/AR (L): 0.70836
+2024-02-12 09:54:43,634 INFO PoseEstimator: (Val)Current best mAP: 0.5762791127055483 on epoch 131
+2024-02-12 10:46:42,867 INFO PoseEstimator: (Train)Epoch-[135/209] - mem: 9.47GB|(epoch_end)lr: 4.3634e-04|(epoch_avg)loss: 0.0011424049087795684 (epoch_avg)loss_kpt: 0.0011424049087795684 (epoch_avg)acc_pose: 0.7542477111516767 
+2024-02-12 10:51:16,216 INFO PoseEstimator: (Val)coco/AP: 0.57766, coco/AP .5: 0.84820, coco/AP .75: 0.64259, coco/AP (M): 0.55123, coco/AP (L): 0.63439, coco/AR: 0.64600, coco/AR .5: 0.89688, coco/AR .75: 0.71127, coco/AR (M): 0.60074, coco/AR (L): 0.71007
+2024-02-12 10:51:16,217 INFO PoseEstimator: (Val)Current best mAP: 0.5776646355052792 on epoch 135
+2024-02-12 11:43:27,462 INFO PoseEstimator: (Train)Epoch-[136/209] - mem: 9.47GB|(epoch_end)lr: 4.3264e-04|(epoch_avg)loss: 0.0011423815160466531 (epoch_avg)loss_kpt: 0.0011423815160466531 (epoch_avg)acc_pose: 0.7541347613991082 
+2024-02-12 11:48:00,899 INFO PoseEstimator: (Val)coco/AP: 0.57663, coco/AP .5: 0.84456, coco/AP .75: 0.64675, coco/AP (M): 0.55001, coco/AP (L): 0.63330, coco/AR: 0.64554, coco/AR .5: 0.89279, coco/AR .75: 0.71285, coco/AR (M): 0.60079, coco/AR (L): 0.70910
+2024-02-12 11:48:00,900 INFO PoseEstimator: (Val)Current best mAP: 0.5776646355052792 on epoch 135
+2024-02-12 12:40:04,514 INFO PoseEstimator: (Train)Epoch-[137/209] - mem: 9.47GB|(epoch_end)lr: 4.2885e-04|(epoch_avg)loss: 0.001141462723113769 (epoch_avg)loss_kpt: 0.001141462723113769 (epoch_avg)acc_pose: 0.7547705037073811 
+2024-02-12 12:44:39,850 INFO PoseEstimator: (Val)coco/AP: 0.57669, coco/AP .5: 0.84677, coco/AP .75: 0.64149, coco/AP (M): 0.55028, coco/AP (L): 0.63275, coco/AR: 0.64577, coco/AR .5: 0.89468, coco/AR .75: 0.70938, coco/AR (M): 0.60068, coco/AR (L): 0.70933
+2024-02-12 12:44:39,851 INFO PoseEstimator: (Val)Current best mAP: 0.5776646355052792 on epoch 135
+2024-02-12 13:36:47,505 INFO PoseEstimator: (Train)Epoch-[138/209] - mem: 9.47GB|(epoch_end)lr: 4.2500e-04|(epoch_avg)loss: 0.0011405791122751983 (epoch_avg)loss_kpt: 0.0011405791122751983 (epoch_avg)acc_pose: 0.7546835319052547 
+2024-02-12 13:41:18,934 INFO PoseEstimator: (Val)coco/AP: 0.57885, coco/AP .5: 0.84737, coco/AP .75: 0.64885, coco/AP (M): 0.55169, coco/AP (L): 0.63550, coco/AR: 0.64759, coco/AR .5: 0.89562, coco/AR .75: 0.71489, coco/AR (M): 0.60290, coco/AR (L): 0.71063
+2024-02-12 13:41:18,934 INFO PoseEstimator: (Val)Current best mAP: 0.5788476520107175 on epoch 138
+2024-02-12 14:33:27,586 INFO PoseEstimator: (Train)Epoch-[139/209] - mem: 9.47GB|(epoch_end)lr: 4.2108e-04|(epoch_avg)loss: 0.0011397913254978713 (epoch_avg)loss_kpt: 0.0011397913254978713 (epoch_avg)acc_pose: 0.754981297980428 
+2024-02-12 14:38:00,567 INFO PoseEstimator: (Val)coco/AP: 0.57437, coco/AP .5: 0.84227, coco/AP .75: 0.64446, coco/AP (M): 0.54621, coco/AP (L): 0.63223, coco/AR: 0.64282, coco/AR .5: 0.89027, coco/AR .75: 0.71127, coco/AR (M): 0.59601, coco/AR (L): 0.70877
+2024-02-12 14:38:00,568 INFO PoseEstimator: (Val)Current best mAP: 0.5788476520107175 on epoch 138
+2024-02-12 15:30:08,564 INFO PoseEstimator: (Train)Epoch-[140/209] - mem: 9.47GB|(epoch_end)lr: 4.1710e-04|(epoch_avg)loss: 0.0011380141524934741 (epoch_avg)loss_kpt: 0.0011380141524934741 (epoch_avg)acc_pose: 0.7554533240142226 
+2024-02-12 15:34:41,369 INFO PoseEstimator: (Val)coco/AP: 0.57878, coco/AP .5: 0.84704, coco/AP .75: 0.64989, coco/AP (M): 0.55252, coco/AP (L): 0.63514, coco/AR: 0.64717, coco/AR .5: 0.89421, coco/AR .75: 0.71694, coco/AR (M): 0.60273, coco/AR (L): 0.71000
+2024-02-12 15:34:41,369 INFO PoseEstimator: (Val)Current best mAP: 0.5788476520107175 on epoch 138
+2024-02-12 16:26:46,074 INFO PoseEstimator: (Train)Epoch-[141/209] - mem: 9.47GB|(epoch_end)lr: 4.1305e-04|(epoch_avg)loss: 0.0011392452175891866 (epoch_avg)loss_kpt: 0.0011392452175891866 (epoch_avg)acc_pose: 0.7550913269329432 
+2024-02-12 16:31:19,534 INFO PoseEstimator: (Val)coco/AP: 0.58121, coco/AP .5: 0.84592, coco/AP .75: 0.65666, coco/AP (M): 0.55355, coco/AP (L): 0.63861, coco/AR: 0.64915, coco/AR .5: 0.89295, coco/AR .75: 0.72229, coco/AR (M): 0.60358, coco/AR (L): 0.71345
+2024-02-12 16:31:19,534 INFO PoseEstimator: (Val)Current best mAP: 0.581214992359163 on epoch 141
+2024-02-12 17:23:24,599 INFO PoseEstimator: (Train)Epoch-[142/209] - mem: 9.47GB|(epoch_end)lr: 4.0895e-04|(epoch_avg)loss: 0.0011387299611446773 (epoch_avg)loss_kpt: 0.0011387299611446773 (epoch_avg)acc_pose: 0.7551663425708433 
+2024-02-12 17:27:57,591 INFO PoseEstimator: (Val)coco/AP: 0.57736, coco/AP .5: 0.84725, coco/AP .75: 0.64528, coco/AP (M): 0.55220, coco/AP (L): 0.63376, coco/AR: 0.64750, coco/AR .5: 0.89641, coco/AR .75: 0.71300, coco/AR (M): 0.60309, coco/AR (L): 0.71011
+2024-02-12 17:27:57,591 INFO PoseEstimator: (Val)Current best mAP: 0.581214992359163 on epoch 141
+2024-02-12 18:19:59,776 INFO PoseEstimator: (Train)Epoch-[143/209] - mem: 9.47GB|(epoch_end)lr: 4.0480e-04|(epoch_avg)loss: 0.0011361402570477497 (epoch_avg)loss_kpt: 0.0011361402570477497 (epoch_avg)acc_pose: 0.7559833707782257 
+2024-02-12 18:24:32,290 INFO PoseEstimator: (Val)coco/AP: 0.57874, coco/AP .5: 0.84505, coco/AP .75: 0.64666, coco/AP (M): 0.55114, coco/AP (L): 0.63601, coco/AR: 0.64791, coco/AR .5: 0.89216, coco/AR .75: 0.71537, coco/AR (M): 0.60279, coco/AR (L): 0.71167
+2024-02-12 18:24:32,291 INFO PoseEstimator: (Val)Current best mAP: 0.581214992359163 on epoch 141
+2024-02-12 19:16:36,483 INFO PoseEstimator: (Train)Epoch-[144/209] - mem: 9.47GB|(epoch_end)lr: 4.0060e-04|(epoch_avg)loss: 0.0011364465960257578 (epoch_avg)loss_kpt: 0.0011364465960257578 (epoch_avg)acc_pose: 0.7558442028442091 
+2024-02-12 19:21:08,952 INFO PoseEstimator: (Val)coco/AP: 0.58008, coco/AP .5: 0.84941, coco/AP .75: 0.64738, coco/AP (M): 0.55368, coco/AP (L): 0.63599, coco/AR: 0.64909, coco/AR .5: 0.89846, coco/AR .75: 0.71316, coco/AR (M): 0.60437, coco/AR (L): 0.71211
+2024-02-12 19:21:08,952 INFO PoseEstimator: (Val)Current best mAP: 0.581214992359163 on epoch 141
+2024-02-12 20:13:13,618 INFO PoseEstimator: (Train)Epoch-[145/209] - mem: 9.47GB|(epoch_end)lr: 3.9635e-04|(epoch_avg)loss: 0.001136149142155274 (epoch_avg)loss_kpt: 0.001136149142155274 (epoch_avg)acc_pose: 0.7560119572589962 
+2024-02-12 20:17:46,669 INFO PoseEstimator: (Val)coco/AP: 0.57914, coco/AP .5: 0.84528, coco/AP .75: 0.64637, coco/AP (M): 0.55217, coco/AP (L): 0.63619, coco/AR: 0.64792, coco/AR .5: 0.89247, coco/AR .75: 0.71411, coco/AR (M): 0.60188, coco/AR (L): 0.71271
+2024-02-12 20:17:46,669 INFO PoseEstimator: (Val)Current best mAP: 0.581214992359163 on epoch 141
+2024-02-12 21:09:52,550 INFO PoseEstimator: (Train)Epoch-[146/209] - mem: 9.47GB|(epoch_end)lr: 3.9206e-04|(epoch_avg)loss: 0.001134203501775278 (epoch_avg)loss_kpt: 0.001134203501775278 (epoch_avg)acc_pose: 0.7564085087337854 
+2024-02-12 21:14:26,091 INFO PoseEstimator: (Val)coco/AP: 0.58019, coco/AP .5: 0.84873, coco/AP .75: 0.65259, coco/AP (M): 0.55302, coco/AP (L): 0.63885, coco/AR: 0.64978, coco/AR .5: 0.89767, coco/AR .75: 0.72025, coco/AR (M): 0.60306, coco/AR (L): 0.71568
+2024-02-12 21:14:26,091 INFO PoseEstimator: (Val)Current best mAP: 0.581214992359163 on epoch 141
+2024-02-12 22:06:26,316 INFO PoseEstimator: (Train)Epoch-[147/209] - mem: 9.47GB|(epoch_end)lr: 3.8774e-04|(epoch_avg)loss: 0.0011338209211296212 (epoch_avg)loss_kpt: 0.0011338209211296212 (epoch_avg)acc_pose: 0.7566618605945515 
+2024-02-12 22:10:58,831 INFO PoseEstimator: (Val)coco/AP: 0.58141, coco/AP .5: 0.84850, coco/AP .75: 0.65349, coco/AP (M): 0.55572, coco/AP (L): 0.63729, coco/AR: 0.64948, coco/AR .5: 0.89484, coco/AR .75: 0.71993, coco/AR (M): 0.60552, coco/AR (L): 0.71163
+2024-02-12 22:10:58,831 INFO PoseEstimator: (Val)Current best mAP: 0.5814083178271924 on epoch 147
+2024-02-12 23:03:03,520 INFO PoseEstimator: (Train)Epoch-[148/209] - mem: 9.47GB|(epoch_end)lr: 3.8338e-04|(epoch_avg)loss: 0.0011325718510987533 (epoch_avg)loss_kpt: 0.0011325718510987533 (epoch_avg)acc_pose: 0.7569414389517177 
+2024-02-12 23:07:37,510 INFO PoseEstimator: (Val)coco/AP: 0.57898, coco/AP .5: 0.84804, coco/AP .75: 0.64979, coco/AP (M): 0.55295, coco/AP (L): 0.63649, coco/AR: 0.64762, coco/AR .5: 0.89547, coco/AR .75: 0.71647, coco/AR (M): 0.60298, coco/AR (L): 0.71074
+2024-02-12 23:07:37,510 INFO PoseEstimator: (Val)Current best mAP: 0.5814083178271924 on epoch 147
+2024-02-12 23:59:40,073 INFO PoseEstimator: (Train)Epoch-[149/209] - mem: 9.47GB|(epoch_end)lr: 3.7899e-04|(epoch_avg)loss: 0.0011327362988526246 (epoch_avg)loss_kpt: 0.0011327362988526246 (epoch_avg)acc_pose: 0.7568888538402339 
+2024-02-13 00:04:12,950 INFO PoseEstimator: (Val)coco/AP: 0.57886, coco/AP .5: 0.84607, coco/AP .75: 0.64779, coco/AP (M): 0.55165, coco/AP (L): 0.63759, coco/AR: 0.64899, coco/AR .5: 0.89499, coco/AR .75: 0.71537, coco/AR (M): 0.60249, coco/AR (L): 0.71475
+2024-02-13 00:04:12,950 INFO PoseEstimator: (Val)Current best mAP: 0.5814083178271924 on epoch 147
+2024-02-13 00:56:18,410 INFO PoseEstimator: (Train)Epoch-[150/209] - mem: 9.47GB|(epoch_end)lr: 3.7457e-04|(epoch_avg)loss: 0.0011315908416805655 (epoch_avg)loss_kpt: 0.0011315908416805655 (epoch_avg)acc_pose: 0.7571916120227252 
+2024-02-13 01:00:50,940 INFO PoseEstimator: (Val)coco/AP: 0.58186, coco/AP .5: 0.84911, coco/AP .75: 0.65032, coco/AP (M): 0.55489, coco/AP (L): 0.63793, coco/AR: 0.65019, coco/AR .5: 0.89610, coco/AR .75: 0.71552, coco/AR (M): 0.60522, coco/AR (L): 0.71368
+2024-02-13 01:00:50,940 INFO PoseEstimator: (Val)Current best mAP: 0.5818590044590171 on epoch 150
+2024-02-13 01:52:55,150 INFO PoseEstimator: (Train)Epoch-[151/209] - mem: 9.47GB|(epoch_end)lr: 3.7014e-04|(epoch_avg)loss: 0.0011310111979411304 (epoch_avg)loss_kpt: 0.0011310111979411304 (epoch_avg)acc_pose: 0.7575393298978945 
+2024-02-13 01:57:26,334 INFO PoseEstimator: (Val)coco/AP: 0.57988, coco/AP .5: 0.84507, coco/AP .75: 0.64801, coco/AP (M): 0.55308, coco/AP (L): 0.63709, coco/AR: 0.64984, coco/AR .5: 0.89263, coco/AR .75: 0.71883, coco/AR (M): 0.60380, coco/AR (L): 0.71490
+2024-02-13 01:57:26,335 INFO PoseEstimator: (Val)Current best mAP: 0.5818590044590171 on epoch 150
+2024-02-13 02:49:27,381 INFO PoseEstimator: (Train)Epoch-[152/209] - mem: 9.47GB|(epoch_end)lr: 3.6568e-04|(epoch_avg)loss: 0.0011309018960071497 (epoch_avg)loss_kpt: 0.0011309018960071497 (epoch_avg)acc_pose: 0.7576235562956869 
+2024-02-13 02:54:00,248 INFO PoseEstimator: (Val)coco/AP: 0.58126, coco/AP .5: 0.84569, coco/AP .75: 0.65320, coco/AP (M): 0.55565, coco/AP (L): 0.63693, coco/AR: 0.65002, coco/AR .5: 0.89405, coco/AR .75: 0.71788, coco/AR (M): 0.60609, coco/AR (L): 0.71204
+2024-02-13 02:54:00,248 INFO PoseEstimator: (Val)Current best mAP: 0.5818590044590171 on epoch 150
+2024-02-13 03:46:04,855 INFO PoseEstimator: (Train)Epoch-[153/209] - mem: 9.47GB|(epoch_end)lr: 3.6121e-04|(epoch_avg)loss: 0.001129569194166456 (epoch_avg)loss_kpt: 0.001129569194166456 (epoch_avg)acc_pose: 0.7576213753645674 
+2024-02-13 03:50:38,499 INFO PoseEstimator: (Val)coco/AP: 0.57962, coco/AP .5: 0.84491, coco/AP .75: 0.64917, coco/AP (M): 0.55196, coco/AP (L): 0.63746, coco/AR: 0.64847, coco/AR .5: 0.89373, coco/AR .75: 0.71662, coco/AR (M): 0.60268, coco/AR (L): 0.71323
+2024-02-13 03:50:38,499 INFO PoseEstimator: (Val)Current best mAP: 0.5818590044590171 on epoch 150
+2024-02-13 04:42:36,373 INFO PoseEstimator: (Train)Epoch-[154/209] - mem: 9.47GB|(epoch_end)lr: 3.5673e-04|(epoch_avg)loss: 0.0011281894559542296 (epoch_avg)loss_kpt: 0.0011281894559542296 (epoch_avg)acc_pose: 0.7581915484817852 
+2024-02-13 04:47:08,432 INFO PoseEstimator: (Val)coco/AP: 0.58138, coco/AP .5: 0.84929, coco/AP .75: 0.64789, coco/AP (M): 0.55471, coco/AP (L): 0.63800, coco/AR: 0.65058, coco/AR .5: 0.89720, coco/AR .75: 0.71442, coco/AR (M): 0.60456, coco/AR (L): 0.71531
+2024-02-13 04:47:08,432 INFO PoseEstimator: (Val)Current best mAP: 0.5818590044590171 on epoch 150
+2024-02-13 05:39:05,418 INFO PoseEstimator: (Train)Epoch-[155/209] - mem: 9.47GB|(epoch_end)lr: 3.5224e-04|(epoch_avg)loss: 0.0011289874858178214 (epoch_avg)loss_kpt: 0.0011289874858178214 (epoch_avg)acc_pose: 0.7578646700061001 
+2024-02-13 05:43:37,265 INFO PoseEstimator: (Val)coco/AP: 0.58241, coco/AP .5: 0.84958, coco/AP .75: 0.65333, coco/AP (M): 0.55466, coco/AP (L): 0.63968, coco/AR: 0.65041, coco/AR .5: 0.89641, coco/AR .75: 0.71993, coco/AR (M): 0.60494, coco/AR (L): 0.71468
+2024-02-13 05:43:37,266 INFO PoseEstimator: (Val)Current best mAP: 0.5824129543673019 on epoch 155
+2024-02-13 06:35:37,372 INFO PoseEstimator: (Train)Epoch-[156/209] - mem: 9.47GB|(epoch_end)lr: 3.4776e-04|(epoch_avg)loss: 0.0011278176815555524 (epoch_avg)loss_kpt: 0.0011278176815555524 (epoch_avg)acc_pose: 0.758095195668451 
+2024-02-13 06:40:09,437 INFO PoseEstimator: (Val)coco/AP: 0.58077, coco/AP .5: 0.84659, coco/AP .75: 0.64730, coco/AP (M): 0.55243, coco/AP (L): 0.63856, coco/AR: 0.64989, coco/AR .5: 0.89515, coco/AR .75: 0.71552, coco/AR (M): 0.60410, coco/AR (L): 0.71423
+2024-02-13 06:40:09,438 INFO PoseEstimator: (Val)Current best mAP: 0.5824129543673019 on epoch 155
+2024-02-13 07:32:13,040 INFO PoseEstimator: (Train)Epoch-[157/209] - mem: 9.47GB|(epoch_end)lr: 3.4327e-04|(epoch_avg)loss: 0.001126280918936024 (epoch_avg)loss_kpt: 0.001126280918936024 (epoch_avg)acc_pose: 0.7585223018115859 
+2024-02-13 07:36:47,000 INFO PoseEstimator: (Val)coco/AP: 0.58270, coco/AP .5: 0.84788, coco/AP .75: 0.65192, coco/AP (M): 0.55608, coco/AP (L): 0.64007, coco/AR: 0.65102, coco/AR .5: 0.89547, coco/AR .75: 0.71647, coco/AR (M): 0.60631, coco/AR (L): 0.71423
+2024-02-13 07:36:47,000 INFO PoseEstimator: (Val)Current best mAP: 0.582697675851081 on epoch 157
+2024-02-13 08:28:50,489 INFO PoseEstimator: (Train)Epoch-[158/209] - mem: 9.47GB|(epoch_end)lr: 3.3879e-04|(epoch_avg)loss: 0.0011265250074247066 (epoch_avg)loss_kpt: 0.0011265250074247066 (epoch_avg)acc_pose: 0.7585570716782908 
+2024-02-13 08:33:22,062 INFO PoseEstimator: (Val)coco/AP: 0.58262, coco/AP .5: 0.84856, coco/AP .75: 0.65213, coco/AP (M): 0.55556, coco/AP (L): 0.64013, coco/AR: 0.65172, coco/AR .5: 0.89673, coco/AR .75: 0.71788, coco/AR (M): 0.60636, coco/AR (L): 0.71613
+2024-02-13 08:33:22,062 INFO PoseEstimator: (Val)Current best mAP: 0.582697675851081 on epoch 157
+2024-02-13 09:25:21,943 INFO PoseEstimator: (Train)Epoch-[159/209] - mem: 9.47GB|(epoch_end)lr: 3.3432e-04|(epoch_avg)loss: 0.0011253000678911474 (epoch_avg)loss_kpt: 0.0011253000678911474 (epoch_avg)acc_pose: 0.7591078497250362 
+2024-02-13 09:29:56,925 INFO PoseEstimator: (Val)coco/AP: 0.58181, coco/AP .5: 0.84772, coco/AP .75: 0.65172, coco/AP (M): 0.55424, coco/AP (L): 0.63917, coco/AR: 0.64991, coco/AR .5: 0.89436, coco/AR .75: 0.71836, coco/AR (M): 0.60440, coco/AR (L): 0.71408
+2024-02-13 09:29:56,925 INFO PoseEstimator: (Val)Current best mAP: 0.582697675851081 on epoch 157
+2024-02-13 10:21:58,133 INFO PoseEstimator: (Train)Epoch-[160/209] - mem: 9.47GB|(epoch_end)lr: 3.2987e-04|(epoch_avg)loss: 0.0011256564841978503 (epoch_avg)loss_kpt: 0.0011256564841978503 (epoch_avg)acc_pose: 0.7587827314100026 
+2024-02-13 10:26:33,180 INFO PoseEstimator: (Val)coco/AP: 0.58216, coco/AP .5: 0.84867, coco/AP .75: 0.64720, coco/AP (M): 0.55584, coco/AP (L): 0.63812, coco/AR: 0.65063, coco/AR .5: 0.89798, coco/AR .75: 0.71363, coco/AR (M): 0.60492, coco/AR (L): 0.71524
+2024-02-13 10:26:33,180 INFO PoseEstimator: (Val)Current best mAP: 0.582697675851081 on epoch 157
+2024-02-13 11:18:33,197 INFO PoseEstimator: (Train)Epoch-[161/209] - mem: 9.47GB|(epoch_end)lr: 3.2543e-04|(epoch_avg)loss: 0.001124624307140134 (epoch_avg)loss_kpt: 0.001124624307140134 (epoch_avg)acc_pose: 0.7590883647165644 
+2024-02-13 11:23:07,788 INFO PoseEstimator: (Val)coco/AP: 0.58338, coco/AP .5: 0.84873, coco/AP .75: 0.65165, coco/AP (M): 0.55687, coco/AP (L): 0.63958, coco/AR: 0.65131, coco/AR .5: 0.89578, coco/AR .75: 0.71867, coco/AR (M): 0.60552, coco/AR (L): 0.71568
+2024-02-13 11:23:07,789 INFO PoseEstimator: (Val)Current best mAP: 0.5833765711721689 on epoch 161
+2024-02-13 12:15:16,712 INFO PoseEstimator: (Train)Epoch-[162/209] - mem: 9.47GB|(epoch_end)lr: 3.2101e-04|(epoch_avg)loss: 0.0011228424130399132 (epoch_avg)loss_kpt: 0.0011228424130399132 (epoch_avg)acc_pose: 0.7594241040809895 
+2024-02-13 12:19:49,854 INFO PoseEstimator: (Val)coco/AP: 0.58347, coco/AP .5: 0.84696, coco/AP .75: 0.65571, coco/AP (M): 0.55818, coco/AP (L): 0.63934, coco/AR: 0.65302, coco/AR .5: 0.89641, coco/AR .75: 0.72229, coco/AR (M): 0.60836, coco/AR (L): 0.71624
+2024-02-13 12:19:49,854 INFO PoseEstimator: (Val)Current best mAP: 0.5834699197466635 on epoch 162
+2024-02-13 13:12:02,683 INFO PoseEstimator: (Train)Epoch-[163/209] - mem: 9.47GB|(epoch_end)lr: 3.1662e-04|(epoch_avg)loss: 0.0011235104757346564 (epoch_avg)loss_kpt: 0.0011235104757346564 (epoch_avg)acc_pose: 0.7593973193598983 
+2024-02-13 13:16:34,777 INFO PoseEstimator: (Val)coco/AP: 0.58441, coco/AP .5: 0.84906, coco/AP .75: 0.65418, coco/AP (M): 0.55836, coco/AP (L): 0.64075, coco/AR: 0.65386, coco/AR .5: 0.89704, coco/AR .75: 0.72025, coco/AR (M): 0.60877, coco/AR (L): 0.71780
+2024-02-13 13:16:34,777 INFO PoseEstimator: (Val)Current best mAP: 0.5844117903038761 on epoch 163
+2024-02-13 14:08:42,991 INFO PoseEstimator: (Train)Epoch-[164/209] - mem: 9.47GB|(epoch_end)lr: 3.1226e-04|(epoch_avg)loss: 0.0011223880144741753 (epoch_avg)loss_kpt: 0.0011223880144741753 (epoch_avg)acc_pose: 0.7597102346938421 
+2024-02-13 14:13:17,272 INFO PoseEstimator: (Val)coco/AP: 0.58383, coco/AP .5: 0.84771, coco/AP .75: 0.65541, coco/AP (M): 0.55743, coco/AP (L): 0.64047, coco/AR: 0.65348, coco/AR .5: 0.89877, coco/AR .75: 0.72119, coco/AR (M): 0.60803, coco/AR (L): 0.71761
+2024-02-13 14:13:17,272 INFO PoseEstimator: (Val)Current best mAP: 0.5844117903038761 on epoch 163
+2024-02-13 15:05:32,489 INFO PoseEstimator: (Train)Epoch-[165/209] - mem: 9.47GB|(epoch_end)lr: 3.0794e-04|(epoch_avg)loss: 0.0011213671134612025 (epoch_avg)loss_kpt: 0.0011213671134612025 (epoch_avg)acc_pose: 0.7601392469030185 
+2024-02-13 15:10:05,069 INFO PoseEstimator: (Val)coco/AP: 0.58547, coco/AP .5: 0.84947, coco/AP .75: 0.65640, coco/AP (M): 0.55900, coco/AP (L): 0.64168, coco/AR: 0.65370, coco/AR .5: 0.89877, coco/AR .75: 0.72166, coco/AR (M): 0.60866, coco/AR (L): 0.71709
+2024-02-13 15:10:05,070 INFO PoseEstimator: (Val)Current best mAP: 0.5854694676327091 on epoch 165
+2024-02-13 16:02:16,741 INFO PoseEstimator: (Train)Epoch-[166/209] - mem: 9.47GB|(epoch_end)lr: 3.0365e-04|(epoch_avg)loss: 0.0011203743330045481 (epoch_avg)loss_kpt: 0.0011203743330045481 (epoch_avg)acc_pose: 0.7606260930045179 
+2024-02-13 16:06:49,688 INFO PoseEstimator: (Val)coco/AP: 0.58498, coco/AP .5: 0.85174, coco/AP .75: 0.65245, coco/AP (M): 0.55880, coco/AP (L): 0.64097, coco/AR: 0.65368, coco/AR .5: 0.90003, coco/AR .75: 0.71914, coco/AR (M): 0.60869, coco/AR (L): 0.71724
+2024-02-13 16:06:49,688 INFO PoseEstimator: (Val)Current best mAP: 0.5854694676327091 on epoch 165
+2024-02-13 16:58:58,163 INFO PoseEstimator: (Train)Epoch-[167/209] - mem: 9.47GB|(epoch_end)lr: 2.9940e-04|(epoch_avg)loss: 0.0011211137129409723 (epoch_avg)loss_kpt: 0.0011211137129409723 (epoch_avg)acc_pose: 0.7597829429751509 
+2024-02-13 17:03:32,172 INFO PoseEstimator: (Val)coco/AP: 0.58542, coco/AP .5: 0.84991, coco/AP .75: 0.65496, coco/AP (M): 0.55905, coco/AP (L): 0.64104, coco/AR: 0.65338, coco/AR .5: 0.89751, coco/AR .75: 0.72040, coco/AR (M): 0.60882, coco/AR (L): 0.71646
+2024-02-13 17:03:32,173 INFO PoseEstimator: (Val)Current best mAP: 0.5854694676327091 on epoch 165
+2024-02-13 17:55:42,561 INFO PoseEstimator: (Train)Epoch-[168/209] - mem: 9.47GB|(epoch_end)lr: 2.9520e-04|(epoch_avg)loss: 0.0011202835019045376 (epoch_avg)loss_kpt: 0.0011202835019045376 (epoch_avg)acc_pose: 0.7603580617560737 
+2024-02-13 18:00:16,007 INFO PoseEstimator: (Val)coco/AP: 0.58681, coco/AP .5: 0.84915, coco/AP .75: 0.65797, coco/AP (M): 0.56019, coco/AP (L): 0.64340, coco/AR: 0.65394, coco/AR .5: 0.89515, coco/AR .75: 0.72198, coco/AR (M): 0.60844, coco/AR (L): 0.71806
+2024-02-13 18:00:16,007 INFO PoseEstimator: (Val)Current best mAP: 0.5868111601602928 on epoch 168
+2024-02-13 18:52:15,782 INFO PoseEstimator: (Train)Epoch-[169/209] - mem: 9.47GB|(epoch_end)lr: 2.9105e-04|(epoch_avg)loss: 0.0011195871780406762 (epoch_avg)loss_kpt: 0.0011195871780406762 (epoch_avg)acc_pose: 0.7604696563761936 
+2024-02-13 18:56:50,342 INFO PoseEstimator: (Val)coco/AP: 0.58598, coco/AP .5: 0.85008, coco/AP .75: 0.65467, coco/AP (M): 0.55827, coco/AP (L): 0.64378, coco/AR: 0.65439, coco/AR .5: 0.89893, coco/AR .75: 0.72056, coco/AR (M): 0.60811, coco/AR (L): 0.71999
+2024-02-13 18:56:50,342 INFO PoseEstimator: (Val)Current best mAP: 0.5868111601602928 on epoch 168
+2024-02-13 19:48:54,172 INFO PoseEstimator: (Train)Epoch-[170/209] - mem: 9.47GB|(epoch_end)lr: 2.8695e-04|(epoch_avg)loss: 0.0011192498626557985 (epoch_avg)loss_kpt: 0.0011192498626557985 (epoch_avg)acc_pose: 0.760572072767813 
+2024-02-13 19:53:27,219 INFO PoseEstimator: (Val)coco/AP: 0.58516, coco/AP .5: 0.84977, coco/AP .75: 0.65575, coco/AP (M): 0.55822, coco/AP (L): 0.64309, coco/AR: 0.65397, coco/AR .5: 0.89924, coco/AR .75: 0.72166, coco/AR (M): 0.60901, coco/AR (L): 0.71773
+2024-02-13 19:53:27,219 INFO PoseEstimator: (Val)Current best mAP: 0.5868111601602928 on epoch 168
+2024-02-13 20:45:38,404 INFO PoseEstimator: (Train)Epoch-[171/209] - mem: 9.47GB|(epoch_end)lr: 2.8290e-04|(epoch_avg)loss: 0.0011170971095537925 (epoch_avg)loss_kpt: 0.0011170971095537925 (epoch_avg)acc_pose: 0.7612322422349387 
+2024-02-13 20:50:12,933 INFO PoseEstimator: (Val)coco/AP: 0.58442, coco/AP .5: 0.84990, coco/AP .75: 0.65160, coco/AP (M): 0.55770, coco/AP (L): 0.64297, coco/AR: 0.65327, coco/AR .5: 0.89861, coco/AR .75: 0.71725, coco/AR (M): 0.60738, coco/AR (L): 0.71858
+2024-02-13 20:50:12,934 INFO PoseEstimator: (Val)Current best mAP: 0.5868111601602928 on epoch 168
+2024-02-13 21:42:21,077 INFO PoseEstimator: (Train)Epoch-[172/209] - mem: 9.47GB|(epoch_end)lr: 2.7892e-04|(epoch_avg)loss: 0.0011159465847555901 (epoch_avg)loss_kpt: 0.0011159465847555901 (epoch_avg)acc_pose: 0.7616244900405486 
+2024-02-13 21:46:53,419 INFO PoseEstimator: (Val)coco/AP: 0.58449, coco/AP .5: 0.84885, coco/AP .75: 0.65160, coco/AP (M): 0.55794, coco/AP (L): 0.64179, coco/AR: 0.65357, coco/AR .5: 0.89751, coco/AR .75: 0.71820, coco/AR (M): 0.60836, coco/AR (L): 0.71791
+2024-02-13 21:46:53,420 INFO PoseEstimator: (Val)Current best mAP: 0.5868111601602928 on epoch 168
+2024-02-13 22:38:59,925 INFO PoseEstimator: (Train)Epoch-[173/209] - mem: 9.47GB|(epoch_end)lr: 2.7500e-04|(epoch_avg)loss: 0.001116189857371118 (epoch_avg)loss_kpt: 0.001116189857371118 (epoch_avg)acc_pose: 0.7614496303526401 
+2024-02-13 22:43:33,181 INFO PoseEstimator: (Val)coco/AP: 0.58755, coco/AP .5: 0.85092, coco/AP .75: 0.65428, coco/AP (M): 0.56078, coco/AP (L): 0.64463, coco/AR: 0.65551, coco/AR .5: 0.89877, coco/AR .75: 0.72072, coco/AR (M): 0.61106, coco/AR (L): 0.71884
+2024-02-13 22:43:33,182 INFO PoseEstimator: (Val)Current best mAP: 0.5875524514058593 on epoch 173
+2024-02-13 23:35:38,596 INFO PoseEstimator: (Train)Epoch-[174/209] - mem: 9.47GB|(epoch_end)lr: 2.7115e-04|(epoch_avg)loss: 0.0011159137328438148 (epoch_avg)loss_kpt: 0.0011159137328438148 (epoch_avg)acc_pose: 0.7614709093800368 
+2024-02-13 23:40:12,012 INFO PoseEstimator: (Val)coco/AP: 0.58677, coco/AP .5: 0.85096, coco/AP .75: 0.65377, coco/AP (M): 0.55879, coco/AP (L): 0.64480, coco/AR: 0.65518, coco/AR .5: 0.89909, coco/AR .75: 0.71820, coco/AR (M): 0.60926, coco/AR (L): 0.72022
+2024-02-13 23:40:12,013 INFO PoseEstimator: (Val)Current best mAP: 0.5875524514058593 on epoch 173
+2024-02-14 00:32:16,591 INFO PoseEstimator: (Train)Epoch-[175/209] - mem: 9.47GB|(epoch_end)lr: 2.6737e-04|(epoch_avg)loss: 0.001115156662289374 (epoch_avg)loss_kpt: 0.001115156662289374 (epoch_avg)acc_pose: 0.7617592609134816 
+2024-02-14 00:36:49,850 INFO PoseEstimator: (Val)coco/AP: 0.58674, coco/AP .5: 0.84971, coco/AP .75: 0.65949, coco/AP (M): 0.55957, coco/AP (L): 0.64413, coco/AR: 0.65513, coco/AR .5: 0.89688, coco/AR .75: 0.72434, coco/AR (M): 0.60992, coco/AR (L): 0.71944
+2024-02-14 00:36:49,851 INFO PoseEstimator: (Val)Current best mAP: 0.5875524514058593 on epoch 173
+2024-02-14 01:28:59,619 INFO PoseEstimator: (Train)Epoch-[176/209] - mem: 9.47GB|(epoch_end)lr: 2.6366e-04|(epoch_avg)loss: 0.0011149923943011356 (epoch_avg)loss_kpt: 0.0011149923943011356 (epoch_avg)acc_pose: 0.7616590637521741 
+2024-02-14 01:33:33,650 INFO PoseEstimator: (Val)coco/AP: 0.58555, coco/AP .5: 0.84905, coco/AP .75: 0.65881, coco/AP (M): 0.55848, coco/AP (L): 0.64281, coco/AR: 0.65447, coco/AR .5: 0.89783, coco/AR .75: 0.72434, coco/AR (M): 0.60885, coco/AR (L): 0.71929
+2024-02-14 01:33:33,650 INFO PoseEstimator: (Val)Current best mAP: 0.5875524514058593 on epoch 173
+2024-02-14 02:25:40,794 INFO PoseEstimator: (Train)Epoch-[177/209] - mem: 9.47GB|(epoch_end)lr: 2.6003e-04|(epoch_avg)loss: 0.001114316055295699 (epoch_avg)loss_kpt: 0.001114316055295699 (epoch_avg)acc_pose: 0.7623310836621676 
+2024-02-14 02:30:12,994 INFO PoseEstimator: (Val)coco/AP: 0.58652, coco/AP .5: 0.84983, coco/AP .75: 0.65866, coco/AP (M): 0.56001, coco/AP (L): 0.64377, coco/AR: 0.65513, coco/AR .5: 0.89798, coco/AR .75: 0.72450, coco/AR (M): 0.61035, coco/AR (L): 0.71851
+2024-02-14 02:30:12,994 INFO PoseEstimator: (Val)Current best mAP: 0.5875524514058593 on epoch 173
+2024-02-14 03:22:09,653 INFO PoseEstimator: (Train)Epoch-[178/209] - mem: 9.47GB|(epoch_end)lr: 2.5648e-04|(epoch_avg)loss: 0.0011137234192162356 (epoch_avg)loss_kpt: 0.0011137234192162356 (epoch_avg)acc_pose: 0.762388725703304 
+2024-02-14 03:26:42,919 INFO PoseEstimator: (Val)coco/AP: 0.58621, coco/AP .5: 0.84935, coco/AP .75: 0.65699, coco/AP (M): 0.56056, coco/AP (L): 0.64284, coco/AR: 0.65542, coco/AR .5: 0.89783, coco/AR .75: 0.72465, coco/AR (M): 0.61046, coco/AR (L): 0.71906
+2024-02-14 03:26:42,919 INFO PoseEstimator: (Val)Current best mAP: 0.5875524514058593 on epoch 173
+2024-02-14 03:26:43,918 INFO PoseEstimator: ======= Training data pipeline is switched to stage2 at epoch 179! ==========
+2024-02-14 04:19:05,396 INFO PoseEstimator: (Train)Epoch-[179/209] - mem: 9.47GB|(epoch_end)lr: 2.5301e-04|(epoch_avg)loss: 0.000986048744796622 (epoch_avg)loss_kpt: 0.000986048744796622 (epoch_avg)acc_pose: 0.8062396929617729 
+2024-02-14 04:23:38,653 INFO PoseEstimator: (Val)coco/AP: 0.59066, coco/AP .5: 0.85505, coco/AP .75: 0.66097, coco/AP (M): 0.56408, coco/AP (L): 0.64557, coco/AR: 0.65889, coco/AR .5: 0.90255, coco/AR .75: 0.72827, coco/AR (M): 0.61464, coco/AR (L): 0.72122
+2024-02-14 04:23:38,653 INFO PoseEstimator: (Val)Current best mAP: 0.5906578782751799 on epoch 179
+2024-02-14 05:15:59,251 INFO PoseEstimator: (Train)Epoch-[180/209] - mem: 9.47GB|(epoch_end)lr: 2.4963e-04|(epoch_avg)loss: 0.0009821459897945473 (epoch_avg)loss_kpt: 0.0009821459897945473 (epoch_avg)acc_pose: 0.8071605120706791 
+2024-02-14 05:20:32,884 INFO PoseEstimator: (Val)coco/AP: 0.58858, coco/AP .5: 0.84987, coco/AP .75: 0.66153, coco/AP (M): 0.56163, coco/AP (L): 0.64656, coco/AR: 0.65688, coco/AR .5: 0.89814, coco/AR .75: 0.72670, coco/AR (M): 0.61117, coco/AR (L): 0.72133
+2024-02-14 05:20:32,885 INFO PoseEstimator: (Val)Current best mAP: 0.5906578782751799 on epoch 179
+2024-02-14 06:12:48,085 INFO PoseEstimator: (Train)Epoch-[181/209] - mem: 9.47GB|(epoch_end)lr: 2.4634e-04|(epoch_avg)loss: 0.0009805635776544673 (epoch_avg)loss_kpt: 0.0009805635776544673 (epoch_avg)acc_pose: 0.807617235992855 
+2024-02-14 06:17:19,348 INFO PoseEstimator: (Val)coco/AP: 0.59094, coco/AP .5: 0.85305, coco/AP .75: 0.66460, coco/AP (M): 0.56320, coco/AP (L): 0.64869, coco/AR: 0.65894, coco/AR .5: 0.90019, coco/AR .75: 0.73016, coco/AR (M): 0.61297, coco/AR (L): 0.72389
+2024-02-14 06:17:19,349 INFO PoseEstimator: (Val)Current best mAP: 0.5909354656063253 on epoch 181
+2024-02-14 07:09:43,721 INFO PoseEstimator: (Train)Epoch-[182/209] - mem: 9.47GB|(epoch_end)lr: 2.4314e-04|(epoch_avg)loss: 0.0009789523356550194 (epoch_avg)loss_kpt: 0.0009789523356550194 (epoch_avg)acc_pose: 0.8081632638871471 
+2024-02-14 07:14:16,932 INFO PoseEstimator: (Val)coco/AP: 0.58954, coco/AP .5: 0.84982, coco/AP .75: 0.66332, coco/AP (M): 0.56280, coco/AP (L): 0.64671, coco/AR: 0.65770, coco/AR .5: 0.89814, coco/AR .75: 0.72827, coco/AR (M): 0.61232, coco/AR (L): 0.72148
+2024-02-14 07:14:16,932 INFO PoseEstimator: (Val)Current best mAP: 0.5909354656063253 on epoch 181
+2024-02-14 08:06:48,431 INFO PoseEstimator: (Train)Epoch-[183/209] - mem: 9.47GB|(epoch_end)lr: 2.4004e-04|(epoch_avg)loss: 0.0009776056910634095 (epoch_avg)loss_kpt: 0.0009776056910634095 (epoch_avg)acc_pose: 0.8084636010740603 
+2024-02-14 08:11:20,787 INFO PoseEstimator: (Val)coco/AP: 0.59024, coco/AP .5: 0.85268, coco/AP .75: 0.66226, coco/AP (M): 0.56348, coco/AP (L): 0.64681, coco/AR: 0.65902, coco/AR .5: 0.90035, coco/AR .75: 0.72812, coco/AR (M): 0.61347, coco/AR (L): 0.72326
+2024-02-14 08:11:20,787 INFO PoseEstimator: (Val)Current best mAP: 0.5909354656063253 on epoch 181
+2024-02-14 09:03:48,398 INFO PoseEstimator: (Train)Epoch-[184/209] - mem: 9.47GB|(epoch_end)lr: 2.3704e-04|(epoch_avg)loss: 0.0009766967723590664 (epoch_avg)loss_kpt: 0.0009766967723590664 (epoch_avg)acc_pose: 0.8086361687455252 
+2024-02-14 09:08:22,416 INFO PoseEstimator: (Val)coco/AP: 0.59132, coco/AP .5: 0.84947, coco/AP .75: 0.66502, coco/AP (M): 0.56470, coco/AP (L): 0.64778, coco/AR: 0.65998, coco/AR .5: 0.89783, coco/AR .75: 0.73111, coco/AR (M): 0.61401, coco/AR (L): 0.72493
+2024-02-14 09:08:22,417 INFO PoseEstimator: (Val)Current best mAP: 0.5913233754381804 on epoch 184
+2024-02-14 10:00:55,545 INFO PoseEstimator: (Train)Epoch-[185/209] - mem: 9.47GB|(epoch_end)lr: 2.3414e-04|(epoch_avg)loss: 0.0009758557314987231 (epoch_avg)loss_kpt: 0.0009758557314987231 (epoch_avg)acc_pose: 0.8088552534898783 
+2024-02-14 10:05:30,281 INFO PoseEstimator: (Val)coco/AP: 0.59048, coco/AP .5: 0.84997, coco/AP .75: 0.66247, coco/AP (M): 0.56222, coco/AP (L): 0.64905, coco/AR: 0.65831, coco/AR .5: 0.89830, coco/AR .75: 0.72749, coco/AR (M): 0.61287, coco/AR (L): 0.72252
+2024-02-14 10:05:30,282 INFO PoseEstimator: (Val)Current best mAP: 0.5913233754381804 on epoch 184
+2024-02-14 10:58:04,433 INFO PoseEstimator: (Train)Epoch-[186/209] - mem: 9.47GB|(epoch_end)lr: 2.3134e-04|(epoch_avg)loss: 0.0009750607276726592 (epoch_avg)loss_kpt: 0.0009750607276726592 (epoch_avg)acc_pose: 0.8088825334774414 
+2024-02-14 11:02:38,066 INFO PoseEstimator: (Val)coco/AP: 0.59247, coco/AP .5: 0.84874, coco/AP .75: 0.66935, coco/AP (M): 0.56493, coco/AP (L): 0.65118, coco/AR: 0.66171, coco/AR .5: 0.89736, coco/AR .75: 0.73473, coco/AR (M): 0.61573, coco/AR (L): 0.72664
+2024-02-14 11:02:38,067 INFO PoseEstimator: (Val)Current best mAP: 0.5924748482296107 on epoch 186
+2024-02-14 11:55:15,560 INFO PoseEstimator: (Train)Epoch-[187/209] - mem: 9.47GB|(epoch_end)lr: 2.2865e-04|(epoch_avg)loss: 0.0009733625397926569 (epoch_avg)loss_kpt: 0.0009733625397926569 (epoch_avg)acc_pose: 0.8096153897451638 
+2024-02-14 11:59:51,303 INFO PoseEstimator: (Val)coco/AP: 0.59172, coco/AP .5: 0.85034, coco/AP .75: 0.66734, coco/AP (M): 0.56504, coco/AP (L): 0.64924, coco/AR: 0.66056, coco/AR .5: 0.89972, coco/AR .75: 0.73158, coco/AR (M): 0.61541, coco/AR (L): 0.72449
+2024-02-14 11:59:51,303 INFO PoseEstimator: (Val)Current best mAP: 0.5924748482296107 on epoch 186
+2024-02-14 12:52:28,900 INFO PoseEstimator: (Train)Epoch-[188/209] - mem: 9.47GB|(epoch_end)lr: 2.2606e-04|(epoch_avg)loss: 0.000973467756395377 (epoch_avg)loss_kpt: 0.000973467756395377 (epoch_avg)acc_pose: 0.8094772188760132 
+2024-02-14 12:57:03,654 INFO PoseEstimator: (Val)coco/AP: 0.59086, coco/AP .5: 0.84905, coco/AP .75: 0.66189, coco/AP (M): 0.56304, coco/AP (L): 0.64922, coco/AR: 0.65967, coco/AR .5: 0.89846, coco/AR .75: 0.72654, coco/AR (M): 0.61314, coco/AR (L): 0.72549
+2024-02-14 12:57:03,654 INFO PoseEstimator: (Val)Current best mAP: 0.5924748482296107 on epoch 186
+2024-02-14 13:49:44,231 INFO PoseEstimator: (Train)Epoch-[189/209] - mem: 9.47GB|(epoch_end)lr: 2.2359e-04|(epoch_avg)loss: 0.0009716166144333333 (epoch_avg)loss_kpt: 0.0009716166144333333 (epoch_avg)acc_pose: 0.8098435546118214 
+2024-02-14 13:54:20,093 INFO PoseEstimator: (Val)coco/AP: 0.59276, coco/AP .5: 0.85205, coco/AP .75: 0.66812, coco/AP (M): 0.56541, coco/AP (L): 0.65181, coco/AR: 0.66159, coco/AR .5: 0.90035, coco/AR .75: 0.73347, coco/AR (M): 0.61592, coco/AR (L): 0.72650
+2024-02-14 13:54:20,093 INFO PoseEstimator: (Val)Current best mAP: 0.5927582986358114 on epoch 189
+2024-02-14 14:46:56,248 INFO PoseEstimator: (Train)Epoch-[190/209] - mem: 9.47GB|(epoch_end)lr: 2.2123e-04|(epoch_avg)loss: 0.0009720308509913278 (epoch_avg)loss_kpt: 0.0009720308509913278 (epoch_avg)acc_pose: 0.8097767246298038 
+2024-02-14 14:51:30,909 INFO PoseEstimator: (Val)coco/AP: 0.59052, coco/AP .5: 0.84974, coco/AP .75: 0.66348, coco/AP (M): 0.56395, coco/AP (L): 0.64854, coco/AR: 0.65970, coco/AR .5: 0.89909, coco/AR .75: 0.72875, coco/AR (M): 0.61426, coco/AR (L): 0.72363
+2024-02-14 14:51:30,910 INFO PoseEstimator: (Val)Current best mAP: 0.5927582986358114 on epoch 189
+2024-02-14 15:44:07,858 INFO PoseEstimator: (Train)Epoch-[191/209] - mem: 9.47GB|(epoch_end)lr: 2.1899e-04|(epoch_avg)loss: 0.0009705343920434312 (epoch_avg)loss_kpt: 0.0009705343920434312 (epoch_avg)acc_pose: 0.8103792952776949 
+2024-02-14 15:48:43,144 INFO PoseEstimator: (Val)coco/AP: 0.59232, coco/AP .5: 0.85275, coco/AP .75: 0.66910, coco/AP (M): 0.56420, coco/AP (L): 0.65114, coco/AR: 0.66023, coco/AR .5: 0.90129, coco/AR .75: 0.73253, coco/AR (M): 0.61404, coco/AR (L): 0.72549
+2024-02-14 15:48:43,145 INFO PoseEstimator: (Val)Current best mAP: 0.5927582986358114 on epoch 189
+2024-02-14 16:41:25,830 INFO PoseEstimator: (Train)Epoch-[192/209] - mem: 9.47GB|(epoch_end)lr: 2.1686e-04|(epoch_avg)loss: 0.000970000735743557 (epoch_avg)loss_kpt: 0.000970000735743557 (epoch_avg)acc_pose: 0.8103319173026375 
+2024-02-14 16:46:01,657 INFO PoseEstimator: (Val)coco/AP: 0.59338, coco/AP .5: 0.85250, coco/AP .75: 0.66522, coco/AP (M): 0.56539, coco/AP (L): 0.65082, coco/AR: 0.66174, coco/AR .5: 0.90098, coco/AR .75: 0.72953, coco/AR (M): 0.61691, coco/AR (L): 0.72486
+2024-02-14 16:46:01,657 INFO PoseEstimator: (Val)Current best mAP: 0.5933790250489996 on epoch 192
+2024-02-14 17:38:49,457 INFO PoseEstimator: (Train)Epoch-[193/209] - mem: 9.47GB|(epoch_end)lr: 2.1485e-04|(epoch_avg)loss: 0.0009688009004027869 (epoch_avg)loss_kpt: 0.0009688009004027869 (epoch_avg)acc_pose: 0.810765940946401 
+2024-02-14 17:43:22,279 INFO PoseEstimator: (Val)coco/AP: 0.59323, coco/AP .5: 0.85299, coco/AP .75: 0.66664, coco/AP (M): 0.56637, coco/AP (L): 0.65129, coco/AR: 0.66337, coco/AR .5: 0.90098, coco/AR .75: 0.73520, coco/AR (M): 0.61729, coco/AR (L): 0.72835
+2024-02-14 17:43:22,279 INFO PoseEstimator: (Val)Current best mAP: 0.5933790250489996 on epoch 192
+2024-02-14 18:36:04,269 INFO PoseEstimator: (Train)Epoch-[194/209] - mem: 9.47GB|(epoch_end)lr: 2.1297e-04|(epoch_avg)loss: 0.0009694778351343353 (epoch_avg)loss_kpt: 0.0009694778351343353 (epoch_avg)acc_pose: 0.8103961315933113 
+2024-02-14 18:40:38,060 INFO PoseEstimator: (Val)coco/AP: 0.59111, coco/AP .5: 0.84999, coco/AP .75: 0.66633, coco/AP (M): 0.56399, coco/AP (L): 0.64955, coco/AR: 0.66055, coco/AR .5: 0.89877, coco/AR .75: 0.73205, coco/AR (M): 0.61445, coco/AR (L): 0.72612
+2024-02-14 18:40:38,060 INFO PoseEstimator: (Val)Current best mAP: 0.5933790250489996 on epoch 192
+2024-02-14 19:33:14,865 INFO PoseEstimator: (Train)Epoch-[195/209] - mem: 9.47GB|(epoch_end)lr: 2.1120e-04|(epoch_avg)loss: 0.0009680723417635843 (epoch_avg)loss_kpt: 0.0009680723417635843 (epoch_avg)acc_pose: 0.8106386673209349 
+2024-02-14 19:37:49,349 INFO PoseEstimator: (Val)coco/AP: 0.59268, coco/AP .5: 0.85432, coco/AP .75: 0.66541, coco/AP (M): 0.56512, coco/AP (L): 0.65033, coco/AR: 0.66174, coco/AR .5: 0.90129, coco/AR .75: 0.73284, coco/AR (M): 0.61598, coco/AR (L): 0.72650
+2024-02-14 19:37:49,349 INFO PoseEstimator: (Val)Current best mAP: 0.5933790250489996 on epoch 192
+2024-02-14 20:30:26,279 INFO PoseEstimator: (Train)Epoch-[196/209] - mem: 9.47GB|(epoch_end)lr: 2.0957e-04|(epoch_avg)loss: 0.0009682802030163342 (epoch_avg)loss_kpt: 0.0009682802030163342 (epoch_avg)acc_pose: 0.8109067402480489 
+2024-02-14 20:35:02,461 INFO PoseEstimator: (Val)coco/AP: 0.59414, coco/AP .5: 0.85460, coco/AP .75: 0.66718, coco/AP (M): 0.56617, coco/AP (L): 0.65279, coco/AR: 0.66204, coco/AR .5: 0.90208, coco/AR .75: 0.73174, coco/AR (M): 0.61530, coco/AR (L): 0.72813
+2024-02-14 20:35:02,461 INFO PoseEstimator: (Val)Current best mAP: 0.5941426780210649 on epoch 196
+2024-02-14 21:27:31,391 INFO PoseEstimator: (Train)Epoch-[197/209] - mem: 9.47GB|(epoch_end)lr: 2.0805e-04|(epoch_avg)loss: 0.0009675394979253286 (epoch_avg)loss_kpt: 0.0009675394979253286 (epoch_avg)acc_pose: 0.8111461836331101 
+2024-02-14 21:32:05,116 INFO PoseEstimator: (Val)coco/AP: 0.59222, coco/AP .5: 0.85056, coco/AP .75: 0.66638, coco/AP (M): 0.56532, coco/AP (L): 0.64984, coco/AR: 0.66033, coco/AR .5: 0.89861, coco/AR .75: 0.73016, coco/AR (M): 0.61412, coco/AR (L): 0.72572
+2024-02-14 21:32:05,116 INFO PoseEstimator: (Val)Current best mAP: 0.5941426780210649 on epoch 196
+2024-02-14 22:24:38,138 INFO PoseEstimator: (Train)Epoch-[198/209] - mem: 9.47GB|(epoch_end)lr: 2.0666e-04|(epoch_avg)loss: 0.0009672150009874883 (epoch_avg)loss_kpt: 0.0009672150009874883 (epoch_avg)acc_pose: 0.8110314638987074 
+2024-02-14 22:29:13,375 INFO PoseEstimator: (Val)coco/AP: 0.59297, coco/AP .5: 0.84994, coco/AP .75: 0.66525, coco/AP (M): 0.56467, coco/AP (L): 0.65198, coco/AR: 0.66067, coco/AR .5: 0.89783, coco/AR .75: 0.72859, coco/AR (M): 0.61450, coco/AR (L): 0.72609
+2024-02-14 22:29:13,376 INFO PoseEstimator: (Val)Current best mAP: 0.5941426780210649 on epoch 196
+2024-02-14 23:21:37,727 INFO PoseEstimator: (Train)Epoch-[199/209] - mem: 9.47GB|(epoch_end)lr: 2.0541e-04|(epoch_avg)loss: 0.0009668711787939379 (epoch_avg)loss_kpt: 0.0009668711787939379 (epoch_avg)acc_pose: 0.8113212727464815 
+2024-02-14 23:26:13,636 INFO PoseEstimator: (Val)coco/AP: 0.59486, coco/AP .5: 0.85492, coco/AP .75: 0.67220, coco/AP (M): 0.56710, coco/AP (L): 0.65290, coco/AR: 0.66299, coco/AR .5: 0.90224, coco/AR .75: 0.73378, coco/AR (M): 0.61734, coco/AR (L): 0.72750
+2024-02-14 23:26:13,636 INFO PoseEstimator: (Val)Current best mAP: 0.5948558237991977 on epoch 199
+2024-02-15 00:18:39,074 INFO PoseEstimator: (Train)Epoch-[200/209] - mem: 9.47GB|(epoch_end)lr: 2.0428e-04|(epoch_avg)loss: 0.0009663823325786888 (epoch_avg)loss_kpt: 0.0009663823325786888 (epoch_avg)acc_pose: 0.8114013136866371 
+2024-02-15 00:23:13,468 INFO PoseEstimator: (Val)coco/AP: 0.59333, coco/AP .5: 0.85192, coco/AP .75: 0.66729, coco/AP (M): 0.56589, coco/AP (L): 0.65171, coco/AR: 0.66195, coco/AR .5: 0.89956, coco/AR .75: 0.73142, coco/AR (M): 0.61592, coco/AR (L): 0.72724
+2024-02-15 00:23:13,468 INFO PoseEstimator: (Val)Current best mAP: 0.5948558237991977 on epoch 199
+2024-02-15 01:15:41,296 INFO PoseEstimator: (Train)Epoch-[201/209] - mem: 9.47GB|(epoch_end)lr: 2.0328e-04|(epoch_avg)loss: 0.0009662479928188964 (epoch_avg)loss_kpt: 0.0009662479928188964 (epoch_avg)acc_pose: 0.8113119999164673 
+2024-02-15 01:20:17,063 INFO PoseEstimator: (Val)coco/AP: 0.59416, coco/AP .5: 0.85056, coco/AP .75: 0.66887, coco/AP (M): 0.56776, coco/AP (L): 0.65204, coco/AR: 0.66277, coco/AR .5: 0.89909, coco/AR .75: 0.73363, coco/AR (M): 0.61743, coco/AR (L): 0.72690
+2024-02-15 01:20:17,063 INFO PoseEstimator: (Val)Current best mAP: 0.5948558237991977 on epoch 199
+2024-02-15 02:12:42,900 INFO PoseEstimator: (Train)Epoch-[202/209] - mem: 9.47GB|(epoch_end)lr: 2.0241e-04|(epoch_avg)loss: 0.000965124567341457 (epoch_avg)loss_kpt: 0.000965124567341457 (epoch_avg)acc_pose: 0.8116477415803109 
+2024-02-15 02:17:15,305 INFO PoseEstimator: (Val)coco/AP: 0.59519, coco/AP .5: 0.85340, coco/AP .75: 0.66778, coco/AP (M): 0.56730, coco/AP (L): 0.65385, coco/AR: 0.66293, coco/AR .5: 0.90129, coco/AR .75: 0.73174, coco/AR (M): 0.61666, coco/AR (L): 0.72817
+2024-02-15 02:17:15,305 INFO PoseEstimator: (Val)Current best mAP: 0.5951935194495387 on epoch 202
+2024-02-15 03:09:49,872 INFO PoseEstimator: (Train)Epoch-[203/209] - mem: 9.47GB|(epoch_end)lr: 2.0168e-04|(epoch_avg)loss: 0.0009645401643147844 (epoch_avg)loss_kpt: 0.0009645401643147844 (epoch_avg)acc_pose: 0.811759558398454 
+2024-02-15 03:14:24,617 INFO PoseEstimator: (Val)coco/AP: 0.59354, coco/AP .5: 0.85354, coco/AP .75: 0.66953, coco/AP (M): 0.56692, coco/AP (L): 0.65091, coco/AR: 0.66247, coco/AR .5: 0.90145, coco/AR .75: 0.73378, coco/AR (M): 0.61756, coco/AR (L): 0.72598
+2024-02-15 03:14:24,617 INFO PoseEstimator: (Val)Current best mAP: 0.5951935194495387 on epoch 202
+2024-02-15 04:07:00,953 INFO PoseEstimator: (Train)Epoch-[204/209] - mem: 9.47GB|(epoch_end)lr: 2.0107e-04|(epoch_avg)loss: 0.0009636066531421625 (epoch_avg)loss_kpt: 0.0009636066531421625 (epoch_avg)acc_pose: 0.8120906392828657 
+2024-02-15 04:11:33,892 INFO PoseEstimator: (Val)coco/AP: 0.59385, coco/AP .5: 0.85432, coco/AP .75: 0.66771, coco/AP (M): 0.56672, coco/AP (L): 0.65234, coco/AR: 0.66253, coco/AR .5: 0.90255, coco/AR .75: 0.73284, coco/AR (M): 0.61625, coco/AR (L): 0.72824
+2024-02-15 04:11:33,893 INFO PoseEstimator: (Val)Current best mAP: 0.5951935194495387 on epoch 202
+2024-02-15 05:04:06,130 INFO PoseEstimator: (Train)Epoch-[205/209] - mem: 9.47GB|(epoch_end)lr: 2.0060e-04|(epoch_avg)loss: 0.0009645483120949864 (epoch_avg)loss_kpt: 0.0009645483120949864 (epoch_avg)acc_pose: 0.8118512340015096 
+2024-02-15 05:08:40,675 INFO PoseEstimator: (Val)coco/AP: 0.59408, coco/AP .5: 0.85004, coco/AP .75: 0.67122, coco/AP (M): 0.56727, coco/AP (L): 0.65230, coco/AR: 0.66204, coco/AR .5: 0.89798, coco/AR .75: 0.73489, coco/AR (M): 0.61609, coco/AR (L): 0.72698
+2024-02-15 05:08:40,675 INFO PoseEstimator: (Val)Current best mAP: 0.5951935194495387 on epoch 202
+2024-02-15 06:01:12,771 INFO PoseEstimator: (Train)Epoch-[206/209] - mem: 9.47GB|(epoch_end)lr: 2.0027e-04|(epoch_avg)loss: 0.0009637716361083849 (epoch_avg)loss_kpt: 0.0009637716361083849 (epoch_avg)acc_pose: 0.8120525735179595 
+2024-02-15 06:05:47,870 INFO PoseEstimator: (Val)coco/AP: 0.59507, coco/AP .5: 0.85443, coco/AP .75: 0.67239, coco/AP (M): 0.56789, coco/AP (L): 0.65330, coco/AR: 0.66274, coco/AR .5: 0.90082, coco/AR .75: 0.73552, coco/AR (M): 0.61713, coco/AR (L): 0.72746
+2024-02-15 06:05:47,870 INFO PoseEstimator: (Val)Current best mAP: 0.5951935194495387 on epoch 202
+2024-02-15 06:58:16,521 INFO PoseEstimator: (Train)Epoch-[207/209] - mem: 9.47GB|(epoch_end)lr: 2.0007e-04|(epoch_avg)loss: 0.0009636609449015729 (epoch_avg)loss_kpt: 0.0009636609449015729 (epoch_avg)acc_pose: 0.8120109120653363 
+2024-02-15 07:02:49,660 INFO PoseEstimator: (Val)coco/AP: 0.59532, coco/AP .5: 0.84995, coco/AP .75: 0.67471, coco/AP (M): 0.56790, coco/AP (L): 0.65422, coco/AR: 0.66299, coco/AR .5: 0.89877, coco/AR .75: 0.73756, coco/AR (M): 0.61748, coco/AR (L): 0.72772
+2024-02-15 07:02:49,661 INFO PoseEstimator: (Val)Current best mAP: 0.5953195341011116 on epoch 207
+2024-02-15 07:55:08,278 INFO PoseEstimator: (Train)Epoch-[208/209] - mem: 9.47GB|(epoch_end)lr: 2.0000e-04|(epoch_avg)loss: 0.000963237008914778 (epoch_avg)loss_kpt: 0.000963237008914778 (epoch_avg)acc_pose: 0.8122181627576217 
+2024-02-15 07:59:40,360 INFO PoseEstimator: (Val)coco/AP: 0.59544, coco/AP .5: 0.85532, coco/AP .75: 0.66972, coco/AP (M): 0.56773, coco/AP (L): 0.65425, coco/AR: 0.66444, coco/AR .5: 0.90224, coco/AR .75: 0.73615, coco/AR (M): 0.61830, coco/AR (L): 0.72988
+2024-02-15 07:59:40,360 INFO PoseEstimator: (Val)Current best mAP: 0.5954384509254301 on epoch 208
+2024-02-15 08:52:00,487 INFO PoseEstimator: (Train)Epoch-[209/209] - mem: 9.47GB|(epoch_end)lr: 2.0000e-04|(epoch_avg)loss: 0.0009630568691911618 (epoch_avg)loss_kpt: 0.0009630568691911618 (epoch_avg)acc_pose: 0.8122696758651867 
+2024-02-15 08:56:34,643 INFO PoseEstimator: (Val)coco/AP: 0.59596, coco/AP .5: 0.85269, coco/AP .75: 0.66888, coco/AP (M): 0.56700, coco/AP (L): 0.65552, coco/AR: 0.66366, coco/AR .5: 0.89861, coco/AR .75: 0.73300, coco/AR (M): 0.61704, coco/AR (L): 0.72965
+2024-02-15 08:56:34,643 INFO PoseEstimator: (Val)Current best mAP: 0.595961757992048 on epoch 209
+2024-02-15 08:56:36,302 INFO PoseEstimator: 
+192 epochs completed in 184.641 hours.
+2024-02-15 08:56:36,353 INFO PoseEstimator: 
+Validating on best checkpoint work_dirs/202402071616/best.pth...
+2024-02-15 09:01:09,061 INFO PoseEstimator: (Final Val)coco/AP: 0.5960, coco/AP .5: 0.8527, coco/AP .75: 0.6689, coco/AP (M): 0.5670, coco/AP (L): 0.6555, coco/AR: 0.6637, coco/AR .5: 0.8986, coco/AR .75: 0.7330, coco/AR (M): 0.6170, coco/AR (L): 0.7297
