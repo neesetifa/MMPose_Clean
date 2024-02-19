@@ -1,0 +1,28 @@
+Part I
+训练集基于COCO, 验证集基于COCO
+实验序号   算法     输入尺寸(H*W)      主干网络        主干网络参数   预训练  neck参数  head参数   mAP(COCO)  exp文件名           备注
+1       Heatmap    256*192   ShuffleNetv2-1.0x    1253604      n/a      0      6297361    60.24     官方ckpt            n/a
+2       Heatmap    192*192   MobileNetv2-0.75x    1355424      n/a      0      7345937    57.92     20230823_101554    作为初始化参数供下面模型使用
+3       Heatmap    192*192   MobileNetv2-0.5x      687680      n/a      0      7345937    ⭕        ⭕                 作为初始化参数供下面模型使用 
+4       Heatmap    256*192   MobileNetv2-1.0x     2223872      n/a      0      7345937    64.8      官方ckpt            n/a    
+
+5       RLE        192*192   MobileNetv2-0.75x-s   914885      n/a      0        97172    52.47     在RLE的r39          linear-1428 
+6       RLE        192*192   ShuffleNetv2-1.0x    1253604    Heatmap    0        69700    50.96     20230816_182401    n/a
+7       RLE        192*192   MobileNetv2-0.75x    1355424    Heatmap    0        87108    55.28     20230825_101731    linear-1280, 此参数被量化, 作为RLE_r52 ***
+8       RLE        192*192   MobileNetv2-0.75x    1541246      n/a      0       139332    56.6      在RLE的r34          linear-2048, 此ckpt已经过时, 待删
+9       RLE        256*192   MobileNetv2-1.0x     2223872      n/a      0        87108    59.3      官方ckpt            n/a
+
+10      Simcc      192*192   ShuffleNetv2-1.0x    1253604    Heatmap    0        45841    51.73     20230818_100613    n/a
+11      Simcc      192*192   MobileNetv2-0.75x    1355424    Heatmap    0        50193    55.79     20230830_112237    linear-1280, 由于koru不能跑simcc的最后两个fc层, 导致此算法无法使用
+12      Simcc      256*192   MobileNetv2-1.0x     2223872      n/a      0        65681    62.0      官方ckpt            由于尺寸是256*192所以head较大
+
+13      RLE+Simcc  192*192   ShuffleNetv2-1.0x    1253604      n/a      0         n/a     00.00     n/a                不打算实验, 从上面实验可以发现同一个量级参数效果低于mobilenet
+14-1    RLE+Simcc  192*192   MobileNetv2-0.75x    1355424    Heatmap    0  50193+87108    55.13     20230913_171651    RLE和Simcc两个head, 使用RLE的head进行推理, RLE_loss:Simcc_loss=1:1
+14-2    RLE+Simcc  192*192   MobileNetv2-0.75x    1355424    Heatmap    0  50193+87108    55.07     20230915_153754    RLE和Simcc两个head, 使用RLE的head进行推理, RLE_loss:Simcc_loss=1:10
+15      RLE+Simcc  192*192   MobileNetv2-0.75x    1355424    Heatmap    0  50193+43554    56.57     20230919_154918    Simcc的head+RLE的sigma, 使用Simcc的head进行推理, RLE_loss:Simcc_loss=0.01:1
+
+Part II
+训练集基于COCO+AIC, 验证集基于COCO
+实验序号   算法     输入尺寸(H*W)      主干网络        主干网络参数   预训练  neck参数  head参数   mAP(COCO)  exp文件名           备注
+0     UDP-Heatmap  192*192   MobileNetv2-0.75x    1355424    Imagenet   0      7345937    59.59     202402071616       作为初始化参数供下面模型使用 
+1     UDP-Heatmap  192*192   MobileNetv2-0.5x      687680    Imagenet   0      7345937    ⭕        ⭕                 作为初始化参数供下面模型使用 
