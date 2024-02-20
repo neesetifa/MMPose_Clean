@@ -1,10 +1,12 @@
 Part I
 训练集基于COCO, 验证集基于COCO
 实验序号   算法     输入尺寸(H*W)      主干网络        主干网络参数   预训练  neck参数  head参数   mAP(COCO)  exp文件名           备注
-1       Heatmap    256*192   ShuffleNetv2-1.0x    1253604      n/a      0      6297361    60.24     官方ckpt            n/a
+1       Heatmap    256*192   ShuffleNetv2-1.0x    1253604      n/a      0      6297361    60.24     51fb931e_20221014  官方ckpt
 2       Heatmap    192*192   MobileNetv2-0.75x    1355424      n/a      0      7345937    57.92     20230823_101554    作为初始化参数供下面模型使用
-3       Heatmap    192*192   MobileNetv2-0.5x      687680      n/a      0      7345937    ⭕        ⭕                 作为初始化参数供下面模型使用 
-4       Heatmap    256*192   MobileNetv2-1.0x     2223872      n/a      0      7345937    64.8      官方ckpt            n/a    
+2-2     Heatmap    192*192   MobileNetv2-0.75x    1355424    Imagenet   0      7345937    58.41     202402041739       作为初始化参数供下面模型使用, 使用我自己的clean_version
+3       Heatmap    192*192   MobileNetv2-0.5x      687680    Imagenet   0      7345937    52.08     202402181150       作为初始化参数供下面模型使用 
+4       Heatmap    256*192   MobileNetv2-1.0x     2223872      n/a      0      7345937    64.8      55a04c35_20221016  官方ckpt
+4-2     Heatmap    256*192   MobileNetv2-1.0x     2223872    Imagenet   0      7345937    ⭕        ⭕                 作为初始化参数供下面模型使用, 使用我自己的clean_version
 
 5       RLE        192*192   MobileNetv2-0.75x-s   914885      n/a      0        97172    52.47     在RLE的r39          linear-1428 
 6       RLE        192*192   ShuffleNetv2-1.0x    1253604    Heatmap    0        69700    50.96     20230816_182401    n/a
