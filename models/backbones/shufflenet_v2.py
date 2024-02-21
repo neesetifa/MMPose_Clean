@@ -17,17 +17,20 @@ class Concatenate(nn.Module):
 
 
 # 以下两个实现等价
-# def channel_shuffle(x, groups):
-#     batchsize, num_channels, height, width = x.size()
-#     channels_per_group = num_channels // groups
+# *** 注意 ***
+# 由于 nn.ChannelShuffle/F.channel_shuffle 的官方CUDA版本未实现, 
+# 所以GPU训练时候必须要使用view+transpose版本, 而不能使用 nn.ChannelShuffle/F.channel_shuffle
+def channel_shuffle(x, groups):
+    batchsize, num_channels, height, width = x.size()
+    channels_per_group = num_channels // groups
 
-#     # reshape
-#     x = x.view(batchsize, groups, channels_per_group, height, width)
-#     x = torch.transpose(x, 1, 2).contiguous() # [bs,group,group_channel,h,w]->[bs,group_channel,group,h,w]
-#     # flatten
-#     x = x.view(batchsize, num_channels, height, width)
+    # reshape
+    x = x.view(batchsize, groups, channels_per_group, height, width)
+    x = torch.transpose(x, 1, 2).contiguous() # [bs,group,group_channel,h,w]->[bs,group_channel,group,h,w]
+    # flatten
+    x = x.view(batchsize, num_channels, height, width)
 
-#     return x
+    return x
 
 # class ChannelShuffle(Module):
 #     def __init__(self, groups: int) -> None:
@@ -127,7 +130,7 @@ class ShuffleV2Block(nn.Module):
 
         self.branch_main = LinearBottleneck(inp, oup, stride, True, ACTIVATION)
         self.concat = Concatenate(dim = 1)
-        self.channel_shuffle = nn.ChannelShuffle(groups=2)
+        # self.channel_shuffle = nn.ChannelShuffle(groups=2) # GPU训练不能使用
             
     def forward(self, inputs):
         if self.stride==1:
@@ -142,7 +145,8 @@ class ShuffleV2Block(nn.Module):
             x = self.branch_main(inputs)
             out = self.concat(x_proj, x)
 
-        out = self.channel_shuffle(out)
+        # out = self.channel_shuffle(out)
+        out = channel_shuffle(out, groups=2)
         return out
 
     
