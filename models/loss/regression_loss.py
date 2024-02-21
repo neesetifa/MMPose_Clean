@@ -64,8 +64,7 @@ class RLELoss(nn.Module):
         # (B, K, 2)
         log_phi = self.flow_model.log_prob(error.reshape(-1, 2))
         log_phi = log_phi.reshape(target.shape[0], target.shape[1], 1)
-        log_sigma = torch.log(sigma).reshape(target.shape[0], target.shape[1],
-                                             2)
+        log_sigma = torch.log(sigma).reshape(target.shape[0], target.shape[1], 2)
         nf_loss = log_sigma - log_phi
 
         if self.residual:
@@ -73,8 +72,7 @@ class RLELoss(nn.Module):
             if self.q_distribution == 'laplace':
                 loss_q = torch.log(sigma * 2) + torch.abs(error)
             else:
-                loss_q = torch.log(
-                    sigma * math.sqrt(2 * math.pi)) + 0.5 * error**2
+                loss_q = torch.log(sigma * math.sqrt(2 * math.pi)) + 0.5 * error**2
 
             loss = nf_loss + loss_q
         else:
@@ -127,8 +125,7 @@ class SmoothL1Loss(nn.Module):
             for i in range(output.ndim - target_weight.ndim):
                 target_weight = target_weight.unsqueeze(-1)
 
-            loss = self.criterion(output * target_weight,
-                                  target * target_weight)
+            loss = self.criterion(output * target_weight, target * target_weight)
         else:
             loss = self.criterion(output, target)
 
@@ -156,8 +153,7 @@ class SoftWeightSmoothL1Loss(nn.Module):
         super().__init__()
 
         reduction = 'none' if use_target_weight else 'mean'
-        self.criterion = partial(
-            self.smooth_l1_loss, reduction=reduction, beta=beta)
+        self.criterion = partial(elf.smooth_l1_loss, reduction=reduction, beta=beta)
 
         self.supervise_empty = supervise_empty
         self.use_target_weight = use_target_weight
@@ -315,8 +311,7 @@ class SoftWingLoss(nn.Module):
 
         # constant that smoothly links the piecewise-defined linear
         # and nonlinear parts
-        self.B = self.omega1 - self.omega2 * math.log(1.0 + self.omega1 /
-                                                      self.epsilon)
+        self.B = self.omega1 - self.omega2 * math.log(1.0 + self.omega1 / self.epsilon)
 
     def criterion(self, pred, target):
         """Criterion of wingloss.
@@ -468,8 +463,7 @@ class MPJPELoss(nn.Module):
 
         if self.use_target_weight:
             assert target_weight is not None
-            loss = torch.mean(
-                torch.norm((output - target) * target_weight, dim=-1))
+            loss = torch.mean(torch.norm((output - target) * target_weight, dim=-1))
         else:
             loss = torch.mean(torch.norm(output - target, dim=-1))
 
@@ -510,8 +504,7 @@ class L1Loss(nn.Module):
             assert target_weight is not None
             for _ in range(target.ndim - target_weight.ndim):
                 target_weight = target_weight.unsqueeze(-1)
-            loss = self.criterion(output * target_weight,
-                                  target * target_weight)
+            loss = self.criterion(output * target_weight, target * target_weight)
         else:
             loss = self.criterion(output, target)
 
@@ -543,8 +536,7 @@ class MSELoss(nn.Module):
 
         if self.use_target_weight:
             assert target_weight is not None
-            loss = self.criterion(output * target_weight,
-                                  target * target_weight)
+            loss = self.criterion(output * target_weight, target * target_weight)
         else:
             loss = self.criterion(output, target)
 
@@ -682,8 +674,7 @@ class SemiSupervisionLoss(nn.Module):
         # projection loss
         unlabeled_output = unlabeled_pose + unlabeled_traj
         unlabeled_output_2d = self.project_joints(unlabeled_output, intrinsics)
-        loss_proj = self.criterion_projection(unlabeled_output_2d,
-                                              unlabeled_target_2d, None)
+        loss_proj = self.criterion_projection(unlabeled_output_2d, unlabeled_target_2d, None)
         losses['proj_loss'] = loss_proj
 
         # bone loss
@@ -773,8 +764,7 @@ class OKSLoss(nn.Module):
 
         if target_weight is not None:
             if self.norm_target_weight:
-                target_weight = target_weight / target_weight.sum(
-                    dim=-1, keepdims=True).clip(min=self.eps)
+                target_weight = target_weight / target_weight.sum(dim=-1, keepdims=True).clip(min=self.eps)
             else:
                 target_weight = target_weight / target_weight.size(-1)
             oks = oks * target_weight
