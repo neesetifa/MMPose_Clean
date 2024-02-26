@@ -287,8 +287,7 @@ class OptimWrapper:
                 self.message_hub.update_scalar(f'train/{self.grad_name}',
                                                float(grad))
 
-    def initialize_count_status(self, model: nn.Module, init_counts: int,
-                                max_counts: int) -> None:
+    def initialize_count_status(self, init_counts: int, max_counts: int) -> None:
         """Initialize gradient accumulation related attributes.
 
         ``OptimWrapper`` can be used without calling
@@ -298,7 +297,6 @@ class OptimWrapper:
         ``optimizer.step()``, resulting in one less parameter updating.
 
         Args:
-            model (nn.Module): Training model
             init_counts (int): The initial value of the inner count.
             max_counts (int): The maximum value of the inner count.
         """
