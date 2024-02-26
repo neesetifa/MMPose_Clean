@@ -260,7 +260,6 @@ def train(args, configs, device):
         # The dataset pipeline cannot be updated when persistent_workers
         # is True, so we need to force the dataloader's multi-process
         # restart. This is a very hacky approach.
-        # TODO 测试resume ckpt后 switch pipeline是否正常 ☑️
         if train_loader.dataset.pipeline_stage2 and not train_loader.dataset.switched and epoch >= switch_epoch:
             train_loader.dataset.switch_pipeline()
             if hasattr(train_loader, 'persistent_workers') and train_loader.persistent_workers is True:
