@@ -45,7 +45,7 @@ model = dict(
         init_cfg=dict(
             type='Pretrained',
             prefix='backbone.',
-            checkpoint='pretrained_weight/mobilenetv2_0.75x_heatmap_pretrained_backbone_192x192.pth')),
+            checkpoint='pretrained_weight/2_udp_heatmap/mobilenetv2_0.75x_udp_coco_aic_pretrained_backbone_192x192.pth')),
     neck=dict(type='GlobalAveragePooling'),
     head=dict(
         type='RLEHead',
@@ -62,7 +62,7 @@ model = dict(
 # base dataset settings
 dataset_type = 'CocoDataset'
 data_mode = 'topdown'
-data_root = '../person_keypoint_dataset/coco/'
+data_root = 'data/coco/'
 
 # pipelines
 train_pipeline = [
