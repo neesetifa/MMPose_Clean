@@ -10,11 +10,16 @@ from copy import deepcopy
 from datetime import datetime, timedelta
 from pathlib import Path
 
+from tqdm import tqdm
 import numpy as np
 import torch
 import torch.distributed as dist
 import torch.nn as nn
-from tqdm import tqdm
+# Refer to following issues:
+# https://discuss.pytorch.org/t/runtimeerror-received-0-items-of-ancdata/4999
+# https://github.com/pytorch/pytorch/issues/973
+torch.multiprocessing.set_sharing_strategy('file_system')
+
 
 from models.pose_estimator import build_pose_estimator
 from datasets import build_dataloader
@@ -27,8 +32,7 @@ from utils.general import parse_config_file, save_config_file, print_args, Combi
 
 from val import evaluate
 
-# from nni.algorithms.compression.pytorch.quantization import QAT_Quantizer # Quant
-
+from nni.algorithms.compression.pytorch.quantization import QAT_Quantizer # Quant
 
 # DEVICE info for current environment
 # Initialize before running any main function
@@ -152,11 +156,18 @@ def train(args, configs, device):
     configs['train_dataloader'].update(batch_size = train_batch_size)         # No need to update val batch, we only do eval on single GPU
 
     if args.resume_ckpt:
+        assert not args.quant, 'QAT mode doesn\'t support resume checkpoint yet'
         ckpt = torch.load(args.checkpoint, map_location='cpu') # load checkpoint to CPU to avoid CUDA memory leak
         LOGGER.info(f'Load checkpoint from {args.checkpoint}')
     
     # Model ✅
     model = build_pose_estimator(configs['model'])
+    # for name, module in model.named_modules():
+    #     if len(list(module.named_children())) > 0:
+    #            continue
+    #     print(name, type(module).__name__)
+    # pdb.set_trace()
+    
     if args.resume_ckpt:
         model.load_state_dict(ckpt['model'])
     else:
@@ -178,7 +189,7 @@ def train(args, configs, device):
 
     # Resume ✅
     if args.resume_ckpt:
-        assert not args.quant, 'QAT mode doesn\'t support resume checkpoint yet'
+        # QAT doesn't support resume yet
         start_epoch = ckpt['epoch']
         best_mAP, best_epoch = ckpt['best_mAP']
         optimizer_wrapper.load_state_dict(ckpt['optimizer_wrapper'])
@@ -192,7 +203,8 @@ def train(args, configs, device):
         model = torch.nn.DataParallel(model)
 
     # SyncBatchNorm ✅
-    if args.sync_bn and cuda and RANK != -1 and not args.quant:
+    if args.sync_bn and cuda and RANK != -1:
+        assert not args.quant, 'QAT mode doesn\'t support SyncBatchNorm yet'
         model = torch.nn.SyncBatchNorm.convert_sync_batchnorm(model).to(device)
         LOGGER.info('Using SyncBatchNorm()')
 
@@ -202,28 +214,34 @@ def train(args, configs, device):
 
     # DDP mode ✅
     # QAT doesn't support DDP yet
-    if cuda and RANK != -1 and not args.quant:
+    if cuda and RANK != -1:
+        assert not args.quant, 'QAT mode doesn\'t support DDP yet'
         model = smart_DDP(model)
 
-    # QAT ☑️
+    # QAT ✅
     if args.quant:
         model = model.to('cpu')
-        assert args.pretrained_weight is not None, \
-            'You must provide checkpoint if you enable QAT, but found args.weights is None'
-        model.load_state_dict(torch.load(args.pretrained_weight, map_location='cpu'))
         
-        INPUT_SIZE = [1, 3, imgsz[1], imgsz[0]] # N,C,H,W
+        assert configs['qat_pretrained_weight'] is not None, \
+            'You must provide pretrained weight if you enable QAT, but found qat_pretrained_weight is None in configure file'
+        model.load_state_dict(torch.load(configs['qat_pretrained_weight'], map_location='cpu'))
+        LOGGER.info(f'Load pretrained weight from: {configs["qat_pretrained_weight"]}')
+
+        w, h = configs["codec"]["input_size"]
+        INPUT_SIZE = [1, 3, h, w] # N,C,H,W
         dummy_inputs = torch.randn(*INPUT_SIZE)
 
-        from model import configure_list
-        if args.quant_info is None:
+        configure_list = configs['configure_list']
+        if configs['quant_info'] is None:
             fixed_quant_info = {}
         else:
-            fixed_quant_info = torch.load(args.quant_info, map_location='cpu')
-            LOGGER.info(f'Load quant_info from: {args.quant_info}')
-            
-        model.eval()
+            fixed_quant_info = torch.load(configs['quant_info'], map_location='cpu')
+            LOGGER.info(f'Load quant_info from: {configs["quant_info"]}')
+
+        model.eval() 
         optimizer = optimizer_wrapper.optimizer
+        # model.forward()默认行为是接受处理好的input, 然后运行backbone->neck->head
+        # 所以不需要做特殊处理即可送给QAT_Quantizer
         quantizer = QAT_Quantizer(model, configure_list, optimizer, fixed_quant_info, dummy_input=dummy_inputs)
         quantizer.compress()
         print('QAT wrapped successfully =========')
@@ -232,8 +250,7 @@ def train(args, configs, device):
     # 💎💎 Before train 💎💎
     # -- Initialize ✅
     training_start_time = time.time()
-    optimizer_wrapper.initialize_count_status(model = model,
-                                              init_counts = 0,
+    optimizer_wrapper.initialize_count_status(init_counts = 0,
                                               max_counts = max_epochs*len(train_loader)
                                               )
     restart_dataloader = False
@@ -461,16 +478,12 @@ def train(args, configs, device):
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument('--cfg_file', type=str, default=None, help='model config py file')
-    parser.add_argument('--pretrained_weight', type=str, default=None, help='initial weights path')
     parser.add_argument('--resume_ckpt', type=str, default=None, help='resume training from ckeckpoint')
     parser.add_argument('--sync-bn', action='store_true', help='use SyncBatchNorm, only available in DDP mode')
     parser.add_argument('--save_dir', default='', help='save to project/name')
     parser.add_argument('--device', default='', help='cuda device, i.e. 0 or 0,1,2,3 or cpu')
     parser.add_argument('--local_rank', type=int, default=-1, help='Automatic DDP Multi-GPU argument, do not modify')
-
-    # Quant
     parser.add_argument('--quant', action='store_true', help='enable QAT')
-    parser.add_argument('--quant_info', type=str, default=None, help='pretrained quant info for QAT finetune')
     
     return parser.parse_args()
 
