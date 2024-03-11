@@ -159,6 +159,13 @@ def train(args, configs, device):
         assert not args.quant, 'QAT mode doesn\'t support resume checkpoint yet'
         ckpt = torch.load(args.checkpoint, map_location='cpu') # load checkpoint to CPU to avoid CUDA memory leak
         LOGGER.info(f'Load checkpoint from {args.checkpoint}')
+
+    # Train loader ✅
+    train_loader, train_dataset = build_dataloader(configs['train_dataloader'])
+    
+    # Val loader(only on Process 0) ✅
+    if RANK in {-1, 0}:
+        val_loader, val_dataset = build_dataloader(configs['val_dataloader'])
     
     # Model ✅
     model = build_pose_estimator(configs['model'])
@@ -173,13 +180,6 @@ def train(args, configs, device):
     else:
        model.init_weights() # currently only init backbone
     model = model.to(device)
-
-    # Train loader ✅
-    train_loader, train_dataset = build_dataloader(configs['train_dataloader'])
-    
-    # Val loader(only on Process 0) ✅
-    if RANK in {-1, 0}:
-        val_loader, val_dataset = build_dataloader(configs['val_dataloader'])
 
     # Optimizer ✅
     optimizer_wrapper = build_optimizer_wrapper(configs['optim_wrapper'], model)
@@ -204,7 +204,8 @@ def train(args, configs, device):
 
     # SyncBatchNorm ✅
     if args.sync_bn and cuda and RANK != -1:
-        assert not args.quant, 'QAT mode doesn\'t support SyncBatchNorm yet'
+        # During QAT, running mean and bias are fixed, so no need for sync
+        assert not args.quant, 'QAT mode doesn\'t support SyncBatchNorm'
         model = torch.nn.SyncBatchNorm.convert_sync_batchnorm(model).to(device)
         LOGGER.info('Using SyncBatchNorm()')
 
@@ -212,16 +213,10 @@ def train(args, configs, device):
     evaluate_metric = build_metric(configs['val_evaluator'], args.save_dir+'/val_results')
     evaluate_metric.dataset_meta = val_dataset.metainfo
 
-    # DDP mode ✅
-    # QAT doesn't support DDP yet
-    if cuda and RANK != -1:
-        assert not args.quant, 'QAT mode doesn\'t support DDP yet'
-        model = smart_DDP(model)
-
-    # QAT ✅
+    # QAT ☑️
+    # TODO - After new QAT, this should move to right after model definition
     if args.quant:
         model = model.to('cpu')
-        
         assert configs['qat_pretrained_weight'] is not None, \
             'You must provide pretrained weight if you enable QAT, but found qat_pretrained_weight is None in configure file'
         model.load_state_dict(torch.load(configs['qat_pretrained_weight'], map_location='cpu'))
@@ -245,7 +240,14 @@ def train(args, configs, device):
         quantizer = QAT_Quantizer(model, configure_list, optimizer, fixed_quant_info, dummy_input=dummy_inputs)
         quantizer.compress()
         print('QAT wrapped successfully =========')
+        pdb.set_trace()
         model = model.to(device)
+
+    # DDP mode ✅
+    # QAT doesn't support DDP yet
+    if cuda and RANK != -1:
+        assert not args.quant, 'QAT mode doesn\'t support DDP yet'
+        model = smart_DDP(model)
 
     # 💎💎 Before train 💎💎
     # -- Initialize ✅
@@ -314,7 +316,7 @@ def train(args, configs, device):
             # imgs = [batch, 3, h, w] in BGR int8 format
             # data_preprocessor() doing following steps
             # (1) image normalization, including
-            #       - img.transpose()
+            #       - convert BGR to RGB(if bgr_to_rgb=True in data_preprocessor setting)
             #       - img.float()
             #       - (img-mean)/std
             # (2) moving all images and labels into GPU
@@ -446,6 +448,7 @@ def train(args, configs, device):
         # if stop:
         #     break  # must break all DDP ranks
 
+        torch.cuda.empty_cache()
         # end epoch ----------------------------------------------------------------------------------------------------
     # end training -----------------------------------------------------------------------------------------------------
 
@@ -538,7 +541,9 @@ if __name__ == '__main__':
 """
 ** Single GPU training
 python train.py --cfg_file configs/simcc/coco/simcc_mobilenetv2_wo-deconv-8xb64-210e_coco-256x192.py
-python train.py --cfg_file configs/my_custom/simcc_mobilenetv2_wo-deconv-b64-210e_coco-192x192.py
+python train.py --cfg_file configs/my_custom/udp_mobilenetv2_b128-210e_aic-coco-192x192.py
+
+python train.py --cfg_file configs/my_custom/reg_mobilenetv2_rle-b64-210e_coco-192x192_quant.py --quant
 
 ** Resume training
 python train.py --resume_ckpt work_dirs/202402041807/
