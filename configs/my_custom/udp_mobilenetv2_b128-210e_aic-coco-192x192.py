@@ -82,8 +82,7 @@ train_pipeline = [
     dict(type='GetBBoxCenterScale'),
     dict(type='RandomFlip', direction='horizontal'),
     dict(type='RandomHalfBody'),
-    dict(
-        type='RandomBBoxTransform', scale_factor=[0.6, 1.4], rotate_factor=80),
+    dict(type='RandomBBoxTransform', scale_factor=[0.6, 1.4], rotate_factor=80),
     dict(type='TopdownAffine', input_size=codec['input_size'], use_udp=True),
     dict(type='YOLOXHSVRandomAug'),
     dict(
@@ -159,6 +158,7 @@ dataset_coco = dict(
     ),
     times=3)
 
+
 dataset_aic = dict(
     type='AicDataset',
     data_root=data_root,
@@ -190,7 +190,7 @@ dataset_aic = dict(
 # data loaders
 train_dataloader = dict(
     batch_size=128,
-    num_workers=4,
+    num_workers=8,
     persistent_workers=True,
     sampler=dict(type='DefaultSampler', shuffle=True),
     dataset=dict(
