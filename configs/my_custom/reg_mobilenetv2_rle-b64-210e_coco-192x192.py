@@ -1,24 +1,21 @@
 _base_ = ['../../../_base_/default_runtime.py']
 
 # runtime
-train_cfg = dict(max_epochs=210, val_interval=1)
+train_cfg = dict(max_epochs=80, val_interval=1)
 
 # optimizer
 optim_wrapper = dict(optimizer=dict(
     type='Adam',
-    lr=1e-3,
+    lr=1e-5,
 ))
 
 # learning policy
 param_scheduler = [
     dict(
-        type='LinearLR', begin=0, end=500, start_factor=0.001,
-        by_epoch=False),  # warm-up
-    dict(
         type='MultiStepLR',
         begin=0,
         end=train_cfg['max_epochs'],
-        milestones=[170, 200],
+        milestones=[50, ],
         gamma=0.1,
         by_epoch=True)
 ]
@@ -42,10 +39,7 @@ model = dict(
         type='MobileNetV2',
         widen_factor=0.75,
         out_indices=(7, ),  # output from which stage of the backbone
-        init_cfg=dict(
-            type='Pretrained',
-            prefix='backbone.',
-            checkpoint='pretrained_weight/2_udp_heatmap/mobilenetv2_0.75x_udp_coco_aic_pretrained_backbone_192x192.pth')),
+        ),
     neck=dict(type='GlobalAveragePooling'),
     head=dict(
         type='RLEHead',
@@ -126,3 +120,51 @@ val_evaluator = dict(
 test_evaluator = val_evaluator
 
 randomness = dict(seed = 3407)
+
+# QAT configure
+qat_pretrained_weight = 'work_dirs/202402271226/last.pth'
+quant_info = 'work_dirs/202402271226/last_quant_info.pth'
+configure_list = [{'quant_types': ['weight', 'input', 'output'],
+                   'quant_bits': {'weight': 8, 'input': 8, 'output': 8},
+                   'op_names': ['backbone.conv1.conv',]},
+                   
+                  {'quant_types': ['weight', 'output'],
+                   'quant_bits': {'weight': 8, 'output': 8},
+                   'op_names': ['backbone.block_0.1.dw_conv', 'backbone.block_0.1.pw_conv',
+                                'backbone.block_1.1.conv', 'backbone.block_1.1.dw_conv', 'backbone.block_1.1.pw_conv',
+                                'backbone.block_1.2.conv', 'backbone.block_1.2.dw_conv', 'backbone.block_1.2.pw_conv',
+                                'backbone.block_2.1.conv', 'backbone.block_2.1.dw_conv', 'backbone.block_2.1.pw_conv',
+                                'backbone.block_2.2.conv', 'backbone.block_2.2.dw_conv', 'backbone.block_2.2.pw_conv',
+                                'backbone.block_2.3.conv', 'backbone.block_2.3.dw_conv', 'backbone.block_2.3.pw_conv',
+                                'backbone.block_3.1.conv', 'backbone.block_3.1.dw_conv', 'backbone.block_3.1.pw_conv',
+                                'backbone.block_3.2.conv', 'backbone.block_3.2.dw_conv', 'backbone.block_3.2.pw_conv',
+                                'backbone.block_3.3.conv', 'backbone.block_3.3.dw_conv', 'backbone.block_3.3.pw_conv',
+                                'backbone.block_3.4.conv', 'backbone.block_3.4.dw_conv', 'backbone.block_3.4.pw_conv',
+                                'backbone.block_4.1.conv', 'backbone.block_4.1.dw_conv', 'backbone.block_4.1.pw_conv',
+                                'backbone.block_4.2.conv', 'backbone.block_4.2.dw_conv', 'backbone.block_4.2.pw_conv',
+                                'backbone.block_4.3.conv', 'backbone.block_4.3.dw_conv', 'backbone.block_4.3.pw_conv',
+                                'backbone.block_5.1.conv', 'backbone.block_5.1.dw_conv', 'backbone.block_5.1.pw_conv',
+                                'backbone.block_5.2.conv', 'backbone.block_5.2.dw_conv', 'backbone.block_5.2.pw_conv',
+                                'backbone.block_5.3.conv', 'backbone.block_5.3.dw_conv', 'backbone.block_5.3.pw_conv',
+                                'backbone.block_6.1.conv', 'backbone.block_6.1.dw_conv', 'backbone.block_6.1.pw_conv',
+                                'backbone.conv2.conv', 
+                                ]},
+                  
+                  {'quant_types': ['output'],
+                   'quant_bits': {'output': 8},
+                   'op_names': ['backbone.block_1.2.add',
+                                'backbone.block_2.2.add',
+                                'backbone.block_2.3.add',
+                                'backbone.block_3.2.add',
+                                'backbone.block_3.3.add',
+                                'backbone.block_3.4.add',
+                                'backbone.block_4.2.add',
+                                'backbone.block_4.3.add',
+                                'backbone.block_5.2.add',
+                                'backbone.block_5.3.add',
+                                'neck.gap', # avg_pool
+                                ]},
+                  
+                  {'quant_types': ['weight', 'output'],
+                   'quant_bits': {'weight': 8, 'output': 8},
+                   'op_names': ['head.fc_coord', 'head.fc_sigma']}]
