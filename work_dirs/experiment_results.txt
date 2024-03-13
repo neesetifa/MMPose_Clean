@@ -27,8 +27,11 @@ Part I
 Part II
 训练集基于COCO+AIC, 验证集基于COCO, 全都使用我自己的clean_version
 实验序号   算法     输入尺寸(H*W)      主干网络        主干网络参数   预训练  neck参数  head参数   mAP(COCO)  exp文件名           备注
-0     UDP-Heatmap  192*192   MobileNetv2-0.75x    1355424    Imagenet   0      7345937    59.59     202402071616       作为初始化参数供下面模型使用 
-1     UDP-Heatmap  192*192   MobileNetv2-0.5x      687680    Imagenet   0      7345937    ⭕        ⭕                 TODO 
-2     UDP-Heatmap  192*192   MobileNetv2-1.0x     2223872    Imagenet   0      7345937    ⭕        ⭕                 TODO 
+0     UDP-Heatmap  192*192   MobileNetv2-0.5x      687680    Imagenet   0      7345937    53.32     202403121637       作为初始化参数供下面模型使用
+1     UDP-Heatmap  192*192   MobileNetv2-0.75x    1355424    Imagenet   0      7345937    59.59     202402071616       作为初始化参数供下面模型使用 
+2     UDP-Heatmap  192*192   MobileNetv2-1.0x     2223872    Imagenet   0      7345937    ⭕        ⭕                 TODO
+3     UDP-Heatmap  256*192   MobileNetv2-0.5x      687680    Imagenet   0      7345937    ⭕        ⭕                 TODO
+4     UDP-Heatmap  256*192   MobileNetv2-0.75x    1355424    Imagenet   0      7345937    ⭕        ⭕                 TODO
+5     UDP-Heatmap  256*192   MobileNetv2-1.0x     2223872    Imagenet   0      7345937    ⭕        ⭕                 TODO
 
-3       RLE        192*192   MobileNetv2-0.5x      687680      UDP      0        87108    ⭕        ⭕                 TODO
+6       RLE        192*192   MobileNetv2-0.5x      687680      UDP      0        87108    ⭕        ⭕                 TODO
