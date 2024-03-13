@@ -1,4 +1,3 @@
-# Copyright (c) OpenMMLab. All rights reserved.
 from typing import Sequence, Union, Dict, Optional, Tuple, List
 
 import numpy as np
@@ -136,7 +135,8 @@ class PackPoseInputs:
                             'input_size', 'input_center', 'input_scale',
                             'flip', 'flip_direction', 'flip_indices',
                             'raw_ann_info', 'dataset_name'),
-                 pack_transformed=True):
+                 pack_transformed=False  # Just for debugging, DO NOT set it to True when training cuz it will consume RAM
+                 ):
         self.meta_keys = meta_keys
         self.pack_transformed = pack_transformed
 
@@ -178,6 +178,8 @@ class PackPoseInputs:
 
         # pack `transformed_keypoints` for visualizing data transform
         # and augmentation results
+        # And again, this is only for debugging purpose
+        # DO NOT enable it when training because it will cause RAM leak
         if self.pack_transformed and 'transformed_keypoints' in results:
             gt_instances.set_field(results['transformed_keypoints'],'transformed_keypoints')
 
