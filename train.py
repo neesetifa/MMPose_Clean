@@ -493,8 +493,8 @@ def parse_args():
 
 
 def main(args):
-    assert (args.cfg_file is None and args.pretrained_weight is None)^(args.resume_ckpt is None),\
-        'pass only one of checkpoint or cfg_file with pretrained_weight'
+    # assert (args.cfg_file is None and args.pretrained_weight is None)^(args.resume_ckpt is None),\
+    #     'pass only one of checkpoint or cfg_file with pretrained_weight'
     
     if args.save_dir == '':
         args.save_dir = datetime.now().strftime("%Y%m%d%H%M")
@@ -510,7 +510,7 @@ def main(args):
                 args.cfg_file = os.path.join(args.resume_ckpt, f)
                 break
         args.checkpoint = os.path.join(args.resume_ckpt, 'last.pth')
-        open(os.path.join(args.save_dir,f'resumed_from_checkpoint_{args.resume_ckpt.split("/")[-1]}'), 'w').close()
+        open(os.path.join(args.save_dir,f'resumed_from_checkpoint_{args.resume_ckpt.rstrip().split("/")[-1]}'), 'w').close()
 
     configs = parse_config_file(args.cfg_file)
     
