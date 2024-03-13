@@ -9,11 +9,20 @@ train_cfg = dict(max_epochs=max_epochs, val_interval=1)
 randomness = dict(seed=3407)
 
 # optimizer
-optim_wrapper = dict(
-    type='OptimWrapper',
-    optimizer=dict(type='AdamW', lr=base_lr, weight_decay=0.0),
-    paramwise_cfg=dict(
-        norm_decay_mult=0, bias_decay_mult=0, bypass_duplicate=True))
+# optim_wrapper = dict(
+#     type='OptimWrapper',
+#     optimizer=dict(type='AdamW', lr=base_lr, weight_decay=0.0),
+#     # 参数说明
+#     # https://github.com/open-mmlab/mmengine/blob/2c4516c62294964065d058d98799402f50afdef6/docs/zh_cn/tutorials/optim_wrapper.md?plain=1#L295
+#     paramwise_cfg=dict(norm_decay_mult=0, bias_decay_mult=0, bypass_duplicate=True),
+# )
+
+optim_wrapper = dict(optimizer=dict(
+    type='AdamW',
+    lr=base_lr,
+    weight_decay=0.0,
+))
+
 
 # learning rate
 param_scheduler = [
@@ -50,21 +59,26 @@ model = dict(
         bgr_to_rgb=True),
     backbone=dict(
         type='MobileNetV2',
-        widen_factor=0.75,
+        widen_factor=0.5,
         out_indices=(7, ),
         init_cfg=dict(
             type='Pretrained',
             prefix='backbone.',
-            checkpoint='pretrained_weight/1_udp_heatmap/mobilenet_v2_0.75x_pretrained.pth',
+            checkpoint='pretrained_weight/2_udp_heatmap/mobilenetv2_0.5x_udp_coco_aic_pretrained_backbone_192x192.pth',
         )
     ),
+    neck=dict(type='GlobalAveragePooling'),
     head=dict(
         type='RLEHead',
         in_channels=1280,
         num_joints=17,
         loss=dict(type='RLELoss', use_target_weight=True),
         decoder=codec),
-    test_cfg=dict(flip_test=True, ))
+    test_cfg=dict(
+        flip_test=True,
+        shift_coords=True,
+    ),
+)
 
 
 # pipelines
@@ -73,8 +87,7 @@ train_pipeline = [
     dict(type='GetBBoxCenterScale'),
     dict(type='RandomFlip', direction='horizontal'),
     dict(type='RandomHalfBody'),
-    dict(
-        type='RandomBBoxTransform', scale_factor=[0.6, 1.4], rotate_factor=80),
+    dict(type='RandomBBoxTransform', scale_factor=[0.6, 1.4], rotate_factor=80),
     dict(type='TopdownAffine', input_size=codec['input_size']),
     dict(type='YOLOXHSVRandomAug'),
     dict(
@@ -179,7 +192,7 @@ dataset_aic = dict(
 
 # data loaders
 train_dataloader = dict(
-    batch_size=128,
+    batch_size=256,
     num_workers=8,
     persistent_workers=True,
     sampler=dict(type='DefaultSampler', shuffle=True),
@@ -188,22 +201,23 @@ train_dataloader = dict(
         metainfo=dict(from_file='configs/_base_/datasets/coco.py'),
         datasets=[dataset_coco, dataset_aic],
         pipeline=train_pipeline,
-        test_mode=False,
+        pipeline_stage2=train_pipeline_stage2,
+        test_mode=False
     ))
 val_dataloader = dict(
     batch_size=64,
-    num_workers=10,
+    num_workers=2,
     persistent_workers=True,
     drop_last=False,
     sampler=dict(type='DefaultSampler', shuffle=False, round_up=False),
     dataset=dict(
-        type=dataset_type,
+        type='CocoDataset',
         data_root=data_root,
         data_mode=data_mode,
         ann_file='coco/annotations/person_keypoints_val2017.json',
-        bbox_file=f'{data_root}/coco/person_detection_results/'
+        bbox_file=f'{data_root}coco/person_detection_results/'
         'COCO_val2017_detections_AP_H_56_person.json',
-        data_prefix=dict(img='detection/coco/val2017/'),
+        data_prefix=dict(img='coco/images/val2017/'),
         test_mode=True,
         pipeline=val_pipeline,
     ))
