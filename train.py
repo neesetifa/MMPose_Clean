@@ -190,7 +190,7 @@ def train(args, configs, device):
     # Resume ✅
     if args.resume_ckpt:
         # QAT doesn't support resume yet
-        start_epoch = ckpt['epoch']
+        start_epoch = ckpt['epoch']+1
         best_mAP, best_epoch = ckpt['best_mAP']
         optimizer_wrapper.load_state_dict(ckpt['optimizer_wrapper'])
         for sch, state_dict in zip(schedulers, ckpt['schedulers']):
@@ -214,12 +214,13 @@ def train(args, configs, device):
     evaluate_metric.dataset_meta = val_dataset.metainfo
 
     # QAT ☑️
-    # TODO - After new QAT, this should move to right after model definition
+    # TODO - After new QAT, this part should be moved right after model definition
     if args.quant:
         model = model.to('cpu')
         assert configs['qat_pretrained_weight'] is not None, \
             'You must provide pretrained weight if you enable QAT, but found qat_pretrained_weight is None in configure file'
-        model.load_state_dict(torch.load(configs['qat_pretrained_weight'], map_location='cpu'))
+        ww = torch.load(configs['qat_pretrained_weight'], map_location='cpu')
+        model.load_state_dict(ww['model'] if 'model' in ww.keys() else ww)
         LOGGER.info(f'Load pretrained weight from: {configs["qat_pretrained_weight"]}')
 
         w, h = configs["codec"]["input_size"]
@@ -263,6 +264,7 @@ def train(args, configs, device):
                 f'Total num of validation {len(val_dataset)}\n'
                 f'Using {train_loader.num_workers * WORLD_SIZE} dataloader workers on training\n'
                 f'All training results saved to ==> {args.save_dir}\n'
+                f'Start epoch {start_epoch}\n'
                 f'Starting training for {max_epochs-start_epoch} epochs...')
 
     # 💎💎 Start train 💎💎
@@ -455,7 +457,7 @@ def train(args, configs, device):
     # 💎💎 After train 💎💎
     # -- log ✅
     if RANK in {-1, 0}:
-        LOGGER.info(f'\n{epoch - start_epoch} epochs completed in {(time.time() - training_start_time) / 3600:.3f} hours.')
+        LOGGER.info(f'\n{epoch - start_epoch + 1} epochs completed in {(time.time() - training_start_time) / 3600:.3f} hours.')
 
     # -- Final Evaluation using best weight  ✅
     if RANK in {-1, 0} and not args.quant:
@@ -503,14 +505,14 @@ def main(args):
         os.makedirs(args.save_dir)
 
     if args.resume_ckpt:
-        assert os.path.isdir(args.resume_ckpt), 'checkpoint should be a directory'
+        assert os.path.isdir(args.resume_ckpt), f'checkpoint {args.resume_ckpt}, should be a directory'
         files = os.listdir(args.resume_ckpt)
         for f in files:
             if f.endswith('.py'):
                 args.cfg_file = os.path.join(args.resume_ckpt, f)
                 break
         args.checkpoint = os.path.join(args.resume_ckpt, 'last.pth')
-        open(os.path.join(args.save_dir,f'resumed_from_checkpoint_{args.resume_ckpt.rstrip().split("/")[-1]}'), 'w').close()
+        open(os.path.join(args.save_dir,f'resumed_from_checkpoint_{args.resume_ckpt.rstrip("/").split("/")[-1]}'), 'w').close()
 
     configs = parse_config_file(args.cfg_file)
     
@@ -542,6 +544,7 @@ if __name__ == '__main__':
 ** Single GPU training
 python train.py --cfg_file configs/simcc/coco/simcc_mobilenetv2_wo-deconv-8xb64-210e_coco-256x192.py
 python train.py --cfg_file configs/my_custom/udp_mobilenetv2_b128-210e_aic-coco-192x192.py
+python train.py --cfg_file configs/my_custom/reg_mobilenetv2_rle_b128_420e_aic-coco-192x192.py
 
 python train.py --cfg_file configs/my_custom/reg_mobilenetv2_rle-b64-210e_coco-192x192_quant.py --quant
 
