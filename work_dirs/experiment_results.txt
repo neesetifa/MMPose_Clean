@@ -34,4 +34,4 @@ Part II
 4     UDP-Heatmap  256*192   MobileNetv2-0.75x    1355424    Imagenet   0      7345937    ⭕        ⭕                 TODO
 5     UDP-Heatmap  256*192   MobileNetv2-1.0x     2223872    Imagenet   0      7345937    ⭕        ⭕                 TODO
 
-6       RLE        192*192   MobileNetv2-0.5x      687680      UDP      0        87108    ⭕        ⭕                 TODO
+6       RLE        192*192   MobileNetv2-0.5x      687680      UDP      0        87108    48.81     202403131203       
