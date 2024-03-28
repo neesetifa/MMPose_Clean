@@ -7,12 +7,10 @@ import torch
 from typing import Callable, Optional, Tuple, Union
 
 from .dist import get_rank, sync_random_seed
-from .logger import LOGGER
 
-
-def select_device(device='', batch_size=0, newline=True):
+def select_device(device='', batch_size=0, newline=True, return_msg=True):
     # device = None or 'cpu' or 0 or '0' or '0,1,2,3'
-    s = f'PoseEstimator 🚀  Python-{platform.python_version()} torch-{torch.__version__} '
+    msg = f'PoseEstimator 🚀  Python-{platform.python_version()} torch-{torch.__version__} '
     device = str(device).strip().lower().replace('cuda:', '').replace('none', '')  # to string, 'cuda:0' to '0'
     cpu = device == 'cpu'
     mps = device == 'mps'  # Apple Metal Performance Shaders (MPS)
@@ -28,27 +26,30 @@ def select_device(device='', batch_size=0, newline=True):
         n = len(devices)  # device count
         if n > 1 and batch_size > 0:  # check batch_size is divisible by device_count
             assert batch_size % n == 0, f'batch-size {batch_size} not multiple of GPU count {n}'
-        space = ' ' * (len(s) + 1)
+        space = ' ' * (len(msg) + 1)
         for i, d in enumerate(devices):
             p = torch.cuda.get_device_properties(i)
-            s += f"{'' if i == 0 else space}CUDA:{d} ({p.name}, {p.total_memory / (1 << 20):.0f}MiB)\n"  # bytes to MB
+            msg += f"{'' if i == 0 else space}CUDA:{d} ({p.name}, {p.total_memory / (1 << 20):.0f}MiB)\n"  # bytes to MB
         arg = 'cuda:0'
     elif mps and getattr(torch, 'has_mps', False) and torch.backends.mps.is_available():  # prefer MPS if available
-        s += 'MPS\n'
+        msg += 'MPS\n'
         arg = 'mps'
     else:  # revert to CPU
-        s += 'CPU\n'
+        msg += 'CPU\n'
         arg = 'cpu'
 
     if not newline:
-        s = s.rstrip()
-    LOGGER.info(s)
+        msg = msg.rstrip()
+
+    if return_msg:
+        return torch.device(arg), msg
+    
     return torch.device(arg)
 
 
-def init_seeds(seed=0, deterministic=False, diff_rank_seed=False, rank=-1):
+def init_seeds(seed=0, deterministic=False, diff_rank_seed=True, rank=-1):
     if diff_rank_seed:
-        seed = seed + 1 + RANK
+        seed = seed + 1 + rank
         
     # Initialize random number generator (RNG) seeds
     # https://pytorch.org/docs/stable/notes/randomness.html
