@@ -32,7 +32,7 @@ from utils.general import parse_config_file, save_config_file, print_args, Combi
 
 from val import evaluate
 
-from nni.algorithms.compression.pytorch.quantization import QAT_Quantizer # Quant
+from nni.algorithms.compression.pytorch.quantization import QAT_Quantizer_fixed, LSQplus_Quantizer
 
 # DEVICE info for current environment
 # Initialize before running any main function
@@ -183,35 +183,6 @@ def train(args, configs, device):
 
     # Optimizer ✅
     optimizer_wrapper = build_optimizer_wrapper(configs['optim_wrapper'], model)
-    
-    # Schedulers ✅
-    schedulers = build_scheduler(configs['param_scheduler'], optimizer_wrapper, train_loader) # return type: List
-
-    # Resume ✅
-    if args.resume_ckpt:
-        # QAT doesn't support resume yet
-        start_epoch = ckpt['epoch']+1
-        best_mAP, best_epoch = ckpt['best_mAP']
-        optimizer_wrapper.load_state_dict(ckpt['optimizer_wrapper'])
-        for sch, state_dict in zip(schedulers, ckpt['schedulers']):
-            sch.load_state_dict(state_dict)
-        LOGGER.info('Successfully resume optimizer and schedulers from checkpoint')
-
-    # DP mode ✅
-    if cuda and RANK == -1 and torch.cuda.device_count() > 1:
-        LOGGER.warning('WARNING ⚠️DP not recommended, use torch.distributed.run for best DDP Multi-GPU results.\n')
-        model = torch.nn.DataParallel(model)
-
-    # SyncBatchNorm ✅
-    if args.sync_bn and cuda and RANK != -1:
-        # During QAT, running mean and bias are fixed, so no need for sync
-        assert not args.quant, 'QAT mode doesn\'t support SyncBatchNorm'
-        model = torch.nn.SyncBatchNorm.convert_sync_batchnorm(model).to(device)
-        LOGGER.info('Using SyncBatchNorm()')
-
-    # Evaluation metric ✅
-    evaluate_metric = build_metric(configs['val_evaluator'], args.save_dir+'/val_results')
-    evaluate_metric.dataset_meta = val_dataset.metainfo
 
     # QAT ☑️
     # TODO - After new QAT, this part should be moved right after model definition
@@ -229,20 +200,55 @@ def train(args, configs, device):
 
         configure_list = configs['configure_list']
         if configs['quant_info'] is None:
-            fixed_quant_info = {}
+            quant_info = {}
         else:
-            fixed_quant_info = torch.load(configs['quant_info'], map_location='cpu')
+            quant_info = torch.load(configs['quant_info'], map_location='cpu')
             LOGGER.info(f'Load quant_info from: {configs["quant_info"]}')
 
         model.eval() 
         optimizer = optimizer_wrapper.optimizer
         # model.forward()默认行为是接受处理好的input, 然后运行backbone->neck->head
-        # 所以不需要做特殊处理即可送给QAT_Quantizer
-        quantizer = QAT_Quantizer(model, configure_list, optimizer, fixed_quant_info, dummy_input=dummy_inputs)
+        # 所以不需要做特殊处理即可送给Quantizer
+        if configs['qat_mode'] == 'lsq+':
+            quantizer_module = LSQplus_Quantizer
+        elif configs['qat_mode'] == 'qat_fixed':
+            quantizer_module = QAT_Quantizer_fixed
+        else:
+            raise ValueError(f'qat mode must be lsq+ or qat_fixed, but got {configs["qat_mode"]}')
+        quantizer = quantizer_module(model, configure_list, optimizer, dummy_inputs, quant_info)
         quantizer.compress()
-        print('QAT wrapped successfully =========')
-        pdb.set_trace()
+        print('Quantized module wrapped successfully =========')
+        # pdb.set_trace()
         model = model.to(device)
+    
+    # Schedulers ✅
+    schedulers = build_scheduler(configs['param_scheduler'], optimizer_wrapper, train_loader) # return type: List
+
+    # Resume ✅
+    if args.resume_ckpt:
+        assert not args.quant, 'QAT mode doesn\'t support Resume yet'
+        start_epoch = ckpt['epoch']+1
+        best_mAP, best_epoch = ckpt['best_mAP']
+        optimizer_wrapper.load_state_dict(ckpt['optimizer_wrapper'])
+        for sch, state_dict in zip(schedulers, ckpt['schedulers']):
+            sch.load_state_dict(state_dict)
+        LOGGER.info('Successfully resume optimizer and schedulers from checkpoint')
+
+    # DP mode ✅
+    if not args.quant and cuda and RANK == -1 and torch.cuda.device_count() > 1:
+        LOGGER.warning('WARNING ⚠️DP not recommended, use torch.distributed.run for best DDP Multi-GPU results.\n')
+        model = torch.nn.DataParallel(model)
+
+    # SyncBatchNorm ✅
+    if args.sync_bn and cuda and RANK != -1:
+        # During QAT, running mean and bias are fixed, so no need for sync
+        assert not args.quant, 'QAT mode doesn\'t support SyncBatchNorm'
+        model = torch.nn.SyncBatchNorm.convert_sync_batchnorm(model).to(device)
+        LOGGER.info('Using SyncBatchNorm()')
+
+    # Evaluation metric ✅
+    evaluate_metric = build_metric(configs['val_evaluator'], args.save_dir+'/val_results')
+    evaluate_metric.dataset_meta = val_dataset.metainfo
 
     # DDP mode ✅
     # QAT doesn't support DDP yet
@@ -418,11 +424,9 @@ def train(args, configs, device):
 
             # Save model ✅
             if args.quant:
-                quantizer.save_model(model_path=os.path.join(args.save_dir, 'last.pth'),
-                                     quant_info_path=os.path.join(args.save_dir, 'last_quant_info.pth'))
+                quantizer.save_model(model_path=os.path.join(args.save_dir, 'last.pth'))
                 if best_mAP == mAP:
-                    quantizer.save_model(model_path=os.path.join(args.save_dir, 'best.pth'),
-                                         quant_info_path=os.path.join(args.save_dir, 'best_quant_info.pth'))
+                    quantizer.save_model(model_path=os.path.join(args.save_dir, 'best.pth'))
             else:
                 if type(model) in [nn.parallel.DataParallel, nn.parallel.DistributedDataParallel]:
                     model_state_dict = model.module.state_dict()
@@ -522,7 +526,10 @@ def main(args):
 
     # DDP mode ✅
     batch_size = configs['train_dataloader']['batch_size']
-    device = select_device(args.device, batch_size=batch_size)
+    device, msg = select_device(args.device, batch_size=batch_size)
+    if RANK in {-1, 0}:
+        LOGGER.info(msg)
+        
     if LOCAL_RANK != -1:
         assert batch_size % WORLD_SIZE == 0, f'Training batch size must be multiple of WORLD_SIZE, but got {batch_size}'
         assert torch.cuda.device_count() > LOCAL_RANK, 'insufficient CUDA devices for DDP command'
