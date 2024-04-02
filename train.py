@@ -32,7 +32,7 @@ from utils.general import parse_config_file, save_config_file, print_args, Combi
 
 from val import evaluate
 
-from nni.algorithms.compression.pytorch.quantization import QAT_Quantizer_fixed, LSQplus_Quantizer
+from nni.algorithms.compression.pytorch.quantization import QAT_Quantizer_fixed, LSQplus_Quantizer, QAT_Quantizer_old
 
 # DEVICE info for current environment
 # Initialize before running any main function
@@ -213,8 +213,12 @@ def train(args, configs, device):
             quantizer_module = LSQplus_Quantizer
         elif configs['qat_mode'] == 'qat_fixed':
             quantizer_module = QAT_Quantizer_fixed
+        elif configs['qat_mode'] == 'qat_old':
+            quantizer_module = QAT_Quantizer_old
         else:
             raise ValueError(f'qat mode must be lsq+ or qat_fixed, but got {configs["qat_mode"]}')
+        # 被quantizer绑定后, QAT会多出一套学习率(new_weight), LSQ+会多出两套学习率(new_weight, 所有的scale)
+        # 这个会在tqdm bar里显示出来
         quantizer = quantizer_module(model, configure_list, optimizer, dummy_inputs, quant_info)
         quantizer.compress()
         print('Quantized module wrapped successfully =========')
