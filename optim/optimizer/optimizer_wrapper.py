@@ -7,6 +7,8 @@ import torch
 import torch.nn as nn
 from torch.optim import Optimizer
 
+import pdb
+
 
 class OptimWrapper:
     """Optimizer wrapper provides a common interface for updating parameters.
@@ -124,6 +126,7 @@ class OptimWrapper:
                 'which is the arguments of `torch.nn.utils.clip_grad_norm_` '
                 'or clip_grad_value_`.')
             clip_type = clip_grad.pop('type', 'norm')
+            # 默认type为norm
             if clip_type == 'norm':
                 self.clip_func = torch.nn.utils.clip_grad_norm_
                 self.grad_name = 'grad_norm'
@@ -283,9 +286,8 @@ class OptimWrapper:
         if len(params) > 0:
             grad = self.clip_func(params, **self.clip_grad_kwargs)
             # `torch.nn.utils.clip_grad_value_` will return None.
-            if grad is not None:
-                self.message_hub.update_scalar(f'train/{self.grad_name}',
-                                               float(grad))
+            # if grad is not None:
+            #     self.message_hub.update_scalar(f'train/{self.grad_name}', float(grad))
 
     def initialize_count_status(self, init_counts: int, max_counts: int) -> None:
         """Initialize gradient accumulation related attributes.
@@ -455,7 +457,6 @@ class OptimWrapper:
             res['base_lr'] = [self.base_param_settings['lr']]
 
         res['lr'] = [group['lr'] for group in self.optimizer.param_groups]
-
         return res
 
     def get_momentum(self) -> Dict[str, List[float]]:
