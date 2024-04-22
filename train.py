@@ -213,8 +213,8 @@ def train(args, configs, device):
             quantizer_module = LSQplus_Quantizer
         elif configs['qat_mode'] == 'qat_fixed':
             quantizer_module = QAT_Quantizer_fixed
-        elif configs['qat_mode'] == 'qat_old':
-            quantizer_module = QAT_Quantizer_old
+        # elif configs['qat_mode'] == 'qat_old':
+        #     quantizer_module = QAT_Quantizer_old
         else:
             raise ValueError(f'qat mode must be lsq+ or qat_fixed, but got {configs["qat_mode"]}')
         # 被quantizer绑定后, QAT会多出一套学习率(new_weight), LSQ+会多出两套学习率(new_weight, 所有的scale)
@@ -349,11 +349,12 @@ def train(args, configs, device):
             else:
                 parsed_loss, loss_log_vars = model.parse_losses(losses)
             
-            # if RANK != -1: ❓
+            # if RANK != -1:
+            #     # Explaination: https://github.com/ultralytics/ultralytics/issues/6555   
             #     parsed_loss *= WORLD_SIZE  # gradient averaged between devices in DDP mode
 
             # -- Backward ✅
-            # update_params() doing following steps
+            # update_params() do following steps
             # (1) loss.backward()
             # (2) check accumulate step
             # (3) if accumulate,
@@ -555,9 +556,9 @@ if __name__ == '__main__':
 ** Single GPU training
 python train.py --cfg_file configs/simcc/coco/simcc_mobilenetv2_wo-deconv-8xb64-210e_coco-256x192.py
 python train.py --cfg_file configs/my_custom/udp_mobilenetv2_b128-210e_aic-coco-192x192.py
-python train.py --cfg_file configs/my_custom/reg_mobilenetv2_rle_b128_420e_aic-coco-192x192.py
+python train.py --cfg_file configs/my_custom/reg_mobilenetv2_rle_b256_420e_aic-coco-192x192.py
 
-python train.py --cfg_file configs/my_custom/reg_mobilenetv2_rle-b64-210e_coco-192x192_quant.py --quant
+python train.py --cfg_file configs/my_custom/reg_mobilenetv2_rle_b256_aic-coco-192x192_quant.py --quant
 
 ** Resume training
 python train.py --resume_ckpt work_dirs/202402041807/
