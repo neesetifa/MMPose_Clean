@@ -92,5 +92,5 @@ if __name__ == '__main__':
 
 """
 ** Single GPU PTQ
-python ptq.py --cfg_file configs/my_custom/reg_mobilenetv2_rle_b256_aic-coco-192x192_quant.py --pretrained_weight pretrained_weight/kk.pth
+python ptq.py --cfg_file configs/my_custom/reg_mobilenetv2_rle_b256_aic-coco-192x192_quant.py --pretrained_weight work_dirs/202404121425_rle_coco_aic_mb_075/best.pth
 """
