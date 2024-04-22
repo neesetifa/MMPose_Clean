@@ -17,11 +17,12 @@ randomness = dict(seed=3407)
 #     paramwise_cfg=dict(norm_decay_mult=0, bias_decay_mult=0, bypass_duplicate=True),
 # )
 
-optim_wrapper = dict(optimizer=dict(
-    type='AdamW',
-    lr=base_lr,
-    weight_decay=0.0,
-))
+optim_wrapper = dict(optimizer=dict(type='AdamW',
+                                    lr=base_lr,
+                                    weight_decay=0.0,
+                                    ),
+                     clip_grad=dict(max_norm=10.0)  # 新加的
+                     )
 
 
 # learning rate
@@ -59,12 +60,12 @@ model = dict(
         bgr_to_rgb=True),
     backbone=dict(
         type='MobileNetV2',
-        widen_factor=0.5,
+        widen_factor=0.75,
         out_indices=(7, ),
         init_cfg=dict(
             type='Pretrained',
             prefix='backbone.',
-            checkpoint='pretrained_weight/2_udp_heatmap/mobilenetv2_0.5x_udp_coco_aic_pretrained_backbone_192x192.pth',
+            checkpoint='pretrained_weight/2_udp_heatmap/mobilenetv2_0.75x_udp_coco_aic_pretrained_backbone_192x192.pth',
         )
     ),
     neck=dict(type='GlobalAveragePooling'),
