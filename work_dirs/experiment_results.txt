@@ -12,7 +12,7 @@ Part I
 6       RLE        192*192   MobileNetv2-0.75x-s   914885      n/a      0        97172    50.84     r39                linear-1428, 旧版RLE
 7       RLE        192*192   MobileNetv2-0.75x    1541246      n/a      0       139332    54.77     r34                linear-2048, 旧版RLE, 已经过时, 待删
 8       RLE        192*192   ShuffleNetv2-1.0x    1253604    Heatmap    0        69700    50.96     20230816_182401    使用官方mmpose
-9       RLE        192*192   MobileNetv2-0.75x    1355424    Heatmap    0        87108    55.28     20230825_101731    使用官方mmpose, linear-1280, 此参数被量化, 作为RLE_r52 ***
+9       RLE        192*192   MobileNetv2-0.75x    1355424    Heatmap    0        87108    55.28     20230825_101731    使用官方mmpose, linear-1280, 作为RLE_r52, 已过时, 待删
 10      RLE        256*192   MobileNetv2-1.0x     2223872      n/a      0        87108    59.3      39b73bd5_20220922  官方ckpt
 
 11      Simcc      192*192   ShuffleNetv2-1.0x    1253604    Heatmap    0        45841    51.73     20230818_100613    使用官方mmpose
@@ -35,4 +35,4 @@ Part II
 6     UDP-Heatmap  256*192   MobileNetv2-1.0x     2223872    Imagenet   0      7345937    ⭕        ⭕                 TODO 五一先做
 
 7       RLE        192*192   MobileNetv2-0.5x      687680      UDP      0        87108    48.81     202403131203       Observer+LSQplus+QAT量化 47.58 不需要420epoch, 太多了
-8       RLE        192*192   MobileNetv2-0.75x    1355424      UDP      0        87108    ⭕        ⭕                 
+8       RLE        192*192   MobileNetv2-0.75x    1355424      UDP      0        87108    57.20     202404121425
