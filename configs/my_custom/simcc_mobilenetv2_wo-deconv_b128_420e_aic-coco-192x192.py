@@ -223,7 +223,7 @@ val_dataloader = dict(
         ann_file='coco/annotations/person_keypoints_val2017.json',
         bbox_file=f'{data_root}/coco/person_detection_results/'
         'COCO_val2017_detections_AP_H_56_person.json',
-        data_prefix=dict(img='detection/coco/val2017/'),
+        data_prefix=dict(img='coco/images/val2017/'),
         test_mode=True,
         pipeline=val_pipeline,
     ))
