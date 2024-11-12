@@ -52,13 +52,15 @@ class RealNVP(nn.Module):
             if isinstance(m, nn.Linear):
                 nn.init.xavier_uniform_(m.weight, gain=0.01)
 
-    # 逆向过程, x->z, 训练时使用
+    # ==== Encoding Part, for training ====
+    # Reverse process, x->z0
+    # This is for training
     def backward_p(self, x):
         """Apply mapping form the data space to the latent space and calculate
         the log determinant of the Jacobian matrix."""
-        # z0 = x0
-        # z1 = (x1 - t(x0)) * exp(-s(x0))
-        # det_J = Σ(s(x0))
+        # z[1:d] = x[1:d]
+        # z[d:n] = (x[d:n] - t(x[1:d])) * exp(-s(x[1:d]))
+        # det_J = Σ(s(x[1:d]))
         log_det_jacob, z = x.new_zeros(x.shape[0]), x
         for i in reversed(range(len(self.t))):
             z_ = self.mask[i] * z
@@ -68,25 +70,27 @@ class RealNVP(nn.Module):
             log_det_jacob -= s.sum(dim=1)
         return z, log_det_jacob
 
-    # 求个log, 没其他特别的, 训练时使用
+    # Loss function, calculate a log value 
+    # This is for training
     def log_prob(self, x):
         """Calculate the log probability of given sample in data space."""
         z, log_det = self.backward_p(x)
         return self.prior.log_prob(z) + log_det
 
-    # ===============================================
-    # 从正态分布里随机采样z, 然后送给forward_p函数来产生x
-    # 此算法里没有用到该函数
+    # ==== Decoding Part, for generation ====
+    # Sample a z from Normal Distribution, then send to forward_p() to generate images
+    # RLE里没有用到该函数
     def sample(self, batchSize):
+        # batchSize: num of images you want to generate
         z = self.prior.sample((batchSize, 1))
         x = self.forward_p(z)
         return x
 
-    # 正向过程, z->x
-    # 此算法里没有用到该函数
+    # Forward process, z0->x
+    # RLE里没有用到该函数
     def forward_p(self, z):
-        # x0 = z0
-        # x1 = z1 * exp(s(z0)) + t(z0)
+        # x[1:d] = z[1:d]
+        # x[d:n] = z[d:n] * exp(s(z[1:d])) + t(z[1:d])
         x = z
         for i in range(len(self.t)):
             x_ = x * self.mask[i]
@@ -95,6 +99,6 @@ class RealNVP(nn.Module):
             x = x_ + (1 - self.mask[i]) * (x * torch.exp(s) + t)
         return x
 
-    # 此算法里没有用到该函数
+    # RLE里没有用到该函数
     def forward(self, x):
         return self.log_prob(x)
