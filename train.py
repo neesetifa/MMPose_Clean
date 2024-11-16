@@ -32,7 +32,7 @@ from utils.general import parse_config_file, save_config_file, print_args, Combi
 
 from val import evaluate
 
-from nni.algorithms.compression.pytorch.quantization import QAT_Quantizer_fixed, LSQplus_Quantizer, QAT_Quantizer_old
+from Quantizer.quantization import QAT_Quantizer_fixed, LSQplus_Quantizer, QAT_Quantizer_old
 
 # DEVICE info for current environment
 # Initialize before running any main function
