@@ -13,7 +13,7 @@ from datasets import build_dataloader
 from utils.general import parse_config_file
 from utils.env import init_seeds
 
-from nni.algorithms.compression.pytorch.quantization import PTQ_Quantizer
+from Quantizer.quantization import PTQ_Quantizer
 
 torch.multiprocessing.set_sharing_strategy('file_system')
 
