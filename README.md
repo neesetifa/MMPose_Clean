@@ -2,6 +2,8 @@
 **This is a clean version of MMPose, no complex dependency.<br>**
 original repo https://github.com/open-mmlab/mmpose<br>
 I modify the training and validation code, remove all complex dependency and now it is compatible with my own quantization frame(currently not provided)<br>
+TODO<br>
+- [ ] remove all dependency in single image/video demo
 
 ## Code explanation ##
 **train.py**: Main entrance of training.<br>
