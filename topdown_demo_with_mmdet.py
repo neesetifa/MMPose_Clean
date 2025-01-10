@@ -2,6 +2,7 @@ import os
 import time
 import argparse
 import pdb
+import glob
 
 import cv2
 import json_tricks as json
@@ -69,24 +70,21 @@ def main(args):
     if args.input == 'webcam':
         input_type = 'webcam'
     else:
-        file_extension = args.input.split('.')[-1]
-        if file_extension in ['jpg', 'jpeg', 'png']:
-            input_type = 'image'
-        elif file_extension in ['mp4']:
-            input_type = 'video'
+        if os.path.isdir(args.input):
+            input_type = 'folder'
         else:
-            raise ValueError(f'Unknown file extension {file_extension}')
+            file_extension = args.input.split('.')[-1]
+            if file_extension in ['jpg', 'jpeg', 'png']:
+                input_type = 'image'
+            elif file_extension in ['mp4']:
+                input_type = 'video'
+            else:
+                raise ValueError(f'Unknown file extension {file_extension}')
     
     output_file = None
     if args.output_root:
         if not os.path.exists(args.output_root):
             os.mkdir(args.output_root)
-        if input_type == 'webcam':
-            output_file = 'webcam.mp4'
-        else:
-            file_extension = '.'+args.input.split('.')[-1]
-            output_file = '.'.join(args.input.split('.')[:-1])+'_result'+file_extension
-        output_file = os.path.join(args.output_root, output_file)
 
     if args.save_predictions:
         assert args.output_root != ''
@@ -122,15 +120,37 @@ def main(args):
         if args.save_predictions:
             pred_instances_list = split_instances(pred_instances)
 
+        file_extension = '.'+args.input.split('.')[-1]
+        output_file = '.'.join(args.input.split('.')[:-1])+'_result'+file_extension
+        output_file = os.path.join(args.output_root, output_file)
         if output_file:
             img_vis = visualizer.get_image()
             mmcv.imwrite(mmcv.rgb2bgr(img_vis), output_file)
+            
+    elif input_type == 'folder':
+        image_list = glob.glob(f'{args.input}/*.jpg')+glob.glob(f'{args.input}/*.jpeg')+glob.glob(f'{args.input}/*.png')
+        for image in image_list:
+            if 'result' in image:
+                continue
+            pred_instances = process_one_image(args, image, detector,
+                                               pose_estimator, visualizer)
+            if args.save_predictions:
+                pred_instances_list = split_instances(pred_instances)
+
+            file_extension = '.'+image.split('.')[-1]
+            output_file = '.'.join(image.split('.')[:-1])+'_result'+file_extension
+            output_file = os.path.join(args.output_root, output_file)
+            if output_file:
+                img_vis = visualizer.get_image()
+                mmcv.imwrite(mmcv.rgb2bgr(img_vis), output_file)
+            
 
     elif input_type in ['webcam', 'video']:
         if args.input == 'webcam':
             cap = cv2.VideoCapture(0)
         else:
             cap = cv2.VideoCapture(args.input)
+        output_file = os.path.join(args.output_root, 'webcam.mp4')
 
         video_writer = None
         pred_instances_list = []
@@ -237,6 +257,9 @@ if __name__ == '__main__':
 """
 ** single image
 python topdown_demo_with_mmdet.py pretrained_weight/detection/rtmdet_tiny_8xb32-300e_coco.py pretrained_weight/detection/rtmdet_tiny_8xb32-300e_coco_20220902_112414-78e30dcc.pth pretrained_weight/detection/reg_mobilenetv2_rle_b256_420e_aic-coco-192x192.py pretrained_weight/detection/rle_mobilenet_0.75x_192x192_mmpose_202404121425.pth --input 'demos/image31.jpeg' --output-root '.' --draw-bbox
+
+** folder
+python topdown_demo_with_mmdet.py pretrained_weight/detection/rtmdet_tiny_8xb32-300e_coco.py pretrained_weight/detection/rtmdet_tiny_8xb32-300e_coco_20220902_112414-78e30dcc.pth pretrained_weight/detection/simcc_mobilenetv2_wo-deconv_b128_420e_aic-coco-192x192.py pretrained_weight/detection/simcc_mobilenet_0.75x_192x192_202412301530.pth --input 'demos/images' --output-root '.' --draw-bbox
 
 ** video
 python topdown_demo_with_mmdet.py pretrained_weight/detection/rtmdet_tiny_8xb32-300e_coco.py pretrained_weight/detection/rtmdet_tiny_8xb32-300e_coco_20220902_112414-78e30dcc.pth pretrained_weight/detection/reg_mobilenetv2_rle_b256_420e_aic-coco-192x192.py pretrained_weight/detection/rle_mobilenet_0.75x_192x192_mmpose_202404121425.pth --input 'demos/jazz_pinkvenom.mp4' --output-root '.' --draw-bbox
