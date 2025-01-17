@@ -258,7 +258,7 @@ class SimCCHead(BaseHead):
         else:
             batch_pred_x, batch_pred_y = self.forward(feats)
 
-        preds = self.decode((batch_pred_x, batch_pred_y))
+        preds = self.decode((batch_pred_x, batch_pred_y))   # decode完毕之后是在192*256尺寸上的坐标
 
         if test_cfg.get('output_heatmaps', False):
             warnings.warn('The predicted simcc values are normalized for '
