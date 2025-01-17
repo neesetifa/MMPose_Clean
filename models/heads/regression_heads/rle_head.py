@@ -109,7 +109,7 @@ class RLEHead(BaseHead):
             batch_coords = torch.cat((batch_coords, batch_sigmas),dim=-1) # [B, K, 4]
             
         batch_coords.unsqueeze_(dim=1)  # (B, N, K, D)
-        preds = self.decode(batch_coords)
+        preds = self.decode(batch_coords)  # decode完毕之后是在192*256尺寸上的坐标
 
         return preds
 
