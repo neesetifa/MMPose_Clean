@@ -38,4 +38,4 @@ Part II
 8       RLE        192*192   MobileNetv2-0.75x    1355424      UDP      0        87108    57.20     202404121425       Observer+LSQplus+QAT量化 56.70 也不需要420epoch, 太多了
 
 9       Simcc      256*192   MobileNetv2-0.75x    1355424      UDP      0        50193    60.44     202405131104       也不需要420epoch, 太多了, 66-120之间都没有update最佳, 165-258也没有最佳
-10      Simcc      192*192   MobileNetv2-0.75x    1355424      UDP      0        50193    58.60     202412301530       
+10      Simcc      192*192   MobileNetv2-0.75x    1355424      UDP      0        50193    58.60     202412301530       Observer+LSQplus+QAT量化 56.72     
